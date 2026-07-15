@@ -4,21 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Portfolio - Triệu Thị Ngọc Bích</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-blue: #8A9AEC;
-            --secondary-blue: #A1B3F7;
-            --calico-orange: #F5A97F;
-            --calico-dark: #36393E;
-            --glass-bg: rgba(255, 255, 255, 0.45);
-            --glass-border: rgba(255, 255, 255, 0.6);
-            --text-main: #2C302E;
-            --text-light: #5A6065;
+            --primary-pastel: #7b8ab8;
+            --primary-light: #8da0d4;
+            --accent-peach: #f4a261;
+            --accent-lavender: #b3c5f4;
+            --bg-glass: rgba(240, 243, 255, 0.65);
+            --bg-glass-dark: rgba(30, 35, 55, 0.7);
+            --border-glass: rgba(255, 255, 255, 0.4);
+            --shadow-cozy: 0 12px 40px rgba(123, 138, 184, 0.25);
+            --text-dark: #2c3248;
+            --text-light: #f5f6fa;
         }
 
         * {
@@ -26,21 +30,20 @@
             margin: 0;
             padding: 0;
             user-select: none;
-            -webkit-user-drag: none;
         }
 
         body, html {
             width: 100%;
             height: 100%;
-            font-family: 'Quicksand', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-dark);
             overflow: hidden;
-            color: var(--text-main);
-            background-color: #cdd6f4;
+            background-color: #a4b2e6;
         }
 
-        /* Ambient Video Background */
-        #video-background {
-            position: absolute;
+        /* Video Background */
+        #video-bg {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -50,1129 +53,1213 @@
             pointer-events: none;
         }
 
-        #video-overlay {
-            position: absolute;
+        #bg-overlay {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, rgba(138, 154, 236, 0.15) 0%, rgba(54, 57, 62, 0.25) 100%);
-            backdrop-filter: blur(2px);
+            background: radial-gradient(circle, rgba(240,243,255,0.15) 0%, rgba(123,138,184,0.3) 100%);
             z-index: -1;
             pointer-events: none;
         }
 
-        /* Ripple Effect Container */
-        .ripple-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1000;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
+        /* Ripple Effect */
         .ripple {
             position: absolute;
-            border: 2px solid rgba(161, 179, 247, 0.6);
+            border: 2px solid rgba(179, 197, 244, 0.6);
             border-radius: 50%;
-            transform: translate(-50%, -50%);
-            animation: ripple-effect 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+            transform: scale(0);
+            animation: ripple-out 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
             pointer-events: none;
+            z-index: 9999;
         }
 
-        @keyframes ripple-effect {
-            0% {
-                width: 0;
-                height: 0;
-                opacity: 0.9;
-            }
-            100% {
-                width: 350px;
-                height: 350px;
+        @keyframes ripple-out {
+            to {
+                transform: scale(6);
                 opacity: 0;
-                border-color: rgba(245, 169, 127, 0);
             }
         }
 
-        /* ==================== MÀN HÌNH KHÓA (LOCK SCREEN) ==================== */
+        /* Windows Lock Screen */
         #lock-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 999;
+            background: rgba(123, 138, 184, 0.4);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            z-index: 10000;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            background: rgba(26, 27, 38, 0.35);
-            backdrop-filter: blur(20px);
-            transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+            justify-content: center;
+            transition: transform 1s cubic-bezier(0.85, 0, 0.15, 1);
         }
 
         #lock-screen.unlocked {
             transform: translateY(-100%);
-            opacity: 0;
-            pointer-events: none;
         }
 
-        .lock-container {
-            background: rgba(255, 255, 255, 0.25);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 40px;
-            width: 380px;
+        .lock-clock {
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            margin-bottom: 40px;
+            color: var(--text-light);
+            text-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .lock-time {
+            font-size: 5rem;
+            font-weight: 300;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -2px;
+        }
+
+        .lock-date {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid var(--border-glass);
+            padding: 35px 45px;
+            border-radius: 24px;
             backdrop-filter: blur(15px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            text-align: center;
+            max-width: 380px;
+            width: 90%;
             animation: bounceIn 1s ease;
         }
 
-        @keyframes bounceIn {
-            0% { transform: scale(0.9); opacity: 0; }
-            60% { transform: scale(1.02); opacity: 1; }
-            100% { transform: scale(1); }
-        }
-
-        .avatar-frame {
-            width: 110px;
-            height: 110px;
+        .login-avatar {
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            margin: 0 auto 20px auto;
             border: 3px solid #fff;
-            box-shadow: 0 4px 15px rgba(138, 154, 236, 0.4);
-            overflow: hidden;
-            background: #fff;
-            position: relative;
-        }
-
-        .avatar-frame img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
         }
 
-        .lock-user {
-            font-size: 22px;
-            font-weight: 700;
-            color: #fff;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        .login-name {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            font-weight: 600;
             margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .lock-sub {
-            font-size: 14px;
-            color: #e2e8f0;
+        .login-desc {
+            color: #dfe4ea;
+            font-size: 0.9rem;
             margin-bottom: 25px;
-            text-shadow: 0 1px 5px rgba(0,0,0,0.2);
         }
 
-        .input-group {
+        .password-field {
             position: relative;
             margin-bottom: 15px;
         }
 
-        .input-group input {
+        .password-field input {
             width: 100%;
-            padding: 12px 45px 12px 20px;
-            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            padding: 12px 45px 12px 18px;
+            border: 1px solid rgba(255,255,255,0.4);
             border-radius: 30px;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255,255,255,0.2);
             color: #fff;
+            font-size: 0.95rem;
             outline: none;
-            font-family: inherit;
-            font-size: 15px;
-            transition: all 0.3s;
             text-align: center;
+            transition: all 0.3s;
         }
 
-        .input-group input:focus {
-            background: rgba(255, 255, 255, 0.35);
+        .password-field input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .password-field input:focus {
+            background: rgba(255,255,255,0.35);
             border-color: #fff;
-            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+            box-shadow: 0 0 10px rgba(255,255,255,0.2);
         }
 
-        .input-group input::placeholder {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .input-group button {
+        .login-submit {
             position: absolute;
-            right: 5px;
+            right: 8px;
             top: 50%;
             transform: translateY(-50%);
-            width: 36px;
-            height: 36px;
-            border: none;
             background: #fff;
-            color: var(--primary-blue);
+            border: none;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
+            color: var(--primary-pastel);
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.3s;
         }
 
-        .input-group button:hover {
-            background: var(--calico-orange);
+        .login-submit:hover {
+            background: var(--accent-peach);
             color: #fff;
-            box-shadow: 0 0 10px rgba(245, 169, 127, 0.5);
+            transform: translateY(-50%) scale(1.05);
         }
 
-        .lock-hint {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.7);
+        .quick-access-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: #fff;
+            font-size: 0.85rem;
             cursor: pointer;
-            transition: color 0.3s;
-        }
-        .lock-hint:hover {
-            color: var(--calico-orange);
+            transition: all 0.3s;
+            margin-top: 10px;
+            display: inline-block;
         }
 
-        /* ==================== WINDOWS DESKTOP ENVIRONMENT ==================== */
+        .quick-access-btn:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .hint-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.75rem;
+            margin-top: 12px;
+            font-style: italic;
+        }
+
+        /* Windows OS Desktop Workspace */
         #desktop {
-            position: relative;
             width: 100%;
-            height: 100vh;
+            height: calc(100% - 48px);
+            position: relative;
             padding: 20px;
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
             align-content: flex-start;
-            gap: 15px;
+            gap: 25px;
+            z-index: 1;
         }
 
         /* Desktop Shortcuts */
-        .desktop-item {
+        .shortcut {
             width: 90px;
-            height: 95px;
+            height: auto;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.2s;
+            border-radius: 12px;
+            padding: 10px 5px;
+            transition: all 0.25s ease;
             border: 1px solid transparent;
-            margin-bottom: 10px;
         }
 
-        .desktop-item:hover {
-            background: rgba(255, 255, 255, 0.25);
-            border-color: rgba(255, 255, 255, 0.4);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        .shortcut:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(5px);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(123, 138, 184, 0.15);
         }
 
-        .desktop-item i {
-            font-size: 32px;
-            color: #fff;
-            filter: drop-shadow(0 2px 8px rgba(138, 154, 236, 0.7));
+        .shortcut-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(179, 197, 244, 0.6));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-pastel);
             margin-bottom: 8px;
-            transition: transform 0.2s;
-        }
-        
-        /* Custom apricot tone for folders */
-        .desktop-item.folder i {
-            color: var(--calico-orange);
-            filter: drop-shadow(0 2px 8px rgba(245, 169, 127, 0.6));
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: transform 0.3s;
         }
 
-        .desktop-item.txt i {
-            color: #8be9fd;
+        .shortcut:hover .shortcut-icon {
+            transform: scale(1.08) rotate(5deg);
         }
 
-        .desktop-item.ethics i {
-            color: #ff79c6;
-        }
-
-        .desktop-item.drive-sc i {
-            color: #50fa7b;
-        }
-
-        .desktop-item:hover i {
-            transform: scale(1.1);
-        }
-
-        .desktop-item span {
-            font-size: 12px;
+        .shortcut-label {
+            font-size: 0.8rem;
             font-weight: 600;
-            color: #fff;
-            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            width: 85px;
+            color: #2c3248;
+            text-shadow: 0 1px 3px rgba(255,255,255,0.8);
+            line-height: 1.2;
         }
 
-        /* ==================== INTERACTIVE DRAGGABLE WINDOWS ==================== */
-        .window {
+        /* Draggable Window Template */
+        .win {
             position: absolute;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(25px) saturate(110%);
-            border: 1px solid var(--glass-border);
+            width: 780px;
+            height: 520px;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            box-shadow: var(--shadow-cozy);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            z-index: 10;
+            z-index: 5;
             opacity: 0;
-            transform: scale(0.95);
+            transform: scale(0.9);
             pointer-events: none;
-            transition: opacity 0.3s, transform 0.3s, z-index 0.1s;
+            transition: opacity 0.3s cubic-bezier(0.1, 0.8, 0.3, 1), transform 0.3s cubic-bezier(0.1, 0.8, 0.3, 1), z-index 0.1s;
         }
 
-        .window.active-win {
+        .win.active {
             opacity: 1;
             transform: scale(1);
-            pointer-events: auto;
+            pointer-events: all;
         }
 
-        .window.maximized {
-            width: 100% !important;
-            height: calc(100% - 50px) !important;
-            top: 0 !important;
-            left: 0 !important;
-            border-radius: 0;
-        }
-
-        /* Title Bar */
-        .window-header {
-            padding: 12px 20px;
-            background: rgba(255, 255, 255, 0.35);
+        .win-header {
+            height: 45px;
+            background: rgba(123, 138, 184, 0.15);
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
+            padding: 0 16px;
             cursor: move;
-            border-bottom: 1.5px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .window-title {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--calico-dark);
+        .win-title-area {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-dark);
         }
 
-        .window-controls {
+        .win-title-area i {
+            color: var(--primary-pastel);
+        }
+
+        .win-controls {
             display: flex;
+            align-items: center;
             gap: 8px;
         }
 
         .win-btn {
-            width: 13px;
-            height: 13px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             border: none;
             cursor: pointer;
             position: relative;
+            background: #e2e5ec;
             transition: background 0.2s;
         }
 
-        .win-close { background: #ff5f56; }
-        .win-close:hover { background: #e0443e; }
-        .win-max { background: #ffbd2e; }
-        .win-max:hover { background: #dfa224; }
-        .win-min { background: #27c93f; }
-        .win-min:hover { background: #1a9c2b; }
+        .win-btn-close { background: #ff605c; }
+        .win-btn-close:hover { background: #e04a47; }
+        .win-btn-min { background: #ffbd44; }
+        .win-btn-min:hover { background: #e0a32d; }
+        .win-btn-max { background: #00ca4e; }
+        .win-btn-max:hover { background: #00a63c; }
 
-        /* Content Pane */
-        .window-content {
+        /* Window Contents */
+        .win-body {
             flex: 1;
-            overflow-y: auto;
-            padding: 24px;
-            color: var(--text-main);
+            overflow: hidden;
+            display: flex;
         }
 
-        /* Specific Window Dimensions */
-        #win-about { width: 500px; height: 580px; top: 100px; left: 150px; }
-        #win-projects { width: 850px; height: 620px; top: 50px; left: 350px; }
-        #win-ethics { width: 700px; height: 560px; top: 120px; left: 250px; }
-        #win-collaboration { width: 780px; height: 540px; top: 80px; left: 450px; }
+        /* App-specific layouts */
+        .sidebar {
+            width: 220px;
+            background: rgba(123, 138, 184, 0.08);
+            border-right: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
 
-        /* ==================== CORE CONTENT STYLING ==================== */
-        
-        /* Scrollbar styles inside windows */
-        .window-content::-webkit-scrollbar {
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-item:hover, .sidebar-item.active {
+            background: rgba(123, 138, 184, 0.2);
+            color: var(--primary-pastel);
+            transform: translateX(4px);
+        }
+
+        .sidebar-item.active {
+            font-weight: 600;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 25px;
+            overflow-y: auto;
+            position: relative;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Scrollbar */
+        .main-content::-webkit-scrollbar {
             width: 8px;
         }
-        .window-content::-webkit-scrollbar-track {
+        .main-content::-webkit-scrollbar-track {
             background: transparent;
         }
-        .window-content::-webkit-scrollbar-thumb {
-            background: rgba(138, 154, 236, 0.4);
+        .main-content::-webkit-scrollbar-thumb {
+            background: rgba(123, 138, 184, 0.3);
             border-radius: 10px;
         }
-        .window-content::-webkit-scrollbar-thumb:hover {
-            background: rgba(245, 169, 127, 0.6);
-        }
 
-        /* About Me Content */
-        .about-grid {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 20px;
-        }
-
-        .about-avatar {
-            width: 140px;
-            height: 140px;
-            border-radius: 24px;
-            border: 3px solid #fff;
-            box-shadow: 0 8px 24px rgba(138, 154, 236, 0.25);
-            overflow: hidden;
-        }
-
-        .about-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .about-desc h2 {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--calico-dark);
-            margin-bottom: 5px;
-        }
-
-        .about-tag {
-            font-size: 13px;
-            font-weight: 600;
-            background: rgba(138, 154, 236, 0.15);
-            color: var(--primary-blue);
-            padding: 4px 12px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        .about-text {
-            text-align: justify;
-            font-size: 14.5px;
-            line-height: 1.6;
-            color: var(--text-light);
-        }
-
-        .about-meta {
-            width: 100%;
-            margin-top: 15px;
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 12px;
-            padding: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            text-align: left;
-            font-size: 13px;
-        }
-
-        .meta-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .meta-item strong {
-            color: var(--calico-dark);
-        }
-
-        /* Projects Content */
-        .proj-layout {
-            display: grid;
-            grid-template-columns: 240px 1fr;
-            height: 100%;
-            gap: 20px;
-        }
-
-        .proj-tabs {
-            border-right: 1.5px solid rgba(255, 255, 255, 0.3);
-            padding-right: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .proj-tab-btn {
-            padding: 10px 15px;
-            border-radius: 10px;
-            border: none;
-            background: transparent;
-            text-align: left;
-            font-family: inherit;
-            font-weight: 600;
-            font-size: 13px;
-            cursor: pointer;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.2s;
-        }
-
-        .proj-tab-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            color: var(--primary-blue);
-        }
-
-        .proj-tab-btn.active {
-            background: var(--primary-blue);
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(138, 154, 236, 0.3);
-        }
-
-        .proj-tab-btn i {
-            font-size: 14px;
-        }
-
-        .proj-view {
-            padding-left: 10px;
-        }
-
-        .proj-content-panel {
+        /* Section styles */
+        .section-view {
             display: none;
-            animation: fadeIn 0.4s ease;
+            animation: fadeIn 0.4s ease-out forwards;
         }
 
-        .proj-content-panel.active {
+        .section-view.active {
             display: block;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .panel-header {
-            margin-bottom: 20px;
-            border-bottom: 2px solid rgba(138, 154, 236, 0.2);
-            padding-bottom: 12px;
-        }
-
-        .panel-header h3 {
-            font-size: 18px;
+        h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--calico-dark);
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
         }
 
-        .panel-desc {
-            font-size: 14px;
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-peach);
+            border-radius: 2px;
+        }
+
+        .lead-p {
+            font-size: 0.95rem;
             line-height: 1.6;
-            color: var(--text-light);
+            color: #4f5875;
             margin-bottom: 20px;
         }
 
-        /* Interactive Showcase Styles */
-        .interactive-box {
-            background: rgba(255, 255, 255, 0.5);
-            border: 1.5px solid rgba(255, 255, 255, 0.6);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 15px;
+        /* Grid elements */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 25px;
+            align-items: start;
         }
 
-        .prompt-sandbox {
+        .profile-img-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(123,138,184,0.15);
+            border: 4px solid #fff;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .profile-info {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-        }
-
-        .prompt-tabs {
-            display: flex;
-            gap: 8px;
-        }
-
-        .p-tab {
-            padding: 6px 12px;
-            font-size: 12px;
-            font-weight: 600;
-            border-radius: 6px;
-            border: 1px solid var(--glass-border);
-            cursor: pointer;
-            background: rgba(255,255,255,0.4);
-            transition: all 0.2s;
-        }
-
-        .p-tab.active {
-            background: var(--calico-orange);
-            color: white;
-            border-color: var(--calico-orange);
-        }
-
-        .prompt-display {
-            background: #282a36;
-            color: #f8f8f2;
-            padding: 15px;
-            border-radius: 8px;
-            font-family: 'Fira Code', monospace;
-            font-size: 11.5px;
-            white-space: pre-wrap;
-            height: 180px;
-            overflow-y: auto;
-        }
-
-        /* Structured Tables (Harvard references & Rubric Evaluation) */
-        .styled-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 12.5px;
-            margin-top: 15px;
-        }
-
-        .styled-table th {
-            background: rgba(138, 154, 236, 0.2);
-            font-weight: 700;
-            color: var(--calico-dark);
-            text-align: left;
-            padding: 10px;
-            border-bottom: 2px solid rgba(138, 154, 236, 0.3);
-        }
-
-        .styled-table td {
-            padding: 10px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .styled-table tr:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        /* AI Ethics styling */
-        .ethics-list {
-            display: grid;
-            grid-template-columns: 1fr;
             gap: 12px;
-            margin-top: 15px;
         }
 
-        .ethics-card {
-            background: rgba(255, 255, 255, 0.45);
-            border-left: 4px solid var(--calico-orange);
-            padding: 15px;
-            border-radius: 4px 12px 12px 4px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-            transition: transform 0.2s;
-        }
-
-        .ethics-card:hover {
-            transform: translateX(4px);
-            background: rgba(255, 255, 255, 0.6);
-        }
-
-        .ethics-card strong {
-            font-size: 14.5px;
-            color: var(--calico-dark);
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .ethics-card p {
-            font-size: 13px;
-            color: var(--text-light);
-            line-height: 1.5;
-        }
-
-        /* Trello Mock Interface */
-        .trello-board {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .trello-list {
-            background: rgba(138, 154, 236, 0.1);
+        .info-card {
+            background: rgba(255,255,255,0.4);
+            border: 1px solid rgba(255,255,255,0.5);
+            padding: 12px 18px;
             border-radius: 12px;
-            padding: 12px;
-            border: 1px solid rgba(138, 154, 236, 0.2);
+            font-size: 0.85rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
 
-        .trello-list-title {
-            font-size: 13.5px;
-            font-weight: 700;
-            color: var(--calico-dark);
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .trello-card {
-            background: #fff;
-            padding: 10px 12px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            margin-bottom: 10px;
-            font-size: 12px;
-            border-left: 3px solid var(--primary-blue);
-            cursor: grab;
-            transition: transform 0.2s;
-        }
-
-        .trello-card:hover {
-            transform: translateY(-2px);
-        }
-
-        .trello-card strong {
+        .info-card strong {
+            color: var(--primary-pastel);
             display: block;
-            margin-bottom: 4px;
-            color: var(--calico-dark);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
         }
 
-        .trello-card span {
-            font-size: 10.5px;
-            color: var(--text-light);
+        .info-card span {
+            font-weight: 600;
+            font-size: 0.95rem;
         }
 
-        /* Direct Drive Link Button */
-        .drive-btn {
+        /* Global External Drive Button Styling */
+        .btn-drive {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: #34a853;
-            color: #fff;
-            text-decoration: none;
+            background: linear-gradient(135deg, var(--accent-peach), #e76f51);
+            color: white !important;
             padding: 10px 18px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(52, 168, 83, 0.3);
-            transition: all 0.2s;
-            margin-bottom: 15px;
-        }
-
-        .drive-btn:hover {
-            background: #2b8b44;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 20px rgba(52, 168, 83, 0.4);
-        }
-
-        /* Image and Poster styling */
-        .image-gallery {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .img-card {
-            background: #fff;
             border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 6px 15px rgba(231, 111, 81, 0.25);
+            transition: all 0.25s ease;
+            margin: 15px 0;
+            border: none;
+            cursor: pointer;
         }
 
-        .img-card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            display: block;
+        .btn-drive:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(231, 111, 81, 0.4);
+            background: linear-gradient(135deg, #f4a261, #f4a261);
         }
 
-        .img-card .poster-img {
-            height: 280px;
-            object-fit: contain;
-            background: #f1f3f5;
-        }
-
-        .img-card p {
-            padding: 10px;
-            font-size: 11.5px;
-            color: var(--text-light);
-            text-align: center;
-        }
-
-        /* ==================== THE WINDOWS TASKBAR ==================== */
-        #taskbar {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(30px);
-            border-top: 1px solid var(--glass-border);
-            z-index: 1000;
+        /* Grid cards for tasks */
+        .task-card-list {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
         }
 
-        .taskbar-left {
+        .task-card {
+            background: rgba(255,255,255,0.45);
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(123, 138, 184, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .task-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(123, 138, 184, 0.12);
+            background: rgba(255,255,255,0.65);
+        }
+
+        .task-header {
             display: flex;
             align-items: center;
             gap: 15px;
+            margin-bottom: 12px;
         }
 
-        .start-btn {
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid var(--glass-border);
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
+        .task-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: var(--primary-light);
             display: flex;
+            align-items: center;
             justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            color: var(--primary-blue);
-            font-size: 18px;
-            transition: all 0.2s;
-        }
-
-        .start-btn:hover {
-            background: var(--primary-blue);
             color: #fff;
-            box-shadow: 0 0 15px rgba(138, 154, 236, 0.4);
+            font-size: 1.1rem;
         }
 
-        .taskbar-apps {
+        .task-meta h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .task-meta span {
+            font-size: 0.75rem;
+            color: #8da0d4;
+            font-weight: 500;
+        }
+
+        .task-desc {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #57606f;
+            margin-bottom: 12px;
+        }
+
+        .task-badge-container {
             display: flex;
-            gap: 10px;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
-        .task-app-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            background: transparent;
-            border: 1px solid transparent;
-            font-size: 18px;
-            color: #fff;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-            transition: all 0.2s;
-        }
-
-        .task-app-icon:hover {
-            background: rgba(255, 255, 255, 0.25);
-            border-color: rgba(255, 255, 255, 0.4);
-        }
-
-        .taskbar-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            color: var(--calico-dark);
-            font-size: 12px;
+        .task-badge {
+            background: rgba(123, 138, 184, 0.15);
+            color: var(--primary-pastel);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
             font-weight: 600;
         }
 
-        .tb-icons {
-            display: flex;
-            gap: 12px;
-            font-size: 14px;
+        /* Detail Modal Inside Window */
+        .detail-view {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-glass);
+            backdrop-filter: blur(15px);
+            z-index: 10;
+            padding: 30px;
+            overflow-y: auto;
+            animation: slideInRight 0.3s cubic-bezier(0.1, 0.8, 0.3, 1);
         }
 
-        .tb-time {
-            text-align: right;
-            line-height: 1.3;
+        .detail-view.active {
+            display: block;
         }
 
-        /* Start Menu Panel */
-        #start-menu {
+        .detail-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-pastel);
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: transform 0.2s;
+        }
+
+        .detail-back:hover {
+            transform: translateX(-4px);
+        }
+
+        /* Presentation details styling */
+        .report-section {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #2c3248;
+        }
+
+        .report-section h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            color: var(--primary-pastel);
+            margin: 20px 0 8px 0;
+            border-bottom: 1px dashed rgba(123, 138, 184, 0.3);
+            padding-bottom: 4px;
+        }
+
+        .report-section p {
+            margin-bottom: 10px;
+        }
+
+        .report-section ul, .report-section ol {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .report-section li {
+            margin-bottom: 6px;
+        }
+
+        /* Table design */
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.8rem;
+        }
+
+        .custom-table th, .custom-table td {
+            border: 1px solid rgba(123, 138, 184, 0.25);
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        .custom-table th {
+            background-color: rgba(123, 138, 184, 0.15);
+            font-weight: 700;
+        }
+
+        .custom-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Windows 11 cozy Taskbar */
+        #taskbar {
+            height: 48px;
+            width: 100%;
+            background: rgba(240, 243, 255, 0.6);
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             position: fixed;
-            bottom: -500px;
-            left: 20px;
-            width: 360px;
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(35px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-            padding: 24px;
-            z-index: 999;
-            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 15px;
         }
 
-        #start-menu.open {
-            bottom: 65px;
+        #tb-start-center {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
-        .start-profile {
+        .tb-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            background: transparent;
+            color: var(--text-dark);
+            border: 1px solid transparent;
+        }
+
+        .tb-icon:hover {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .tb-icon.active::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 5px;
+            background: var(--accent-peach);
+            border-radius: 50%;
+        }
+
+        .tb-icon-start {
+            color: var(--primary-pastel) !important;
+            font-size: 1.3rem !important;
+        }
+
+        /* Taskbar Left & Right Info */
+        .tb-right {
             display: flex;
             align-items: center;
             gap: 15px;
-            border-bottom: 1.5px solid rgba(0,0,0,0.06);
-            padding-bottom: 15px;
-            margin-bottom: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
 
-        .start-profile-img {
-            width: 55px;
-            height: 55px;
+        .tb-tray-icon {
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        .tb-clock {
+            text-align: right;
+            line-height: 1.3;
+            cursor: pointer;
+        }
+
+        .tb-time { font-weight: 600; }
+        .tb-date { font-size: 0.7rem; opacity: 0.8; }
+
+        /* Start Menu Popup */
+        #start-menu {
+            position: absolute;
+            bottom: 58px;
+            left: 50%;
+            transform: translateX(-50%) translateY(120%);
+            width: 520px;
+            height: 400px;
+            background: rgba(240, 243, 255, 0.85);
+            border: 1px solid var(--border-glass);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(123, 138, 184, 0.3);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            z-index: 999;
+            transition: transform 0.4s cubic-bezier(0.1, 0.8, 0.3, 1);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #start-menu.active {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .start-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid rgba(123, 138, 184, 0.15);
+            padding-bottom: 15px;
+        }
+
+        .start-avatar {
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            overflow: hidden;
+            object-fit: cover;
             border: 2px solid #fff;
         }
 
-        .start-profile-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .start-profile-info h4 {
-            font-size: 16px;
+        .start-user-info h3 {
+            font-size: 1.1rem;
             font-weight: 700;
-            color: var(--calico-dark);
+            color: var(--text-dark);
         }
 
-        .start-profile-info p {
-            font-size: 11.5px;
-            color: var(--text-light);
+        .start-user-info p {
+            font-size: 0.75rem;
+            color: #6a799e;
         }
 
-        .start-links {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+        .start-body {
+            flex: 1;
+            margin: 20px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
         }
 
-        .start-link-item {
-            padding: 10px 14px;
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 10px;
-            font-size: 13px;
-            color: var(--text-main);
-            text-decoration: none;
+        .start-column h4 {
+            font-size: 0.8rem;
+            color: #8da0d4;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .start-link {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            text-decoration: none;
             transition: background 0.2s;
         }
 
-        .start-link-item:hover {
-            background: rgba(138, 154, 236, 0.2);
-            color: var(--primary-blue);
+        .start-link:hover {
+            background: rgba(123, 138, 184, 0.15);
         }
 
-        /* Mobile Optimization Styling */
+        .start-link i {
+            color: var(--primary-pastel);
+        }
+
+        .start-footer {
+            border-top: 1px solid rgba(123, 138, 184, 0.15);
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: #6a799e;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounceIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        /* Mobile adaptation (simple view handling) */
         @media (max-width: 768px) {
-            #desktop {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: space-around;
-            }
-            .window {
+            .win {
                 width: 95% !important;
+                height: 80% !important;
                 left: 2.5% !important;
-                height: 70vh !important;
+                top: 5% !important;
             }
-            #win-about, #win-projects, #win-ethics, #win-collaboration {
-                top: 50px !important;
-            }
-            .proj-layout {
+            .profile-grid {
                 grid-template-columns: 1fr;
             }
-            .proj-tabs {
-                border-right: none;
-                border-bottom: 1.5px solid rgba(255,255,255,0.3);
-                flex-direction: row;
-                overflow-x: auto;
-                padding-bottom: 10px;
+            .sidebar {
+                display: none; /* simple hidden on mobile context */
+            }
+            #start-menu {
+                width: 90%;
             }
         }
     </style>
 </head>
-<body onclick="spawnRipple(event)">
+<body>
 
-    <!-- Ambient Looping Video Background -->
-    <video autoplay muted loop playsinline id="video-background">
+    <!-- Water Video Background -->
+    <video autoplay loop muted playsinline id="video-bg">
         <source src="back.mp4" type="video/mp4">
     </video>
-    <div id="video-overlay"></div>
+    <div id="bg-overlay"></div>
 
-    <!-- Ripple Visual Effect Container -->
-    <div class="ripple-container" id="ripple-wrap"></div>
-
-    <!-- ==================== LOCK SCREEN (MÀN HÌNH KHÓA) ==================== -->
+    <!-- LOCK SCREEN -->
     <div id="lock-screen">
-        <div class="lock-container">
-            <div class="avatar-frame">
-                <!-- Chèn Avatar với cú pháp "Hình 1.jpg" -->
-                <img src="Hình 1.jpg" alt="Triệu Thị Ngọc Bích">
-            </div>
-            <div class="lock-user">Triệu Thị Ngọc Bích</div>
-            <div class="lock-sub">ĐH Ngoại ngữ - ĐHQGHN</div>
+        <div class="lock-clock">
+            <div class="lock-time" id="lock-time">12:00</div>
+            <div class="lock-date" id="lock-date">Thứ Tư, 15 Tháng Bảy</div>
+        </div>
+
+        <div class="login-card">
+            <img src="Hình 1.jpg" alt="Triệu Thị Ngọc Bích" class="login-avatar">
+            <div class="login-name">Triệu Thị Ngọc Bích</div>
+            <div class="login-desc">Khoa Ngôn ngữ & Văn hóa Hàn Quốc</div>
             
-            <div class="input-group">
-                <input type="password" id="pass-input" placeholder="Nhập Password..." onkeydown="handleLoginKey(event)">
-                <button onclick="attemptUnlock()"><i class="fa-solid fa-arrow-right"></i></button>
+            <div class="password-field">
+                <input type="password" id="pass-input" placeholder="Nhập password: 25042365">
+                <button class="login-submit" onclick="unlockOS()"><i class="fa-solid fa-arrow-right"></i></button>
             </div>
-            <div class="lock-hint" onclick="fillHint()">Mật khẩu gợi ý: <strong>25042365</strong></div>
+            
+            <button class="quick-access-btn" onclick="forceUnlock()">Truy cập nhanh (Guest)</button>
+            <div class="hint-text">Gợi ý: Mật khẩu là mã sinh viên của mình: 25042365 [INDEX]</div>
         </div>
     </div>
 
-    <!-- ==================== WINDOWS DESKTOP ENVIRONMENT ==================== -->
-    <div id="desktop">
+    <!-- WORKSPACE DESKTOP -->
+    <div id="desktop" onclick="createWaterRipple(event)">
         
-        <!-- About Me Shortcut -->
-        <div class="desktop-item txt" onclick="openWindow('win-about')">
-            <i class="fa-solid fa-file-lines"></i>
-            <span>About_Me.txt</span>
+        <!-- Shortcuts -->
+        <div class="shortcut" onclick="openWindow('win-about')">
+            <div class="shortcut-icon"><i class="fa-regular fa-user"></i></div>
+            <div class="shortcut-label">Giới thiệu</div>
         </div>
 
-        <!-- My Projects Folder Shortcut -->
-        <div class="desktop-item folder" onclick="openWindow('win-projects')">
-            <i class="fa-solid fa-folder-open"></i>
-            <span>Bài Tập Cá Nhân</span>
+        <div class="shortcut" onclick="openWindow('win-projects')">
+            <div class="shortcut-icon"><i class="fa-regular fa-folder-open"></i></div>
+            <div class="shortcut-label">Bài tập</div>
         </div>
 
-        <!-- Teamwork Collaboration Folder Shortcut -->
-        <div class="desktop-item folder" onclick="openWindow('win-collaboration')">
-            <i class="fa-solid fa-folder"></i>
-            <span>Hợp Tác Nhóm</span>
+        <div class="shortcut" onclick="openWindow('win-reflection')">
+            <div class="shortcut-icon"><i class="fa-regular fa-lightbulb"></i></div>
+            <div class="shortcut-label">Suy ngẫm</div>
         </div>
 
-        <!-- Responsible AI Ethics Shortcut -->
-        <div class="desktop-item ethics" onclick="openWindow('win-ethics')">
-            <i class="fa-solid fa-shield-halved"></i>
-            <span>Đạo Đức AI.txt</span>
-        </div>
+        <!-- Direct External Link Shortcut -->
+        <a href="https://drive.google.com/drive/folders/104geSwCOQoeTwl6v4Tyti0aSOG7NyANN?usp=drive_link" target="_blank" class="shortcut" style="text-decoration: none;">
+            <div class="shortcut-icon" style="background: rgba(255,230,230,0.8);"><i class="fa-brands fa-google-drive" style="color: #ea4335;"></i></div>
+            <div class="shortcut-label">Xem Drive</div>
+        </a>
 
-        <!-- Direct Shortcut to Google Drive -->
-        <div class="desktop-item drive-sc" onclick="openGoogleDrive()">
-            <i class="fa-brands fa-google-drive"></i>
-            <span>GG Drive.lnk</span>
-        </div>
-
-    </div>
-
-    <!-- ==================== INTERACTIVE WINDOWS ==================== -->
-
-    <!-- WINDOW 1: ABOUT ME (txt style) -->
-    <div class="window" id="win-about">
-        <div class="window-header" onmousedown="dragStart(event, 'win-about')">
-            <div class="window-title"><i class="fa-solid fa-file-lines" style="color:#8be9fd;"></i> About_Me.txt</div>
-            <div class="window-controls">
-                <button class="win-btn win-min" onclick="closeWindow('win-about')"></button>
-                <button class="win-btn win-max" onclick="toggleMaximize('win-about')"></button>
-                <button class="win-btn win-close" onclick="closeWindow('win-about')"></button>
-            </div>
-        </div>
-        <div class="window-content">
-            <div class="about-grid">
-                <div class="about-avatar">
-                    <img src="Hình 1.jpg" alt="Triệu Thị Ngọc Bích">
+        <!-- ================= WINDOW: ABOUT ME ================= -->
+        <div class="win" id="win-about" style="top: 8%; left: 15%;">
+            <div class="win-header">
+                <div class="win-title-area">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Giới thiệu bản thân - Ngọc Bích</span>
                 </div>
-                <div class="about-desc">
-                    <h2>Triệu Thị Ngọc Bích</h2>
-                    <span class="about-tag">Ngành Ngôn Ngữ & Văn Hóa Hàn Quốc</span>
-                    <div class="about-text">
-                        Chào bạn! Mình là Ngọc Bích, hiện đang theo học ngành Ngôn ngữ và văn hoá Hàn Quốc tại Đại học Ngoại ngữ - ĐHQGHN. Website này là cuốn nhật ký số lưu giữ hành trình trải nghiệm của mình với học phần "Nhập môn công nghệ số và ứng dụng trí tuệ nhân tạo". Mình tin rằng sự kết hợp giữa ngôn ngữ và công nghệ sẽ mở ra những chân trời tư duy hoàn toàn mới, biến mỗi dòng code và prompt thành chiếc cầu nối văn hóa đầy màu sắc.
-                    </div>
-                </div>
-                <div class="about-meta">
-                    <div class="meta-item">
-                        <strong>Mã sinh viên</strong>
-                        <span>25042365</span>
-                    </div>
-                    <div class="meta-item">
-                        <strong>Lớp niên chế</strong>
-                        <span>25K2</span>
-                    </div>
-                    <div class="meta-item">
-                        <strong>Đơn vị đào tạo</strong>
-                        <span>Đại học Ngoại ngữ - ĐHQGHN</span>
-                    </div>
-                    <div class="meta-item">
-                        <strong>Học phần thực hiện</strong>
-                        <span>Nhập môn công nghệ số & Ứng dụng AI</span>
-                    </div>
+                <div class="win-controls">
+                    <button class="win-btn win-btn-min"></button>
+                    <button class="win-btn win-btn-max"></button>
+                    <button class="win-btn win-btn-close" onclick="closeWindow('win-about')"></button>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- WINDOW 2: BÀI TẬP CÁ NHÂN (Main projects panel) -->
-    <div class="window" id="win-projects">
-        <div class="window-header" onmousedown="dragStart(event, 'win-projects')">
-            <div class="window-title"><i class="fa-solid fa-folder-open" style="color:var(--calico-orange);"></i> Portfolio_Bài_Tập_Cá_Nhân</div>
-            <div class="window-controls">
-                <button class="win-btn win-min" onclick="closeWindow('win-projects')"></button>
-                <button class="win-btn win-max" onclick="toggleMaximize('win-projects')"></button>
-                <button class="win-btn win-close" onclick="closeWindow('win-projects')"></button>
-            </div>
-        </div>
-        <div class="window-content">
-            
-            <a href="https://drive.google.com/drive/folders/104geSwCOQoeTwl6v4Tyti0aSOG7NyANN?usp=drive_link" target="_blank" class="drive-btn">
-                <i class="fa-brands fa-google-drive"></i> Xem bài tập trên GG drive
-            </a>
-
-            <div class="proj-layout">
-                <!-- Tabs on the left -->
-                <div class="proj-tabs">
-                    <button class="proj-tab-btn active" onclick="switchProjTab('t1', this)">
-                        <i class="fa-solid fa-file-shield"></i> File & Thư mục
-                    </button>
-                    <button class="proj-tab-btn" onclick="switchProjTab('t2', this)">
-                        <i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm & Đánh giá
-                    </button>
-                    <button class="proj-tab-btn" onclick="switchProjTab('t3', this)">
-                        <i class="fa-solid fa-terminal"></i> Kỹ năng Prompting
-                    </button>
-                    <button class="proj-tab-btn" onclick="switchProjTab('t5', this)">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i> Sáng tạo Nội dung AI
-                    </button>
-                </div>
-
-                <!-- Interactive contents on the right -->
-                <div class="proj-view">
+            <div class="win-body">
+                <div class="main-content">
+                    <h2>Về mình</h2>
+                    <p class="lead-p">"Xin chào! Mình là Ngọc Bích, sinh viên ngành Ngôn ngữ & Văn hóa Hàn Quốc tại ULIS [INDEX]. Chiếc portfolio số này là không gian ghi lại hành trình từ tò mò đến thích ứng của mình trong kỷ nguyên số."</p>
                     
-                    <!-- Bài 1: Quản lý File & Thư mục -->
-                    <div class="proj-content-panel active" id="p-t1">
-                        <div class="panel-header">
-                            <h3>Thao tác File & Thư mục</h3>
+                    <div class="profile-grid">
+                        <div class="profile-img-container">
+                            <img src="Hình 1.jpg" alt="Triệu Thị Ngọc Bích" class="profile-img">
                         </div>
-                        <p class="panel-desc">
-                            Thực hành xây dựng nền tảng tư duy lưu trữ có hệ thống. Mình đã trực tiếp làm quen với môi trường Windows Explorer, thiết lập cây thư mục khoa học, triển khai quy tắc đặt tên tệp thống nhất, các thao tác Copy, Cut, Paste, khôi phục và xóa vĩnh viễn tệp tin.
-                        </p>
-                        <div class="interactive-box">
-                            <strong style="font-size:13px; color:var(--calico-dark); display:block; margin-bottom:10px;">Cấu trúc cây thư mục mô phỏng của Ngọc Bích:</strong>
-                            <div style="font-family:'Fira Code', monospace; font-size:12px; line-height:1.6; background:#fff; padding:15px; border-radius:8px; border:1px solid rgba(0,0,0,0.08);">
-                                📁 This PC / New Volume (E:) /<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;└── 📁 ThucHanh_Trieuthingocbich/<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── 📁 TaiLieu/<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;├── 📄 GhiChuQuanTrong.txt (Bản sao)<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;└── 📄 DiChuyen.txt (Đã di chuyển bằng Cut & Paste)<br>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── 📄 GhiChuQuanTrong.txt (Đã đổi tên từ GhiChu.txt)<br>
-                                <span style="color:#27c93f; font-size:11px;"># Trạng thái: Toàn bộ quy trình hoạt động hoàn thành mượt mà, bao gồm khôi phục từ Recycle Bin và sử dụng Shift + Delete để giải phóng dung lượng.</span>
+                        <div class="profile-info">
+                            <div class="info-card">
+                                <strong>Sinh viên thực hiện</strong>
+                                <span>Triệu Thị Ngọc Bích</span>
+                            </div>
+                            <div class="info-card">
+                                <strong>Mã sinh viên</strong>
+                                <span>25042365</span>
+                            </div>
+                            <div class="info-card">
+                                <strong>Chuyên ngành học</strong>
+                                <span>Ngôn ngữ và văn hoá Hàn Quốc</span>
+                            </div>
+                            <div class="info-card">
+                                <strong>Trường đại học</strong>
+                                <span>Đại học Ngoại ngữ - ĐHQGHN (ULIS)</span>
+                            </div>
+                            <div class="info-card">
+                                <strong>Học phần bổ trợ</strong>
+                                <span>Nhập môn công nghệ số và ứng dụng trí tuệ nhân tạo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= WINDOW: PROJECTS ================= -->
+        <div class="win" id="win-projects" style="top: 12%; left: 22%;">
+            <div class="win-header">
+                <div class="win-title-area">
+                    <i class="fa-regular fa-folder-open"></i>
+                    <span>Tài liệu & Các bài tập thực hành</span>
+                </div>
+                <div class="win-controls">
+                    <button class="win-btn win-btn-min"></button>
+                    <button class="win-btn win-btn-max"></button>
+                    <button class="win-btn win-btn-close" onclick="closeWindow('win-projects')"></button>
+                </div>
+            </div>
+            <div class="win-body">
+                <div class="sidebar">
+                    <div class="sidebar-item active" onclick="switchTab('all-projects', this)">
+                        <i class="fa-solid fa-list-ul"></i> Tất cả bài tập
+                    </div>
+                    <div class="sidebar-item" onclick="switchTab('drive-ref', this)">
+                        <i class="fa-brands fa-google-drive"></i> Học liệu Drive
+                    </div>
+                </div>
+                <div class="main-content" id="projects-content">
+                    
+                    <!-- Tab: All Projects -->
+                    <div id="all-projects" class="section-view active">
+                        <h2>Danh sách 6 bài tập cốt lõi</h2>
+                        <p class="lead-p">Dưới đây là tập hợp đầy đủ các bài tập cá nhân và báo cáo của học phần, minh chứng cho kỹ năng làm việc số, phân tích khoa học và sử dụng AI có kiểm soát.</p>
+                        
+                        <!-- Drive Button before the project list -->
+                        <div style="margin-bottom: 20px;">
+                            <a href="https://drive.google.com/drive/folders/104geSwCOQoeTwl6v4Tyti0aSOG7NyANN?usp=drive_link" target="_blank" class="btn-drive">
+                                <i class="fa-brands fa-google-drive"></i> Xem bài tập trên GG drive
+                            </a>
+                        </div>
+
+                        <div class="task-card-list">
+                            <!-- Task 1 -->
+                            <div class="task-card" onclick="openDetail('detail-task1')">
+                                <div class="task-header">
+                                    <div class="task-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                                    <div class="task-meta">
+                                        <h3>Bài 1: Quản lý tệp tin & cấu trúc thư mục</h3>
+                                        <span>Thực hành kỹ thuật hệ thống dữ liệu</span>
+                                    </div>
+                                </div>
+                                <p class="task-desc">Xây dựng cây thư mục chuẩn hóa trên hệ điều hành Windows, thành thạo các thao tác di chuyển, đổi tên, xóa vĩnh viễn và phục hồi dữ liệu nhằm tối ưu hóa bộ nhớ và hiệu quả làm việc cá nhân.</p>
+                                <div class="task-badge-container">
+                                    <span class="task-badge">Hệ thống Windows</span>
+                                    <span class="task-badge">Quản lý File</span>
+                                </div>
+                            </div>
+
+                            <!-- Task 2 -->
+                            <div class="task-card" onclick="openDetail('detail-task2')">
+                                <div class="task-header">
+                                    <div class="task-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                                    <div class="task-meta">
+                                        <h3>Bài 2: Tìm kiếm thông tin & Đánh giá học thuật</h3>
+                                        <span>Nghiên cứu tác động Hallyu đến việc học tiếng Hàn</span>
+                                    </div>
+                                </div>
+                                <p class="task-desc">Thiết lập bộ khóa chuyên biệt khai thác cơ sở dữ liệu học thuật quốc tế (VNU-Lib, Google Scholar, KCI) và đánh giá độ tin cậy của tài liệu khoa học theo mô hình phản biện đa chiều.</p>
+                                <div class="task-badge-container">
+                                    <span class="task-badge">Học thuật</span>
+                                    <span class="task-badge">Google Scholar</span>
+                                    <span class="task-badge">Hàn Quốc học</span>
+                                </div>
+                            </div>
+
+                            <!-- Task 3 -->
+                            <div class="task-card" onclick="openDetail('detail-task3')">
+                                <div class="task-header">
+                                    <div class="task-icon"><i class="fa-solid fa-brain"></i></div>
+                                    <div class="task-meta">
+                                        <h3>Bài 3: Tối ưu hóa kỹ năng Prompt Engineering</h3>
+                                        <span>Giao tiếp và hướng dẫn AI hiệu quả</span>
+                                    </div>
+                                </div>
+                                <p class="task-desc">Ứng dụng mô hình C.L.E.A.R và các mức độ nhận thức của Thang đo Bloom để xây dựng prompt cao cấp, kiểm soát không gian vector và ranh giới sáng tạo của mô hình ngôn ngữ lớn (LLMs).</p>
+                                <div class="task-badge-container">
+                                    <span class="task-badge">Prompt Design</span>
+                                    <span class="task-badge">C.L.E.A.R</span>
+                                    <span class="task-badge">Bloom Taxonomy</span>
+                                </div>
+                            </div>
+
+                            <!-- Task 4 -->
+                            <div class="task-card" onclick="openDetail('detail-task4')">
+                                <div class="task-header">
+                                    <div class="task-icon"><i class="fa-solid fa-users"></i></div>
+                                    <div class="task-meta">
+                                        <h3>Bài 4: Công cụ hợp tác trực tuyến</h3>
+                                        <span>Dự án: AI trong quản trị doanh nghiệp</span>
+                                    </div>
+                                </div>
+                                <p class="task-desc">Hợp tác làm việc nhóm hiệu quả thông qua việc kết hợp các nền tảng Kanban (Trello), soạn thảo tài liệu cộng tác thời gian thực (Google Docs) và tổ chức dữ liệu lưu trữ đám mây (Google Drive).</p>
+                                <div class="task-badge-container">
+                                    <span class="task-badge">Trello</span>
+                                    <span class="task-badge">Collaborative Working</span>
+                                    <span class="task-badge">Cloud</span>
+                                </div>
+                            </div>
+
+                            <!-- Task 5 -->
+                            <div class="task-card" onclick="openDetail('detail-task5')">
+                                <div class="task-header">
+                                    <div class="task-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                                    <div class="task-meta">
+                                        <h3>Bài 5: Ứng dụng Generative AI sáng tạo nội dung số</h3>
+                                        <span>Dự án: Quảng bá du lịch Vịnh Hạ Long</span>
+                                    </div>
+                                </div>
+                                <p class="task-desc">Sử dụng đa mô hình AI (ChatGPT thiết lập văn bản & slogan, Stable Diffusion thiết kế hình ảnh phong cảnh, Canva AI dàn trang poster) để rút ngắn thời gian làm việc truyền thông số.</p>
+                                <div class="task-badge-container">
+                                    <span class="task-badge">Midjourney/SD</span>
+                                    <span class="task-badge">Content Creation</span>
+                                    <span class="task-badge">Canva</span>
+                                </div>
+                            </div>
+
+                            <!-- Task 6 -->
+                            <div class="task-card" onclick="openDetail('detail-task6')">
+                                <div class="task-header">
+                                    <div class="task-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                                    <div class="task-meta">
+                                        <h3>Bài 6: Ứng dụng AI có trách nhiệm và đạo đức</h3>
+                                        <span>Liêm chính học thuật trong ngôn ngữ và nghiên cứu</span>
+                                    </div>
+                                </div>
+                                <p class="task-desc">Xây dựng ranh giới an toàn giữa hỗ trợ học tập và hành vi gian lận học thuật, đề xuất bộ 7 nguyên tắc đạo đức cá nhân khi tương tác với các công cụ tự động hóa thông tin.</p>
+                                <div class="task-badge-container">
+                                    <span class="task-badge">Học thuật trung thực</span>
+                                    <span class="task-badge">Ethics Code</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Bài 2: Tìm kiếm & Đánh giá -->
-                    <div class="proj-content-panel" id="p-t2">
-                        <div class="panel-header">
-                            <h3>Tìm kiếm & Đánh giá nguồn học thuật</h3>
+                    <!-- Tab: Google Drive Reference -->
+                    <div id="drive-ref" class="section-view">
+                        <h2>Thư mục Bài tập Drive</h2>
+                        <p class="lead-p">Toàn bộ tệp PDF, báo cáo thực hành, hình ảnh minh họa gốc và bài tập nhóm đều được mình tải lên và lưu trữ một cách có hệ thống tại Google Drive cá nhân của học phần.</p>
+                        
+                        <div class="info-card" style="margin-top: 15px; background: rgba(123, 138, 184, 0.1);">
+                            <p style="font-weight: 600; font-size: 0.95rem; margin-bottom: 10px;">Thư mục nộp bài gốc:</p>
+                            <p style="font-size: 0.85rem; line-height: 1.5; color: #4f5875;">Bạn có thể nhấp trực tiếp vào nút bên dưới để truy cập thư mục Google Drive chính thức, nơi lưu giữ toàn bộ minh chứng học tập chi tiết của học phần này.</p>
+                            <a href="https://drive.google.com/drive/folders/104geSwCOQoeTwl6v4Tyti0aSOG7NyANN?usp=drive_link" target="_blank" class="btn-drive">
+                                <i class="fa-brands fa-google-drive"></i> Xem bài tập trên GG drive
+                            </a>
                         </div>
-                        <p class="panel-desc">
-                            Nghiên cứu sâu sắc chủ đề <strong>"Ảnh hưởng của Hallyu và động cơ học tiếng Hàn của sinh viên Việt Nam"</strong>. Mình đã tìm hiểu quy trình tìm kiếm thông tin bằng Google Scholar, Thư viện số VNU Lib, và hệ thống KCI nhằm chọn lọc ra 10 tài liệu tham khảo chất lượng, được đánh giá nghiêm ngặt theo chuẩn Harvard.
-                        </p>
-                        <div class="interactive-box" style="overflow-x:auto;">
-                            <strong style="font-size:13px; color:var(--calico-dark);">Danh mục 3 tài liệu tiêu biểu (Được trích dẫn theo Harvard):</strong>
-                            <table class="styled-table">
+                    </div>
+
+                    <!-- ================= DETAIL VIEW FOR TASKS ================= -->
+                    
+                    <!-- Task 1 Detail -->
+                    <div class="detail-view" id="detail-task1">
+                        <div class="detail-back" onclick="closeDetail('detail-task1')">
+                            <i class="fa-solid fa-arrow-left"></i> Quay lại
+                        </div>
+                        <h2>Quản lý tệp tin & cấu trúc thư mục</h2>
+                        <div class="report-section">
+                            <h4>I. Tổng quan bài tập</h4>
+                            <p>Bài thực hành cá nhân nhằm rèn luyện kỹ năng tương tác với Windows File Explorer một cách chuẩn hóa, từ việc thiết lập phân vùng ổ đĩa làm việc cho đến hệ thống hóa dữ liệu dưới cấu trúc thư mục chuyên nghiệp.</p>
+                            
+                            <h4>II. Quá trình triển khai chi tiết</h4>
+                            <ul>
+                                <li><strong>Mở File Explorer:</strong> Sử dụng phím tắt <code>Windows + E</code> để làm quen với bảng điều hướng và thiết bị ngoại vi [INDEX].</li>
+                                <li><strong>Thiết lập vùng làm việc:</strong> Chọn ổ đĩa phi hệ thống (ví dụ: ổ <code>D:</code> hoặc <code>E:</code>) làm nơi làm việc, tránh lưu dữ liệu tùy tiện tại ổ <code>C:</code> nhằm đảm bảo an toàn cho hệ thống và tổ chức sắp xếp dữ liệu khoa học [INDEX].</li>
+                                <li><strong>Kiến tạo không gian số:</strong> Tạo thư mục gốc với cấu trúc đặt tên cố định: <code>ThucHanh_Trieuthingocbich</code> [INDEX].</li>
+                                <li><strong>Quản lý File & Thư mục con:</strong>
+                                    <ul>
+                                        <li>Tạo tệp văn bản <code>GhiChu.txt</code>, đổi tên thành <code>GhiChuQuanTrong.txt</code> [INDEX].</li>
+                                        <li>Tạo thư mục con <code>TaiLieu</code> và chuyển tập tin quan trọng vào đó bằng thao tác Copy/Paste [INDEX].</li>
+                                        <li>Thử nghiệm di chuyển tệp với phương thức Cut/Paste đối với tệp <code>DiChuyen.txt</code>, qua đó thấu hiểu cơ chế lưu vết của hệ điều hành [INDEX].</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Quy trình xử lý rác:</strong> Thao tác xóa tạm thời đưa vào Recycle Bin (và phục hồi), so sánh trực quan với thao tác xóa vĩnh viễn bằng tổ hợp <code>Shift + Delete</code> [INDEX].</li>
+                            </ul>
+
+                            <h4>III. Kinh nghiệm rút ra</h4>
+                            <p>Việc rèn luyện từ các thao tác chuẩn cơ bản tưởng chừng đơn giản này giúp xây dựng thói quen tổ chức không gian số chỉn chu, ngăn nắp, giảm bớt tối đa thời gian tìm kiếm học liệu và giảm áp lực lưu trữ dư thừa của máy tính.</p>
+                        </div>
+                    </div>
+
+                    <!-- Task 2 Detail -->
+                    <div class="detail-view" id="detail-task2">
+                        <div class="detail-back" onclick="closeDetail('detail-task2')">
+                            <i class="fa-solid fa-arrow-left"></i> Quay lại
+                        </div>
+                        <h2>Tìm kiếm thông tin & Đánh giá học thuật</h2>
+                        <div class="report-section">
+                            <h4>I. Giới thiệu nghiên cứu</h4>
+                            <p>Nhận thấy làn sóng Hallyu (Hàn lưu) đang lan tỏa vô cùng mạnh mẽ vào sinh viên Việt Nam, bài báo cáo này thực hiện quá trình khảo sát, chọn lọc và đánh giá độ tin cậy của 10 nguồn học liệu uy tín nhằm tìm hiểu tác động thực sự của văn hóa đại chúng đến động lực nghiên cứu ngôn ngữ Hàn.</p>
+                            
+                            <h4>II. Công cụ và Quy trình Tìm kiếm</h4>
+                            <p>Hành trình tìm kiếm được phân cấp mạch lạc theo 3 bước:</p>
+                            <ol>
+                                <li><strong>Xác định từ khóa:</strong> Sử dụng các thuật ngữ như "Hallyu impacts on Korean learning", "한국어 외래어" (Từ mượn tiếng Hàn) và "Vietnamese students Korean motivation" [INDEX].</li>
+                                <li><strong>Lựa chọn cơ sở dữ liệu:</strong> Ưu tiên học liệu quốc tế của Google Scholar, thư viện số ĐHQGHN (VNU Lib) và đặc biệt là hệ thống KCI (Korea Citation Index) uy tín từ bản xứ [INDEX].</li>
+                                <li><strong>Sàng lọc nghiêm ngặt:</strong> Ưu tiên bài báo có hệ số trích dẫn cao và các ấn phẩm học thuật từ các nhà xuất bản của các trường đại học lớn [INDEX].</li>
+                            </ol>
+
+                            <h4>III. Bản tổng hợp 10 nguồn tài liệu chọn lọc</h4>
+                            <p><em>(Được trích xuất và định dạng chuẩn hóa theo Harvard Style trong báo cáo thực hành) [INDEX]</em></p>
+                            <table class="custom-table">
                                 <thead>
                                     <tr>
                                         <th>STT</th>
                                         <th>Loại nguồn</th>
-                                        <th>Tác giả & Cơ quan</th>
-                                        <th>Chi tiết đánh giá học thuật</th>
-                                        <th>Độ tin cậy</th>
+                                        <th>Tác giả / Cơ quan</th>
+                                        <th>Đánh giá chi tiết độ tin cậy</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -1180,406 +1267,506 @@
                                         <td>1</td>
                                         <td>Bài báo KH</td>
                                         <td>Hwang (ĐH Seoul)</td>
-                                        <td>Phương pháp định lượng chuẩn xác, mẫu khảo sát lớn, uy tín trên tạp chí KCI.</td>
-                                        <td style="color:#ffb800;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></td>
+                                        <td>Phương pháp định lượng rõ ràng, khảo sát quy mô lớn, đăng trên tạp chí uy tín KCI [INDEX].</td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
                                         <td>Sách chuyên khảo</td>
-                                        <td>Kim, J. & Lee, S. (SNU Press)</td>
-                                        <td>Nhà xuất bản danh giá, mang tính hệ thống kiến thức ngôn ngữ học cao.</td>
-                                        <td style="color:#ffb800;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></td>
+                                        <td>SNU Press</td>
+                                        <td>Nhà xuất bản danh giá nhất Hàn Quốc, kiến thức có tính hệ thống cao [INDEX].</td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
-                                        <td>Báo cáo chính phủ</td>
-                                        <td>Korea Foundation (2024)</td>
-                                        <td>Dữ liệu thống kê thực tế, tính cập nhật và giá trị xu hướng cao nhất.</td>
-                                        <td style="color:#ffb800;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></td>
+                                        <td>Báo cáo tổ chức</td>
+                                        <td>Korea Foundation</td>
+                                        <td>Cơ quan chính phủ, tính cập nhật dữ liệu hàng năm (2024) cực kỳ cao [INDEX].</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>Từ điển trực tuyến</td>
+                                        <td>Viện Ngôn ngữ Quốc gia</td>
+                                        <td>Nguồn chuẩn quy chuẩn pháp lý tuyệt đối về mặt từ vựng [INDEX].</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Bài báo KH</td>
+                                        <td>Park (Citations cao)</td>
+                                        <td>Bài báo quốc tế có bình duyệt kép (Peer-reviewed) khắt khe [INDEX].</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                    <!-- Bài 3: Kỹ năng Prompting -->
-                    <div class="proj-content-panel" id="p-t3">
-                        <div class="panel-header">
-                            <h3>Tối ưu hóa Kỹ năng Prompt Engineering</h3>
+                    <!-- Task 3 Detail -->
+                    <div class="detail-view" id="detail-task3">
+                        <div class="detail-back" onclick="closeDetail('detail-task3')">
+                            <i class="fa-solid fa-arrow-left"></i> Quay lại
                         </div>
-                        <p class="panel-desc">
-                            Vận dụng mô hình <strong>C.L.E.A.R</strong> (Context, Logical Sequence, Examples, Audience, Required Format) và Thang đo nhận thức Bloom để xây dựng các phiên bản prompt chất lượng vượt trội. Hãy cùng trải nghiệm sự khác biệt lớn giữa prompt cơ bản và nâng cao bên dưới.
-                        </p>
-                        <div class="prompt-sandbox">
-                            <div class="prompt-tabs">
-                                <div class="p-tab active" onclick="togglePrompt('p-zero', this)">Zero-shot (Cơ bản)</div>
-                                <div class="p-tab" onclick="togglePrompt('p-cot', this)">Chain-of-Thought (Nâng cao)</div>
-                                <div class="p-tab" onclick="togglePrompt('p-feynman', this)">Phương pháp Feynman</div>
-                            </div>
-                            <div class="prompt-display" id="p-display-area">Tóm tắt bài viết sau: [Chèn văn bản tác động của AI trong Giáo dục]</div>
+                        <h2>Tối ưu hóa kỹ năng Prompt Engineering</h2>
+                        <div class="report-section">
+                            <h4>I. Thử nghiệm tư duy kiến tạo học tập</h4>
+                            <p>Kỹ năng viết câu lệnh cho AI không đơn thuần là "hỏi - đáp", mà là nghệ thuật giới hạn không gian dự đoán của LLMs để khai thác kiến thức chuẩn xác nhất [INDEX].</p>
+                            
+                            <h4>II. Phân tích 3 cấp độ nhận thức ứng dụng Thang đo Bloom</h4>
+                            <ul>
+                                <li><strong>Tác vụ 1: Tóm tắt đa chiều (Bloom: Hiểu)</strong>
+                                    <p>Ứng dụng kỹ thuật hạn chế "mất mát thông tin" bằng cách ra lệnh cho AI bám sát dữ liệu văn bản được nhập, tránh tối đa ảo giác (hallucination) [INDEX].</p>
+                                </li>
+                                <li><strong>Tác vụ 2: Giải thích khái niệm bằng Analogy (Bloom: Phân tích)</strong>
+                                    <p>Áp dụng kỹ thuật Feynman: Dùng hình tượng "cuốn sổ đình làng" để giải thích công nghệ Blockchain một cách mộc mạc nhất cho người không rành công nghệ, đồng thời áp dụng "Ràng buộc tiêu cực" (không dùng từ kỹ thuật: phi tập trung, mã hóa, node...) [INDEX].</p>
+                                </li>
+                                <li><strong>Tác vụ 3: Thiết kế đề kiểm tra Active Retrieval (Bloom: Đánh giá)</strong>
+                                    <p>Đặt AI vào vai trò chuyên gia thiết kế đề thi (Instructional Designer) sử dụng Few-shot prompting và cấu trúc phân hóa câu hỏi sâu sắc để người học tự ôn luyện [INDEX].</p>
+                                </li>
+                            </ul>
+
+                            <h4>III. Mô hình C.L.E.A.R đúc kết</h4>
+                            <p>Thông qua thực hành, mình đã hệ thống hóa mô hình viết prompt hiệu quả [INDEX]:</p>
+                            <ul>
+                                <li><strong>C (Context & Constraints):</strong> Tạo bối cảnh vững chắc và các ranh giới cần tuân thủ [INDEX].</li>
+                                <li><strong>L (Logical Sequence):</strong> Trình tự các bước rõ ràng (Chain-of-Thought) [INDEX].</li>
+                                <li><strong>E (Examples):</strong> Cung cấp vài ví dụ đầu ra mong muốn (Few-shot) [INDEX].</li>
+                                <li><strong>A (Audience & Persona):</strong> Gán vai trò cho AI và xác định rõ đối tượng người đọc [INDEX].</li>
+                                <li><strong>R (Required Format):</strong> Xác định rõ định dạng mong muốn (Bảng, Markdown) [INDEX].</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <!-- Bài 5: Sáng tạo Nội dung AI -->
-                    <div class="proj-content-panel" id="p-t5">
-                        <div class="panel-header">
-                            <h3>Sáng tạo Nội dung số cùng Trí Tuệ Nhân Tạo</h3>
+                    <!-- Task 4 Detail -->
+                    <div class="detail-view" id="detail-task4">
+                        <div class="detail-back" onclick="closeDetail('detail-task4')">
+                            <i class="fa-solid fa-arrow-left"></i> Quay lại
                         </div>
-                        <p class="panel-desc">
-                            Triển khai chiến dịch truyền thông quảng bá vẻ đẹp Vịnh Hạ Long. Bằng cách kết hợp đa công cụ AI tạo sinh, mình đã tối ưu hóa hiệu quả sáng tạo: ChatGPT (Slogan & Bài viết định hướng du lịch), Stable Diffusion (Tạo hình ảnh phong cảnh hoàng hôn chân thực), Canva AI (Thiết kế poster tiếp cận du khách quốc tế).
-                        </p>
-                        <div class="image-gallery">
-                            <div class="img-card">
-                                <!-- Du lịch Hạ Long, vách núi và thuyền buồm -->
-                                <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&q=80&w=600" alt="Hạ Long Bay Sunset">
-                                <p>Hình ảnh phong cảnh Vịnh Hạ Long hoàng hôn rực rỡ</p>
-                            </div>
-                            <div class="img-card">
-                                <!-- Canva Poster Mockup -->
-                                <img class="poster-img" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=600" alt="Poster Ha Long Bay">
-                                <p>Poster quảng bá - "Khám phá Vịnh Hạ Long, chạm đến kỳ quan"</p>
-                            </div>
+                        <h2>Công cụ hợp tác trực tuyến và Làm việc nhóm</h2>
+                        <div class="report-section">
+                            <h4>I. Dự án phối hợp</h4>
+                            <p>Nhóm thực hiện dự án chủ đề: <strong>"Ứng dụng Trí tuệ Nhân tạo trong quản trị doanh nghiệp"</strong> nhằm phân tích các thời cơ, thách thức và tối ưu hóa chuyển đổi số thực tiễn [INDEX].</p>
+                            
+                            <h4>II. Hệ sinh thái công cụ hỗ trợ</h4>
+                            <ul>
+                                <li><strong>Trello (Quản lý tiến độ Kanban):</strong> Phân chia công việc thành các cột trực quan <code>Today - To Do - Doing - Review</code> [INDEX]. Giúp mình quản lý chặt chẽ tiến trình của bản thân và kịp thời hỗ trợ đồng đội đúng hạn [INDEX].</li>
+                                <li><strong>Google Docs (Soạn thảo thời gian thực):</strong> Hợp tác biên soạn báo cáo [INDEX]. Sử dụng tính năng Comment để tương tác lấy ý kiến và duyệt lịch sử (Version History) để giữ tính nhất quán [INDEX].</li>
+                                <li><strong>Google Drive (Lưu trữ tập trung):</strong> Tạo thư mục gốc chung mang tên <code>Project_AI_ULIS</code>, phân nhánh các thư mục con cụ thể: 1. Tài liệu tham khảo, 2. Báo cáo, 3. Hình ảnh, 4. Thuyết trình, 5. Phiên bản hoàn thiện [INDEX].</li>
+                            </ul>
+
+                            <h4>III. Giá trị cốt lõi thu được</h4>
+                            <p>Làm việc trực tuyến không chỉ là trò chuyện qua Zalo/Messenger, mà là làm chủ quy trình công nghệ để kiến tạo nên các dự án số hoàn chỉnh một cách hiệu quả và khoa học [INDEX].</p>
+                        </div>
+                    </div>
+
+                    <!-- Task 5 Detail -->
+                    <div class="detail-view" id="detail-task5">
+                        <div class="detail-back" onclick="closeDetail('detail-task5')">
+                            <i class="fa-solid fa-arrow-left"></i> Quay lại
+                        </div>
+                        <h2>Ứng dụng Generative AI sáng tạo nội dung số</h2>
+                        <div class="report-section">
+                            <h4>I. Ý tưởng sáng tạo</h4>
+                            <p>Dự án cá nhân thực hiện: <strong>"Thiết kế bộ nội dung quảng bá du lịch Vịnh Hạ Long trên nền tảng số"</strong> [INDEX]. Đưa vẻ đẹp tự nhiên kết hợp trải nghiệm khám phá đến với bạn bè trong và ngoài nước một cách ấn tượng nhất [INDEX].</p>
+                            
+                            <h4>II. Sự kết hợp của "Bộ ba trợ lý AI"</h4>
+                            <ul>
+                                <li><strong>ChatGPT (Trợ lý ngôn ngữ):</strong> Nhập vai chuyên gia du lịch viết bài truyền thông cuốn hút 500 từ và sáng tạo 5 slogan độc đáo (ví dụ: "Khám phá Hạ Long - Nơi thiên nhiên hóa kỳ tích") [INDEX].</li>
+                                <li><strong>Stable Diffusion (Trợ lý hội họa):</strong> Sử dụng prompt chuyên nghiệp tạo nên bức tranh vịnh Hạ Long kỳ ảo lúc hoàng hôn với độ chân thực màu sắc cao, hỗ trợ việc truyền thông trực quan [INDEX].</li>
+                                <li><strong>Canva AI (Trợ lý thiết kế):</strong> Thiết kế poster du lịch hoàn thiện về bố cục, phối hợp hài hòa giữa hình ảnh AI và nội dung hành trình để xuất bản trực tiếp [INDEX].</li>
+                            </ul>
+
+                            <h4>III. So sánh thế mạnh thực hành</h4>
+                            <table class="custom-table">
+                                <thead>
+                                    <tr>
+                                        <th>Công cụ AI</th>
+                                        <th>Ưu điểm nổi bật</th>
+                                        <th>Hạn chế / Điểm lưu ý</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Chat GPT</td>
+                                        <td>Lập luận, phát triển ý tưởng rất nhanh [INDEX].</td>
+                                        <td>Đôi khi có thông tin chưa thực tế, cần con người kiểm chứng lại [INDEX].</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Stable Diffusion</td>
+                                        <td>Tạo hình ảnh chuyên nghiệp, nghệ thuật [INDEX].</td>
+                                        <td>Cần mô tả chi tiết bằng tiếng Anh để hình ảnh ra đúng thực tế [INDEX].</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Canva AI</td>
+                                        <td>Mẫu mã đa dạng, thiết kế rất nhanh chóng [INDEX].</td>
+                                        <td>Tùy chỉnh sâu sắc cho nhu cầu phức tạp vẫn còn hạn chế [INDEX].</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Task 6 Detail -->
+                    <div class="detail-view" id="detail-task6">
+                        <div class="detail-back" onclick="closeDetail('detail-task6')">
+                            <i class="fa-solid fa-arrow-left"></i> Quay lại
+                        </div>
+                        <h2>Ứng dụng AI có trách nhiệm và đạo đức</h2>
+                        <div class="report-section">
+                            <h4>I. Trách nhiệm người học trong thời đại Trí tuệ nhân tạo</h4>
+                            <p>AI mở ra cơ hội đột phá cho việc học ngoại ngữ (hỗ trợ phát âm, sửa lỗi viết, giải nghĩa ngữ pháp) [INDEX]. Tuy nhiên, việc sao chép nguyên văn sản phẩm của máy móc và coi đó là bài tự làm là hành vi vi phạm nghiêm trọng tính liêm chính học thuật [INDEX].</p>
+                            
+                            <h4>II. Bộ 7 nguyên tắc đạo đức cá nhân khi sử dụng AI của mình</h4>
+                            <ol>
+                                <li><strong>Nguyên tắc 1:</strong> Chỉ coi AI là trợ lý học tập, không để AI thay thế tư duy và quá trình tự học của bản thân [INDEX].</li>
+                                <li><strong>Nguyên tắc 2:</strong> Luôn chủ động kiểm chứng thông tin AI cung cấp bằng sách giáo khoa, tạp chí khoa học hoặc ý kiến giảng viên [INDEX].</li>
+                                <li><strong>Nguyên tắc 3:</strong> Tuyệt đối không sao chép nguyên văn văn bản do AI tạo ra để nộp [INDEX].</li>
+                                <li><strong>Nguyên tắc 4:</strong> Chủ động biên tập, lồng ghép tư duy phản biện cá nhân vào các báo cáo [INDEX].</li>
+                                <li><strong>Nguyên tắc 5:</strong> Minh bạch trong học tập, ghi chú rõ ràng các phần việc có sự trợ giúp của AI [INDEX].</li>
+                                <li><strong>Nguyên tắc 6:</strong> Tôn trọng bản quyền tác giả và trích dẫn khoa học đầy đủ [INDEX].</li>
+                                <li><strong>Nguyên tắc 7:</strong> Không lạm dụng AI để thực hiện các hành vi gian lận thi cử [INDEX].</li>
+                            </ol>
+
+                            <h4>III. Kết luận</h4>
+                            <p>Chúng ta làm chủ công nghệ chứ không để công nghệ làm chủ bộ não của mình. Sử dụng AI một cách liêm chính là bước đi đầu tiên của một công dân số có trách nhiệm [INDEX].</p>
                         </div>
                     </div>
 
                 </div>
             </div>
+        </div>
+
+        <!-- ================= WINDOW: REFLECTION ================= -->
+        <div class="win" id="win-reflection" style="top: 15%; left: 18%;">
+            <div class="win-header">
+                <div class="win-title-area">
+                    <i class="fa-regular fa-lightbulb"></i>
+                    <span>Suy ngẫm & Đúc kết hành trình</span>
+                </div>
+                <div class="win-controls">
+                    <button class="win-btn win-btn-min"></button>
+                    <button class="win-btn win-btn-max"></button>
+                    <button class="win-btn win-btn-close" onclick="closeWindow('win-reflection')"></button>
+                </div>
+            </div>
+            <div class="win-body">
+                <div class="main-content">
+                    <h2>Đúc kết bản thân</h2>
+                    <p class="lead-p">Học phần <strong>"Nhập môn công nghệ số và ứng dụng trí tuệ nhân tạo"</strong> đã đưa mình qua nhiều cung bậc cảm xúc của sự khám phá [INDEX].</p>
+                    
+                    <div style="font-size: 0.85rem; line-height: 1.6; color: #2c3248;">
+                        <p>Đối với một sinh viên ngành ngôn ngữ như mình, trước đây thế giới số luôn là một cái gì đó khô khan và mang tính lập trình phức tạp. Nhưng qua từng chương học, mình chợt nhận ra rằng công nghệ chính là đôi cánh mạnh mẽ nâng tầm việc nghiên cứu văn hóa và ngôn ngữ.</p>
+                        <br>
+                        <p><strong>Những điều mình tâm đắc nhất:</strong></p>
+                        <ul>
+                            <li><strong>Khả năng tự học có định hướng:</strong> Mình đã biết cách biến AI thành một "gia sư" bản xứ tiếng Hàn tận tụy, không mệt mỏi qua các kỹ thuật prompt thông minh, thay vì chỉ coi nó là công cụ tìm kiếm đơn thuần [INDEX].</li>
+                            <li><strong>Tư duy làm việc nhóm chuyên nghiệp:</strong> Nhờ hệ thống Trello, Docs và Drive, quá trình hợp tác nhóm của tụi mình không còn bị rối bời giữa hàng tá file chỉnh sửa nữa [INDEX].</li>
+                            <li><strong>Liêm chính là gốc rễ:</strong> Sáng tạo bằng AI rất nhanh nhưng sự liêm chính và dấu ấn cá nhân mới là giá trị tồn tại lâu bền của một sản phẩm tri thức [INDEX].</li>
+                        </ul>
+                        <br>
+                        <p>Bản thân mình sẽ tiếp tục ứng dụng các kỹ năng quý báu này để tối ưu hóa việc học tiếng Hàn mỗi ngày, chuẩn bị hành trang tự tin bước vào môi trường hội nhập và công nghệ hóa toàn cầu [INDEX].</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- START MENU -->
+    <div id="start-menu">
+        <div class="start-header">
+            <img src="Hình 1.jpg" alt="Bích" class="start-avatar">
+            <div class="start-user-info">
+                <h3>Triệu Thị Ngọc Bích</h3>
+                <p>Mã sinh viên: 25042365 | K25K2 [INDEX]</p>
+            </div>
+        </div>
+
+        <div class="start-body">
+            <div class="start-column">
+                <h4>Hệ thống tiện ích</h4>
+                <a href="#" class="start-link" onclick="openWindow('win-about'); toggleStartMenu();">
+                    <i class="fa-regular fa-user"></i> Giới thiệu cá nhân
+                </a>
+                <a href="#" class="start-link" onclick="openWindow('win-projects'); toggleStartMenu();">
+                    <i class="fa-regular fa-folder-open"></i> Bài tập thực hành
+                </a>
+                <a href="#" class="start-link" onclick="openWindow('win-reflection'); toggleStartMenu();">
+                    <i class="fa-regular fa-lightbulb"></i> Góc suy ngẫm
+                </a>
+            </div>
+
+            <div class="start-column">
+                <h4>Học liệu liên kết</h4>
+                <a href="https://drive.google.com/drive/folders/104geSwCOQoeTwl6v4Tyti0aSOG7NyANN?usp=drive_link" target="_blank" class="start-link">
+                    <i class="fa-brands fa-google-drive" style="color: #ea4335;"></i> Google Drive Bài Tập
+                </a>
+                <a href="http://ulis.vnu.edu.vn" target="_blank" class="start-link">
+                    <i class="fa-solid fa-graduation-cap"></i> Website ULIS
+                </a>
+            </div>
+        </div>
+
+        <div class="start-footer">
+            <span><i class="fa-solid fa-power-off" style="margin-right: 6px; cursor: pointer;" onclick="lockOS()"></i> Khóa màn hình</span>
+            <span>ULIS - VNU © 2026</span>
         </div>
     </div>
 
-    <!-- WINDOW 3: ĐẠO ĐỨC VÀ TRÁCH NHIỆM AI -->
-    <div class="window" id="win-ethics">
-        <div class="window-header" onmousedown="dragStart(event, 'win-ethics')">
-            <div class="window-title"><i class="fa-solid fa-shield-halved" style="color:#ff79c6;"></i> Đạo_Đức_AI_Cá_Nhân.txt</div>
-            <div class="window-controls">
-                <button class="win-btn win-min" onclick="closeWindow('win-ethics')"></button>
-                <button class="win-btn win-max" onclick="toggleMaximize('win-ethics')"></button>
-                <button class="win-btn win-close" onclick="closeWindow('win-ethics')"></button>
-            </div>
-        </div>
-        <div class="window-content">
-            <div class="panel-header">
-                <h3>Bộ Nguyên Tắc Đạo Đức & Trách Nhiệm</h3>
-            </div>
-            <p class="panel-desc" style="margin-bottom:15px;">
-                AI là trợ lý đồng hành đắc lực nhưng không bao giờ thay thế được tư duy sáng tạo cốt lõi của con người. Để học tập chính trực, mình đã xây dựng và tuân thủ bộ 7 nguyên tắc cá nhân sau:
-            </p>
-            <div class="ethics-list">
-                <div class="ethics-card">
-                    <strong>1. Đồng hành, không thay thế</strong>
-                    <p>Chỉ dùng AI để tìm cảm hứng, gợi ý ý tưởng và cấu trúc tài liệu. Không dựa dẫm để thay thế năng lực tự học và phát triển tư duy độc lập.</p>
-                </div>
-                <div class="ethics-card">
-                    <strong>2. Thẩm định, xác thực thông tin</strong>
-                    <p>Tuyệt đối không sử dụng thông tin của AI cung cấp một cách mù quáng. Luôn đối chiếu kỹ với các nguồn chính thống và bài báo học thuật uy tín.</p>
-                </div>
-                <div class="ethics-card">
-                    <strong>3. Chống đạo văn và sao chép thô</strong>
-                    <p>Cam kết không sao chép nguyên bản phản hồi từ AI để nộp trực tiếp. Mọi sản phẩm cuối cùng đều được trau chuốt và làm giàu bởi ngôn ngữ cá nhân.</p>
-                </div>
-                <div class="ethics-card">
-                    <strong>4. Minh bạch khi áp dụng AI</strong>
-                    <p>Nêu rõ việc ứng dụng AI trong quá trình thực hiện bài tập, trích dẫn đúng nguồn gốc dữ liệu nguyên bản để bảo vệ tính trung thực học thuật.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- WINDOW 4: HỢP TÁC NHÓM (Collaboration) -->
-    <div class="window" id="win-collaboration">
-        <div class="window-header" onmousedown="dragStart(event, 'win-collaboration')">
-            <div class="window-title"><i class="fa-solid fa-folder" style="color:var(--primary-blue)"></i> Hợp_Tác_Nhóm_Trello</div>
-            <div class="window-controls">
-                <button class="win-btn win-min" onclick="closeWindow('win-collaboration')"></button>
-                <button class="win-btn win-max" onclick="toggleMaximize('win-collaboration')"></button>
-                <button class="win-btn win-close" onclick="closeWindow('win-collaboration')"></button>
-            </div>
-        </div>
-        <div class="window-content">
-            <div class="panel-header">
-                <h3>Phương Pháp Hợp Tác Trực Tuyến</h3>
-            </div>
-            <p class="panel-desc">
-                Cá nhân mình đã ứng dụng thành công bộ 3 công cụ kinh điển: <strong>Trello</strong> (Quản lý tiến độ bằng mô hình Kanban trực quan), <strong>Google Docs</strong> (Biên soạn trực tuyến và sửa đổi tài liệu cùng đồng đội thời gian thực), và <strong>Google Drive</strong> (Lưu trữ tài nguyên đồng bộ).
-            </p>
-            <div class="interactive-box">
-                <strong style="font-size:13px; color:var(--calico-dark); display:block; margin-bottom:10px;">Bảng Phân Công Công Việc Trello của Bích:</strong>
-                <div class="trello-board">
-                    <div class="trello-list">
-                        <div class="trello-list-title">To Do <i class="fa-solid fa-circle-exclamation" style="color:var(--calico-orange)"></i></div>
-                        <div class="trello-card">
-                            <strong>Nghiên cứu thị hiếu</strong>
-                            <span>Dành cho gen Z học tiếng Hàn</span>
-                        </div>
-                    </div>
-                    <div class="trello-list">
-                        <div class="trello-list-title">In Progress <i class="fa-solid fa-arrows-spin" style="color:var(--primary-blue)"></i></div>
-                        <div class="trello-card">
-                            <strong>Dựng Slide thuyết trình</strong>
-                            <span>Google Slide liên kết nhóm</span>
-                        </div>
-                    </div>
-                    <div class="trello-list">
-                        <div class="trello-list-title">Done <i class="fa-solid fa-circle-check" style="color:#27c93f"></i></div>
-                        <div class="trello-card" style="border-left-color:#27c93f;">
-                            <strong>Biên soạn báo cáo tổng hợp</strong>
-                            <span>Xong nội dung chính trên Docs</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- ==================== THE WINDOWS TASKBAR ==================== -->
+    <!-- COZY SYSTEM TASKBAR -->
     <div id="taskbar">
-        <div class="taskbar-left">
-            <div class="start-btn" onclick="toggleStartMenu()"><i class="fa-brands fa-windows"></i></div>
-            <div class="taskbar-apps">
-                <div class="task-app-icon" style="color:#8be9fd;" onclick="openWindow('win-about')"><i class="fa-solid fa-file-invoice"></i></div>
-                <div class="task-app-icon" style="color:var(--calico-orange);" onclick="openWindow('win-projects')"><i class="fa-solid fa-briefcase"></i></div>
-                <div class="task-app-icon" style="color:#ff79c6;" onclick="openWindow('win-ethics')"><i class="fa-solid fa-handshake-angle"></i></div>
-                <div class="task-app-icon" style="color:#50fa7b;" onclick="openGoogleDrive()"><i class="fa-brands fa-google-drive"></i></div>
-            </div>
+        <div class="tb-tray-icon" onclick="openWindow('win-about')" title="Thông tin sinh viên">
+            <i class="fa-solid fa-graduation-cap" style="color: var(--primary-pastel);"></i> <span style="font-size: 0.75rem; font-weight: 600; margin-left: 5px;">Bích's OS</span>
         </div>
-        
-        <div class="taskbar-right">
-            <div class="tb-icons">
+
+        <!-- Center Start & Icons -->
+        <div id="tb-start-center">
+            <div class="tb-icon tb-icon-start" onclick="toggleStartMenu()" title="Start Menu">
+                <i class="fa-solid fa-circle-notch"></i>
+            </div>
+            <div class="tb-icon" id="tb-about" onclick="openWindow('win-about')" title="Giới thiệu">
+                <i class="fa-regular fa-user"></i>
+            </div>
+            <div class="tb-icon" id="tb-projects" onclick="openWindow('win-projects')" title="Bài tập">
+                <i class="fa-regular fa-folder"></i>
+            </div>
+            <div class="tb-icon" id="tb-reflection" onclick="openWindow('win-reflection')" title="Suy ngẫm">
+                <i class="fa-regular fa-lightbulb"></i>
+            </div>
+            <a href="https://drive.google.com/drive/folders/104geSwCOQoeTwl6v4Tyti0aSOG7NyANN?usp=drive_link" target="_blank" class="tb-icon" title="Xem bài tập trên GG drive">
+                <i class="fa-brands fa-google-drive" style="color: #4285f4;"></i>
+            </a>
+        </div>
+
+        <!-- Right System Info -->
+        <div class="tb-right">
+            <div class="tb-tray-icon" title="Ngôn ngữ hiện tại">
+                <span style="font-weight: 700; font-size: 0.75rem;">KOR / VIE</span>
+            </div>
+            <div class="tb-tray-icon">
                 <i class="fa-solid fa-wifi"></i>
-                <i class="fa-solid fa-volume-high"></i>
+            </div>
+            <div class="tb-tray-icon">
                 <i class="fa-solid fa-battery-three-quarters"></i>
             </div>
-            <div class="tb-time">
-                <div id="clock-time">12:00 PM</div>
-                <div id="clock-date">15/07/2026</div>
+            <div class="tb-clock" id="tb-clock" title="Lịch hệ thống">
+                <div class="tb-time">12:00</div>
+                <div class="tb-date">15/07/2026</div>
             </div>
         </div>
     </div>
 
-    <!-- Start Menu Panel -->
-    <div id="start-menu">
-        <div class="start-profile">
-            <div class="start-profile-img">
-                <img src="Hình 1.jpg" alt="Triệu Thị Ngọc Bích">
-            </div>
-            <div class="start-profile-info">
-                <h4>Ngọc Bích</h4>
-                <p>Mã SV: 25042365</p>
-            </div>
-        </div>
-        <div class="start-links">
-            <a href="https://drive.google.com/drive/folders/104geSwCOQoeTwl6v4Tyti0aSOG7NyANN?usp=drive_link" target="_blank" class="start-link-item">
-                <i class="fa-brands fa-google-drive" style="color:#34a853;"></i> Google Drive của Bài Tập
-            </a>
-            <a href="#" onclick="openWindow('win-about'); toggleStartMenu(); return false;" class="start-link-item">
-                <i class="fa-solid fa-circle-info" style="color:var(--primary-blue);"></i> Hồ sơ năng lực (About Me)
-            </a>
-            <a href="#" onclick="openWindow('win-projects'); toggleStartMenu(); return false;" class="start-link-item">
-                <i class="fa-solid fa-graduation-cap" style="color:var(--calico-orange);"></i> Bài tập thực hành cá nhân
-            </a>
-            <a href="#" onclick="openWindow('win-collaboration'); toggleStartMenu(); return false;" class="start-link-item">
-                <i class="fa-solid fa-users-viewfinder" style="color:#ff79c6;"></i> Tình hình hoạt động nhóm
-            </a>
-        </div>
-    </div>
-
-    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
     <script>
-        // Real-Time Clock & Date Implementation
+        // Set lock screen clock
         function updateClock() {
             const now = new Date();
-            let hours = now.getHours();
-            let minutes = now.getMinutes();
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12;
-            hours = hours ? hours : 12; // Hour '0' should be '12'
-            minutes = minutes < 10 ? '0'+minutes : minutes;
-            const strTime = hours + ':' + minutes + ' ' + ampm;
+            let hours = now.getHours().toString().padStart(2, '0');
+            let minutes = now.getMinutes().toString().padStart(2, '0');
             
-            const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-            const strDate = now.toLocaleDateString('vi-VN', options);
+            const days = ["Chủ Nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"];
+            const dayName = days[now.getDay()];
+            const dateStr = `${dayName}, ${now.getDate()} Tháng ${now.getMonth() + 1}`;
+
+            document.getElementById('lock-time').innerText = `${hours}:${minutes}`;
+            document.querySelector('.tb-time').innerText = `${hours}:${minutes}`;
             
-            document.getElementById('clock-time').textContent = strTime;
-            document.getElementById('clock-date').textContent = strDate;
+            document.getElementById('lock-date').innerText = dateStr;
+            
+            let dateFormatted = `${now.getDate().toString().padStart(2, '0')}/${(now.getMonth() + 1).toString().padStart(2, '0')}/${now.getFullYear()}`;
+            document.querySelector('.tb-date').innerText = dateFormatted;
         }
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Spawn Interactive Water Ripples on Click
-        function spawnRipple(e) {
-            // Prevent spawning inside interactive windows or controls
-            if (e.target.closest('.window') || e.target.closest('#taskbar') || e.target.closest('#lock-screen') || e.target.closest('#start-menu')) {
+        // Unlock OS logic
+        function unlockOS() {
+            const passInput = document.getElementById('pass-input').value;
+            if (passInput === '25042365') {
+                document.getElementById('lock-screen').classList.add('unlocked');
+            } else {
+                alert('Mật khẩu chưa đúng rồi nè! Gợi ý: Hãy nhập mã sinh viên 25042365 nhé! [INDEX]');
+            }
+        }
+
+        // Force guest unlock
+        function forceUnlock() {
+            document.getElementById('lock-screen').classList.add('unlocked');
+        }
+
+        // Lock OS back
+        function lockOS() {
+            document.getElementById('lock-screen').classList.remove('unlocked');
+            document.getElementById('pass-input').value = '';
+            closeWindow('win-about');
+            closeWindow('win-projects');
+            closeWindow('win-reflection');
+            document.getElementById('start-menu').classList.remove('active');
+        }
+
+        // Start Menu Toggle
+        function toggleStartMenu() {
+            const menu = document.getElementById('start-menu');
+            menu.classList.toggle('active');
+        }
+
+        // Draggable windows system
+        let activeWindow = null;
+        let zIndexCounter = 10;
+
+        function makeWindowDraggable(win) {
+            const header = win.querySelector('.win-header');
+            let isDragging = false;
+            let currentX, currentY, initialX, initialY;
+            let xOffset = 0, yOffset = 0;
+
+            header.addEventListener('mousedown', dragStart);
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', dragEnd);
+
+            header.addEventListener('touchstart', dragStart, { passive: true });
+            document.addEventListener('touchmove', drag, { passive: false });
+            document.addEventListener('touchend', dragEnd);
+
+            function dragStart(e) {
+                // Focus window
+                bringToFront(win);
+                
+                const clientX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+                const clientY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
+
+                initialX = clientX - xOffset;
+                initialY = clientY - yOffset;
+
+                if (e.target === header || header.contains(e.target)) {
+                    isDragging = true;
+                }
+            }
+
+            function drag(e) {
+                if (!isDragging) return;
+                
+                if (e.type === 'touchmove') {
+                    e.preventDefault(); // prevent scrolling
+                }
+
+                const clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+                const clientY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
+
+                currentX = clientX - initialX;
+                currentY = clientY - initialY;
+
+                xOffset = currentX;
+                yOffset = currentY;
+
+                setTranslate(currentX, currentY, win);
+            }
+
+            function dragEnd() {
+                isDragging = false;
+            }
+
+            function setTranslate(xPos, yPos, el) {
+                el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
+            }
+        }
+
+        function bringToFront(win) {
+            zIndexCounter++;
+            win.style.zIndex = zIndexCounter;
+        }
+
+        // Open and Close Window handlers
+        function openWindow(winId) {
+            const win = document.getElementById(winId);
+            win.classList.add('active');
+            bringToFront(win);
+            
+            // Add active tag on taskbar icon
+            const taskbarIconMap = {
+                'win-about': 'tb-about',
+                'win-projects': 'tb-projects',
+                'win-reflection': 'tb-reflection'
+            };
+            if(taskbarIconMap[winId]) {
+                document.getElementById(taskbarIconMap[winId]).classList.add('active');
+            }
+        }
+
+        function closeWindow(winId) {
+            const win = document.getElementById(winId);
+            win.classList.remove('active');
+            
+            const taskbarIconMap = {
+                'win-about': 'tb-about',
+                'win-projects': 'tb-projects',
+                'win-reflection': 'tb-reflection'
+            };
+            if(taskbarIconMap[winId]) {
+                document.getElementById(taskbarIconMap[winId]).classList.remove('active');
+            }
+        }
+
+        // Initialize drag on load
+        document.querySelectorAll('.win').forEach(win => {
+            makeWindowDraggable(win);
+            win.addEventListener('mousedown', () => bringToFront(win));
+        });
+
+        // Start Menu Autoclose on Workspace Click
+        document.getElementById('desktop').addEventListener('click', (e) => {
+            const menu = document.getElementById('start-menu');
+            if (menu.classList.contains('active') && !e.target.closest('#start-menu') && !e.target.closest('.tb-icon-start')) {
+                menu.classList.remove('active');
+            }
+        });
+
+        // Tabs switcher in Projects window
+        function switchTab(tabId, el) {
+            // Remove active classes
+            document.querySelectorAll('.sidebar-item').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.section-view').forEach(view => view.classList.remove('active'));
+            
+            // Add active classes
+            el.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Open Sub-detail view for specific task
+        function openDetail(detailId) {
+            document.getElementById(detailId).classList.add('active');
+        }
+
+        function closeDetail(detailId) {
+            document.getElementById(detailId).classList.remove('active');
+        }
+
+        // Dreamy Water Ripple Effect on click
+        function createWaterRipple(event) {
+            // Do not spawn ripples if clicking inside an active window or menu to avoid interface overlap
+            if (event.target.closest('.win') || event.target.closest('#start-menu') || event.target.closest('#taskbar')) {
                 return;
             }
-            const wrap = document.getElementById('ripple-wrap');
+
+            const desktop = document.getElementById('desktop');
             const ripple = document.createElement('div');
-            ripple.classList.add('ripple');
+            ripple.className = 'ripple';
             
-            ripple.style.left = e.clientX + 'px';
-            ripple.style.top = e.clientY + 'px';
+            const rect = desktop.getBoundingClientRect();
+            const size = 60; // Base size of initial point
             
-            wrap.appendChild(ripple);
+            ripple.style.width = `${size}px`;
+            ripple.style.height = `${size}px`;
+            ripple.style.left = `${event.clientX - size/2}px`;
+            ripple.style.top = `${event.clientY - size/2}px`;
             
+            desktop.appendChild(ripple);
+            
+            // Auto clean ripple
             setTimeout(() => {
                 ripple.remove();
             }, 1200);
         }
 
-        // Lockscreen Unlock Mechanics
-        function handleLoginKey(e) {
-            if (e.key === 'Enter') {
-                attemptUnlock();
-            }
-        }
-
-        function attemptUnlock() {
-            const passVal = document.getElementById('pass-input').value;
-            const lockScreen = document.getElementById('lock-screen');
-            
-            if (passVal.trim() !== "") {
-                lockScreen.classList.add('unlocked');
-                // Auto trigger first window pop for a dynamic greeting
-                setTimeout(() => {
-                    openWindow('win-about');
-                }, 800);
-            } else {
-                // Shake feedback for blank values
-                const container = document.querySelector('.lock-container');
-                container.style.animation = 'none';
-                setTimeout(() => {
-                    container.style.animation = 'shake 0.4s ease';
-                }, 10);
-            }
-        }
-
-        function fillHint() {
-            document.getElementById('pass-input').value = '25042365';
-        }
-
-        // CSS Shake animation definition injected
-        const styleSheet = document.createElement("style");
-        styleSheet.innerText = `
-            @keyframes shake {
-                0%, 100% { transform: translateX(0); }
-                25% { transform: translateX(-8px); }
-                75% { transform: translateX(8px); }
-            }
-        `;
-        document.head.appendChild(styleSheet);
-
-        // Windows Draggable Handler
-        let activeDragWin = null;
-        let dragX = 0, dragY = 0, startLeft = 0, startTop = 0;
-
-        function dragStart(e, id) {
-            if (e.target.closest('.window-controls')) return; // Ignore on buttons click
-            
-            activeDragWin = document.getElementById(id);
-            // Bring to top
-            focusWindow(id);
-
-            if (activeDragWin.classList.contains('maximized')) return;
-
-            dragX = e.clientX;
-            dragY = e.clientY;
-            startLeft = parseInt(window.getComputedStyle(activeDragWin).left) || 0;
-            startTop = parseInt(window.getComputedStyle(activeDragWin).top) || 0;
-
-            document.addEventListener('mousemove', dragMove);
-            document.addEventListener('mouseup', dragEnd);
-        }
-
-        function dragMove(e) {
-            if (!activeDragWin) return;
-            const dx = e.clientX - dragX;
-            const dy = e.clientY - dragY;
-            activeDragWin.style.left = (startLeft + dx) + 'px';
-            activeDragWin.style.top = (startTop + dy) + 'px';
-        }
-
-        function dragEnd() {
-            activeDragWin = null;
-            document.removeEventListener('mousemove', dragMove);
-            document.removeEventListener('mouseup', dragEnd);
-        }
-
-        // Draggable windows focus & depth ordering
-        let maxZIndex = 20;
-        function focusWindow(id) {
-            const win = document.getElementById(id);
-            maxZIndex++;
-            win.style.zIndex = maxZIndex;
-        }
-
-        // Window Control Functions
-        function openWindow(id) {
-            const win = document.getElementById(id);
-            win.classList.add('active-win');
-            focusWindow(id);
-        }
-
-        function closeWindow(id) {
-            const win = document.getElementById(id);
-            win.classList.remove('active-win');
-        }
-
-        function toggleMaximize(id) {
-            const win = document.getElementById(id);
-            win.classList.toggle('maximized');
-        }
-
-        // Start Menu Controller
-        function toggleStartMenu() {
-            document.getElementById('start-menu').classList.toggle('open');
-        }
-
-        // Close start menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('#start-menu') && !e.target.closest('.start-btn')) {
-                document.getElementById('start-menu').classList.remove('open');
-            }
-        });
-
-        // Open Google Drive Shortcut
-        function openGoogleDrive() {
-            window.open('https://drive.google.com/drive/folders/104geSwCOQoeTwl6v4Tyti0aSOG7NyANN?usp=drive_link', '_blank');
-        }
-
-        // Switch Projects Sidebar Tabs
-        function switchProjTab(tabId, btn) {
-            // Remove active classes
-            const container = btn.closest('.proj-layout');
-            container.querySelectorAll('.proj-tab-btn').forEach(b => b.classList.remove('active'));
-            container.querySelectorAll('.proj-content-panel').forEach(p => p.classList.remove('active'));
-            
-            // Set current active
-            btn.classList.add('active');
-            document.getElementById('p-' + tabId).classList.add('active');
-        }
-
-        // Interactive Prompt Sandbox Content Switcher
-        const prompts = {
-            'p-zero': "Tóm tắt bài viết sau: [Chèn văn bản tác động của AI trong Giáo dục]",
-            'p-cot': `Bạn là một Giáo sư chuyên ngành Công nghệ Giáo dục. Hãy đọc bài nghiên cứu sau và thực hiện phân tích theo từng bước sau để đảm bảo kết quả tối ưu:
-
-Bước 1: Trích xuất 3 luận điểm cốt lõi mà tác giả muốn truyền tải.
-Bước 2: Lập một bảng phân tích (Cột 1: Cơ hội, Cột 2: Thách thức, Cột 3: Giải pháp đề xuất).
-Bước 3: Đưa ra nhận xét khách quan trong 2 câu về tính thực thi của đề tài này.
-
-Văn bản cần xử lý: [Chèn văn bản]`,
-            'p-feynman': `Hãy đóng vai một chuyên gia truyền thông khoa học tài năng. Hãy giải thích khái niệm phức tạp 'Blockchain' cho một người lớn tuổi chưa từng tiếp xúc công nghệ.
-
-Ràng buộc: TUYỆT ĐỐI KHÔNG sử dụng các từ kỹ thuật như 'phi tập trung', 'mã hóa', 'sổ cái', 'node'.
-Phương pháp: Sử dụng phép ẩn dụ (Analogy) về việc 'cả làng cùng ghi chép chung một cuốn sổ nợ ở đình làng' để minh họa chống gian lận.`
-        };
-
-        function togglePrompt(promptKey, tabBtn) {
-            const parent = tabBtn.closest('.prompt-sandbox');
-            parent.querySelectorAll('.p-tab').forEach(t => t.classList.remove('active'));
-            tabBtn.classList.add('active');
-            document.getElementById('p-display-area').textContent = prompts[promptKey];
-        }
+        // Open initial window on start
+        setTimeout(() => {
+            openWindow('win-about');
+        }, 1200);
     </script>
 </body>
 </html>
