@@ -41,7 +41,7 @@
         }
 
         .glass-panel-dark {
-            background: rgba(33, 31, 41, 0.88);
+            background: rgba(33, 31, 41, 0.9);
             backdrop-filter: blur(28px);
             -webkit-backdrop-filter: blur(28px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -213,8 +213,8 @@
         <!-- ==================== WINDOWS APP CONTAINERS ==================== -->
         <div class="absolute inset-0 flex items-center justify-center pointer-events-none p-4 z-40">
             
-            <!-- APPLICATION 1: BIO WINDOW (Vị trí mặc định lệch phải chừa chỗ cho các icon) -->
-            <div id="win-bio" class="app-window w-[480px] h-[520px] glass-panel-dark rounded-2xl flex flex-col overflow-hidden text-white border border-white/10" style="left: 220px; top: 120px;">
+            <!-- APPLICATION 1: BIO WINDOW (Sắp xếp lệch phải tránh đè chập biểu tượng ngoài desktop) -->
+            <div id="win-bio" class="app-window w-[480px] h-[520px] glass-panel-dark rounded-2xl flex flex-col overflow-hidden text-white border border-white/10" style="left: 200px; top: 80px;">
                 <div class="window-header flex items-center justify-between px-5 py-3 bg-black/50 border-b border-white/10 select-none">
                     <div class="flex items-center gap-2">
                         <i data-lucide="user" class="w-4 h-4 text-indigo-300"></i>
@@ -243,7 +243,7 @@
                         <p class="text-xs text-slate-300 leading-relaxed font-light text-justify">
                             Digital portfolio này được mình dày công thiết kế nhằm lưu giữ trực quan hành trình chuyển biến tư duy từ một sinh viên ngôn ngữ truyền thống bước vào thế giới số học thuật sáng tạo.
                         </p>
-                        <ul class="list-disc pl-5 text-xs text-slate-300 space-y-2 font-light text-justify">
+                        <ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5 font-light text-justify">
                             <li><strong>Hệ thống hóa học liệu:</strong> Biên tập bài bản toàn bộ các minh chứng thực hành từ bài 1 đến bài 6, sắp xếp khoa học để tạo nên kho tài nguyên tham khảo lâu dài.</li>
                             <li><strong>Phát triển kỹ năng Prompting:</strong> Áp dụng linh hoạt các câu lệnh thông minh để tối ưu hóa khả năng khai thác kiến thức từ hệ thống AI tạo sinh.</li>
                             <li><strong>Phục vụ nghiên cứu:</strong> Ứng dụng các quy tắc cộng tác số và chia sẻ tài nguyên mở trực tuyến để định hình lối tư duy độc lập thời đại số.</li>
@@ -252,8 +252,8 @@
                 </div>
             </div>
 
-            <!-- APPLICATION 2: PROJECTS DETAILED WINDOW -->
-            <div id="win-projects" class="app-window w-[850px] h-[610px] glass-panel-dark rounded-2xl flex flex-col overflow-hidden text-white border border-white/10" style="left: 710px; top: 150px;">
+            <!-- APPLICATION 2: PROJECTS DETAILED WINDOW (Mở rộng kích thước cho tệp dữ liệu chi tiết) -->
+            <div id="win-projects" class="app-window w-[840px] h-[600px] glass-panel-dark rounded-2xl flex flex-col overflow-hidden text-white border border-white/10" style="left: 690px; top: 120px;">
                 <div class="window-header flex items-center justify-between px-5 py-3 bg-black/50 border-b border-white/10 select-none">
                     <div class="flex items-center gap-2">
                         <i data-lucide="folder-git-2" class="w-4 h-4 text-amber-300"></i>
@@ -306,11 +306,11 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                                 <div class="p-3.5 bg-white/5 border border-white/5 rounded-xl">
                                     <p class="font-bold text-amber-300">Mục tiêu bài học</p>
-                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Làm chủ các thao tác quản lý tệp tin, tổ chức cấu trúc thư mục logic để phục vụ học tập lâu dài trên hệ điều hành Windows.</p>
+                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Rèn luyện kỹ năng thao tác cơ sở với tệp tin và cấu trúc thư mục hệ thống trên môi trường Windows để hình thành tính kỷ luật lưu trữ khoa học.</p>
                                 </div>
                                 <div class="p-3.5 bg-white/5 border border-white/5 rounded-xl">
                                     <p class="font-bold text-indigo-300">Bài học kinh nghiệm</p>
-                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Việc sắp xếp thư mục và đặt tên tệp thống nhất, cộng với kỹ năng thao tác nhanh bằng phím tắt giúp nâng cao hiệu suất học tập đáng kể.</p>
+                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Làm quen việc sử dụng phím tắt kết hợp tư duy logic giúp giảm bớt rủi ro thất lạc học liệu quan trọng.</p>
                                 </div>
                             </div>
 
@@ -321,14 +321,14 @@
                                     <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 2:</strong> Truy cập ổ đĩa không phải hệ thống (ổ D: hoặc E:), nếu chỉ có ổ C: thì truy cập thư mục Documents.</div>
                                     <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 3:</strong> Tạo thư mục mới mang tên <span class="text-sky-300">ThucHanh_Trieuthingocbich</span> bằng menu chuột phải.</div>
                                     <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 4:</strong> Nhấp đúp truy cập thư mục vừa tạo.</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 5:</strong> Tạo tệp tin văn bản <span class="text-indigo-300">GhiChu.txt</span> (chuột phải -> New -> Text Document).</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 6:</strong> Đổi tên tệp tin thành <span class="text-amber-300">GhiChuQuanTrong.txt</span> bằng tính năng Rename.</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 7:</strong> Tạo thư mục con mang tên <span class="text-sky-300">TaiLieu</span>.</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 8:</strong> Sao chép (Copy & Paste) tệp GhiChuQuanTrong.txt vào thư mục TaiLieu.</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 9:</strong> Quay lại thư mục gốc, tạo tệp mới DiChuyen.txt, thực hiện di chuyển (Cut & Paste) vào thư mục TaiLieu.</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 10:</strong> Xóa tệp GhiChuQuanTrong.txt trong thư mục TaiLieu (đưa vào Recycle Bin).</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 11:</strong> Chọn tệp DiChuyen.txt, nhấn giữ Shift + Delete để xóa vĩnh viễn tệp tin khỏi hệ thống không qua Thùng rác.</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 12:</strong> Truy cập Recycle Bin, nhấp chuột phải vào tệp GhiChuQuanTrong.txt và chọn Restore để khôi phục về vị trí ban đầu.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 5:</strong> Tạo tệp tin văn bản bằng cách chọn New -> Text Document đặt tên GhiChu.txt.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 6:</strong> Sử dụng Rename đổi tên tệp thành <span class="text-amber-300">GhiChuQuanTrong.txt</span>.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 7:</strong> Tạo thêm một thư mục con nằm bên trong mang tên <span class="text-sky-300">TaiLieu</span>.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 8:</strong> Thực hiện sao chép tệp GhiChuQuanTrong.txt vào thư mục TaiLieu.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 9:</strong> Quay lại thư mục gốc tạo tệp DiChuyen.txt, sau đó di chuyển vào TaiLieu.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 10:</strong> Xóa tệp GhiChuQuanTrong.txt trong thư mục TaiLieu để đưa vào Recycle Bin.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 11:</strong> Chọn DiChuyen.txt, nhấn giữ Shift + Delete để xóa vĩnh viễn không qua Thùng rác.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 12:</strong> Mở Recycle Bin ngoài màn hình, tìm GhiChuQuanTrong.txt và chọn Restore để khôi phục.</div>
                                 </div>
                             </div>
 
@@ -473,28 +473,28 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
                                     <p class="font-bold text-amber-300">Mục tiêu bài học</p>
-                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Tìm hiểu cách hoạt động của trí tuệ nhân tạo và thực hành viết các dạng prompt từ cơ bản đến nâng cao để kiểm soát dữ liệu đầu ra của mô hình ngôn ngữ lớn.</p>
+                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Nghiên cứu tối ưu hóa thiết lập câu lệnh Prompt Engineering thông qua mô hình C.L.E.A.R giúp mở khóa tiềm năng của các Mô hình ngôn ngữ lớn LLM.</p>
                                 </div>
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
                                     <p class="font-bold text-indigo-300">Bài học kinh nghiệm</p>
-                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Quy tắc C.L.E.A.R giúp định hướng và sắp xếp cấu trúc câu lệnh rành mạch, nâng tầm khả năng khai thác tri thức của AI hỗ trợ học tập.</p>
+                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Làm quen với kỹ thuật Few-shot prompting và Chain-of-Thought định hình tư duy xử lý dữ liệu của trí tuệ nhân tạo thêm chuẩn xác.</p>
                                 </div>
                             </div>
 
-                            <div class="p-4 bg-black/25 rounded-xl border border-white/5 space-y-3 text-xs font-light">
-                                <p class="font-bold text-slate-200">Chi tiết 3 tác vụ học tập thực nghiệm:</p>
+                            <div class="p-4 bg-black/25 rounded-xl border border-white/5 space-y-3 text-xs font-light text-justify">
+                                <p class="font-bold text-slate-200">Phân tích chuyên sâu 3 tác vụ và tư duy Prompt cải tiến:</p>
                                 <div class="space-y-3">
                                     <div>
-                                        <p class="font-semibold text-amber-300">Tác vụ 1: Tóm tắt đa chiều (Chủ đề: Tác động của AI trong Giáo dục)</p>
-                                        <p class="text-slate-400">Xây dựng chuỗi prompt Chain-of-Thought hướng dẫn AI trích xuất 3 luận điểm cốt lõi, lập bảng phân tích cơ hội/thách thức và đưa ra nhận xét phản biện thay vì tóm tắt chung chung.</p>
+                                        <p class="font-semibold text-amber-300">Tác vụ 1: Tóm tắt đa chiều tài liệu học thuật</p>
+                                        <p class="text-slate-400">Bản chất của tác vụ này là giảm thiểu tải nhận thức khi đối mặt với biển kiến thức đồ sộ. Để khắc phục lỗi mất mát dữ liệu hoặc ảo giác của LLMs, mình sử dụng kỹ thuật gán vai Giáo sư và ép mô hình thực hiện suy luận tuần tự Chain-of-Thought. Bắt buộc mô hình trích xuất đúng 3 luận điểm cốt lõi và lập bảng Markdown cụ thể thay vì đưa ra nhận định cảm tính.</p>
                                     </div>
                                     <div>
-                                        <p class="font-semibold text-amber-300">Tác vụ 2: Giải thích khái niệm phức tạp (Chủ đề: Blockchain)</p>
-                                        <p class="text-slate-400">Sử dụng phương pháp loại suy Feynman để giải thích Blockchain cho người cao tuổi bằng mô hình sổ nợ chung của đình làng, đi kèm ràng buộc nghiêm ngặt không sử dụng thuật ngữ kỹ thuật khó hiểu.</p>
+                                        <p class="font-semibold text-amber-300">Tác vụ 2: Giải thích khái niệm phức tạp bằng phương pháp loại suy Feynman</p>
+                                        <p class="text-slate-400">Học bằng cách giảng dạy lại bằng ngôn ngữ đơn giản nhất là chìa khóa phá vỡ rào cản thuật ngữ kỹ thuật khó hiểu. Mình đã áp dụng ràng buộc tiêu cực cực kỳ khắt khe: Tuyệt đối không dùng các từ khóa như 'node', 'phi tập trung', 'mã hóa' mà buộc AI phải liên hệ với phép loại suy cuốn sổ nợ chung ở đình làng để mô tả bản chất của mạng Blockchain chống gian lận.</p>
                                     </div>
                                     <div>
-                                        <p class="font-semibold text-amber-300">Tác vụ 3: Tạo đề thi đánh giá năng lực chủ động (Chủ đề: Cách mạng Công nghiệp)</p>
-                                        <p class="text-slate-400">Ứng dụng Few-shot prompting cung cấp các ví dụ mẫu chất lượng cao ở cấp độ phân tích của Thang Bloom để tạo đề thi trắc nghiệm kèm lời giải chi tiết.</p>
+                                        <p class="font-semibold text-amber-300">Tác vụ 3: Thiết kế bài đánh giá năng lực chủ động (Active Retrieval)</p>
+                                        <p class="text-slate-400">Chuyển hóa người học từ trạng thái tiếp thu thụ động sang chủ động truy xuất trí nhớ để củng cố liên kết nơ-ron. Để đảm bảo độ phân loại câu hỏi, câu lệnh nâng cao kết hợp thang Bloom và Few-shot prompting, cung cấp ví dụ mẫu chất lượng cao về lý do ngành dệt may tiên phong ở Anh để AI dựa trên khuôn mẫu sản xuất đề thi mới chuẩn xác.</p>
                                     </div>
                                 </div>
                             </div>
@@ -510,7 +510,7 @@
                                     <button onclick="togglePromptTask(2)" id="pt-btn-2" class="px-3 py-1 bg-white/5 text-[10px] rounded text-slate-400">Tác vụ 2: Ẩn dụ Feynman</button>
                                     <button onclick="togglePromptTask(3)" id="pt-btn-3" class="px-3 py-1 bg-white/5 text-[10px] rounded text-slate-400">Tác vụ 3: Đề thi Bloom</button>
                                 </div>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2 text-[10px] font-mono leading-relaxed">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2 text-[10px] font-mono leading-relaxed text-justify">
                                     <div class="p-3 bg-red-950/20 border border-red-500/20 rounded-lg">
                                         <p class="font-bold text-red-300">Cơ Bản (Zero-shot)</p>
                                         <p class="text-slate-400 mt-1" id="prompt-basic-text">"Tóm tắt bài viết sau: [Chèn văn bản]"</p>
@@ -532,28 +532,28 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
                                     <p class="font-bold text-amber-300">Mục tiêu bài học</p>
-                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Trải nghiệm các phương thức giao tiếp số thông minh để phối hợp và triển khai dự án nhóm hiệu quả trên nền tảng đám mây số trực tuyến.</p>
+                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Ứng dụng thuần thục các nền tảng cộng tác đám mây số trực tuyến để quản lý dự án nhóm, soạn thảo tài liệu khoa học đồng thời.</p>
                                 </div>
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
                                     <p class="font-bold text-indigo-300">Bài học kinh nghiệm</p>
-                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Việc chủ động cập nhật công việc thường xuyên giúp cải thiện hiệu suất chung, đồng thời giảm đáng kể thời gian thảo luận trực tiếp.</p>
+                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Việc phối kết hợp Trello, Google Docs và quy hoạch Folder Google Drive giúp giảm tối đa sự lệch nhịp tiến độ giữa các thành viên.</p>
                                 </div>
                             </div>
 
-                            <div class="p-4 bg-black/25 rounded-xl border border-white/5 space-y-3 text-xs font-light">
-                                <p class="font-bold text-slate-200">Chi tiết ứng dụng thực tế trong quản lý dự án nhóm:</p>
+                            <div class="p-4 bg-black/25 rounded-xl border border-white/5 space-y-3 text-xs font-light text-justify">
+                                <p class="font-bold text-slate-200">Hợp tác trực tuyến toàn diện cho đề tài "Ứng dụng AI trong quản trị doanh nghiệp":</p>
                                 <div class="space-y-3">
                                     <div>
-                                        <p class="font-semibold text-emerald-300">1. Trello trong quản lý tiến độ</p>
-                                        <p class="text-slate-400">Xây dựng bảng Kanban nhóm, thiết lập thẻ nhiệm vụ chi tiết và sử dụng Checklist tự động theo dõi để bảo đảm tính thống nhất cho tiến độ dự án.</p>
+                                        <p class="font-semibold text-emerald-300">1. Trello trong quản trị tiến độ & điều phối công việc</p>
+                                        <p class="text-slate-400">Trên không gian làm việc nhóm, mình chịu trách nhiệm quản lý tiến độ cá nhân thông qua bảng Kanban trực quan. Mỗi tác vụ nhỏ đều được tạo lập thành một thẻ công việc (Card) chi tiết đi kèm checklist, gán deadline và phân định người phụ trách rõ ràng. Việc thường xuyên cập nhật trạng thái từ To Do sang Doing và Done giúp cả nhóm bám sát mục tiêu chung và hỗ trợ lẫn nhau kịp thời.</p>
                                     </div>
                                     <div>
-                                        <p class="font-semibold text-emerald-300">2. Google Docs trong soạn thảo đồng tác giả</p>
-                                        <p class="text-slate-400">Biên soạn báo cáo theo thời gian thực, tận dụng lịch sử chỉnh sửa (Version History) để cập nhật phần đóng góp và sử dụng tính năng bình luận trao đổi trực tiếp.</p>
+                                        <p class="font-semibold text-emerald-300">2. Google Docs trong soạn thảo đồng tác giả khoa học</p>
+                                        <p class="text-slate-400">Nhóm lựa chọn Google Docs để cùng biên soạn báo cáo học thuật theo thời gian thực. Mình đã tận dụng triệt để tính năng nhận xét (Comment) để phản hồi và thảo luận ý kiến đóng góp của các thành viên. Tính năng Lịch sử phiên bản (Version History) đóng vai trò nòng cốt để theo dõi lịch sử chỉnh sửa, xác định cụ thể nội dung đóng góp của từng người học và khôi phục khi phát sinh lỗi biên tập.</p>
                                     </div>
                                     <div>
-                                        <p class="font-semibold text-emerald-300">3. Google Drive trong quản lý học liệu nhóm</p>
-                                        <p class="text-slate-400">Xây dựng hệ thống thư mục khoa học với quy tắc đặt tên tệp thống nhất, phân cấp quyền truy cập để bảo vệ thông tin an toàn.</p>
+                                        <p class="font-semibold text-emerald-300">3. Google Drive trong lưu trữ và phân phối tài nguyên học liệu</p>
+                                        <p class="text-slate-400">Mình đã trực tiếp quy hoạch cấu trúc thư mục số trên Google Drive mang tính logic cao. Thư mục chính Final Project được phân cấp thành các thư mục con cụ thể gồm Tài liệu tham khảo, Báo cáo, Hình ảnh, Thuyết trình, Phiên bản hoàn thiện. Toàn bộ tệp tin phải tuân thủ nghiêm ngặt quy tắc đặt tên thống nhất như BaoCao_AI_V1.docx để thuận tiện tối đa cho việc tra cứu nhanh chóng.</p>
                                     </div>
                                 </div>
                             </div>
@@ -609,29 +609,62 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
                                     <p class="font-bold text-amber-300">Mục tiêu bài học</p>
-                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Ứng dụng đa dạng các công cụ AI tạo sinh văn bản (ChatGPT), sinh ảnh (Stable Diffusion) và thiết kế đồ họa (Canva) để xây dựng ấn phẩm truyền thông chuyên nghiệp.</p>
+                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Ứng dụng đa dạng các công cụ AI tạo sinh văn bản (ChatGPT), sinh ảnh (Stable Diffusion) và thiết kế đồ họa (Canva) để xây dựng ấn phẩm truyền thông chuyên nghiệp Vịnh Hạ Long.</p>
                                 </div>
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
                                     <p class="font-bold text-indigo-300">Bài học kinh nghiệm</p>
-                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Trải nghiệm thực tế quy trình làm việc phối hợp giúp giảm bớt rào cản kỹ thuật thiết kế, cải thiện chất lượng sản phẩm đồ họa nhanh chóng.</p>
+                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">AI giúp đẩy nhanh tiến độ làm việc rõ rệt, nhưng vai trò chỉnh sửa của con người là bệ đỡ giúp giữ trọn vẹn hồn cốt của tác phẩm nghệ thuật.</p>
                                 </div>
                             </div>
 
-                            <div class="p-4 bg-black/25 rounded-xl border border-white/5 space-y-3 text-xs font-light">
-                                <p class="font-bold text-slate-200">Quy trình sáng tạo ấn phẩm quảng bá Vịnh Hạ Long:</p>
+                            <div class="p-4 bg-black/25 rounded-xl border border-white/5 space-y-3 text-xs font-light text-justify">
+                                <p class="font-bold text-slate-200">Chi tiết quy trình phối hợp công cụ trong chiến dịch quảng bá Vịnh Hạ Long:</p>
                                 <div class="space-y-3">
                                     <div>
-                                        <p class="font-semibold text-purple-300">1. Ý tưởng nội dung (ChatGPT)</p>
-                                        <p class="text-slate-400">Sử dụng prompt thiết lập vai chuyên gia marketing viết bài truyền thông lôi cuốn dài 500 từ và thiết kế slogan xúc động.</p>
+                                        <p class="font-semibold text-purple-300">1. Sáng tạo nội dung văn bản học thuật (ChatGPT)</p>
+                                        <p class="text-slate-400">Sử dụng prompt thiết lập ngữ cảnh chuyên gia để viết bài giới thiệu lôi cuốn dài 500 từ về hang Sửng Sốt, động Thiên Cung, chèo thuyền kayak và nét đẹp hoàng hôn mộng mơ trên biển, kèm theo việc tạo 5 slogan mang tính tiếp thị trực quan cao.</p>
                                     </div>
                                     <div>
-                                        <p class="font-semibold text-purple-300">2. Minh họa nghệ thuật (Stable Diffusion)</p>
-                                        <p class="text-slate-400">Thiết lập câu lệnh chi tiết mô phỏng phong cảnh hoàng hôn Vịnh Hạ Long để xuất ra hình ảnh có độ chính xác, chân thực cao.</p>
+                                        <p class="font-semibold text-purple-300">2. Xuất bản hình ảnh mỹ thuật minh họa (Stable Diffusion)</p>
+                                        <p class="text-slate-400">Ứng dụng các từ khóa mô tả phong cảnh chi tiết về hòn Trống Mái, thuyền buồm gỗ Việt Nam cổ điển, màu sắc chân thực để tạo nên bức ảnh nghệ thuật đầy sức sống, bù đắp sự thiếu hụt hình ảnh minh họa chất lượng cao có bản quyền.</p>
                                     </div>
                                     <div>
-                                        <p class="font-semibold text-purple-300">3. Thiết kế poster (Canva AI)</p>
-                                        <p class="text-slate-400">Kết hợp văn bản và hình ảnh để sản xuất ấn phẩm truyền thông chuyên nghiệp phục vụ du khách trong và ngoài nước.</p>
+                                        <p class="font-semibold text-purple-300">3. Tích hợp thiết kế đồ họa ấn phẩm Poster (Canva AI)</p>
+                                        <p class="text-slate-400">Phối hợp kéo thả hình ảnh Stable Diffusion và biên tập văn bản để thiết kế poster du lịch hoàn chỉnh, tạo nên quy trình làm việc khép kín vô cùng hiện đại.</p>
                                     </div>
+                                </div>
+                            </div>
+
+                            <!-- Bảng So Sánh Công Cụ Thực Tế -->
+                            <div class="space-y-3">
+                                <p class="text-xs font-semibold text-slate-200">Bảng đối chiếu ưu điểm và hạn chế của các công cụ AI tạo sinh sử dụng:</p>
+                                <div class="overflow-x-auto rounded-xl border border-white/10">
+                                    <table class="w-full text-[10px] text-left bg-black/15 text-slate-300">
+                                        <thead class="bg-white/5 text-[9px] text-slate-400 uppercase tracking-wider border-b border-white/10">
+                                            <tr>
+                                                <th class="px-3 py-2">Công cụ AI</th>
+                                                <th class="px-3 py-2">Ưu điểm thực tế</th>
+                                                <th class="px-3 py-2">Hạn chế gặp phải</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-white/5 font-light">
+                                            <tr>
+                                                <td class="px-3 py-2.5 font-medium text-slate-200">Chat GPT</td>
+                                                <td class="px-3 py-2">Tạo ý tưởng rất nhanh, đề xuất slogan sáng tạo, hỗ trợ cấu trúc dàn ý chặt chẽ.</td>
+                                                <td class="px-3 py-2">Thông tin địa danh thực tế có thể chưa chính xác tuyệt đối, cần kiểm tra thủ công.</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-3 py-2.5 font-medium text-slate-200">Stable Diffusion</td>
+                                                <td class="px-3 py-2">Tạo ảnh phong cảnh độc đáo, màu sắc rực rỡ, độ phân giải sắc nét xuất sắc.</td>
+                                                <td class="px-3 py-2">Một số kết cấu chi tiết (như buồm thuyền gỗ) chưa phản ánh hoàn hảo thực tế Việt Nam.</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-3 py-2.5 font-medium text-slate-200">Canva AI</td>
+                                                <td class="px-3 py-2">Giao diện kéo thả dễ dùng, thư viện mẫu bố cục đa dạng cho người không chuyên.</td>
+                                                <td class="px-3 py-2">Khả năng can thiệp kỹ thuật đồ họa và tùy chỉnh sâu còn tương đối hạn chế.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
 
@@ -675,16 +708,16 @@
                                 </div>
                             </div>
 
-                            <div class="p-4 bg-black/25 rounded-xl border border-white/5 space-y-3 text-xs font-light">
+                            <div class="p-4 bg-black/25 rounded-xl border border-white/5 space-y-3 text-xs font-light text-justify font-sans">
                                 <p class="font-bold text-slate-200">Chi tiết bộ 7 nguyên tắc đạo đức cá nhân sử dụng AI:</p>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-[10px] leading-relaxed">
                                     <div class="p-2 bg-black/20 rounded border border-white/5"><strong>Nguyên tắc 1:</strong> Coi tự học và tự nghiên cứu làm giá trị cốt lõi, AI chỉ đóng vai trò hỗ trợ gợi mở tư duy.</div>
                                     <div class="p-2 bg-black/20 rounded border border-white/5"><strong>Nguyên tắc 2:</strong> Luôn thực hiện kiểm chứng chéo thông tin AI cung cấp bằng nguồn tài liệu đáng tin cậy.</div>
-                                    <div class="p-2 bg-black/20 rounded border border-white/5"><strong>Nguyên tắc 3:</strong> Tuyệt đối không sao chép nguyên văn (copy-paste) văn bản do AI tự tạo vào bài viết khoa học.</div>
+                                    <div class="p-2 bg-black/20 rounded border border-white/5"><strong>Nguyên tắc 3:</strong> Tuyệt đối không sao chép nguyên văn văn bản do AI tự tạo vào bài viết khoa học để nộp.</div>
                                     <div class="p-2 bg-black/20 rounded border border-white/5"><strong>Nguyên tắc 4:</strong> Chủ động chỉnh sửa, biên tập lại văn phong sao cho phù hợp với tư duy cá nhân.</div>
                                     <div class="p-2 bg-black/20 rounded border border-white/5"><strong>Nguyên tắc 5:</strong> Minh bạch trong học thuật, sẵn sàng khai báo công khai mức độ ứng dụng AI hỗ trợ.</div>
                                     <div class="p-2 bg-black/20 rounded border border-white/5"><strong>Nguyên tắc 6:</strong> Tôn trọng quyền tác giả của nguồn tài liệu tham khảo gốc và thực hiện trích dẫn chuẩn hóa.</div>
-                                    <div class="p-2 bg-black/20 rounded border border-white/5 md:col-span-2"><strong>Nguyên tắc 7:</strong> Không ứng dụng công nghệ để thực hiện hành vi gian lận học thuật dưới mọi hình thức.</div>
+                                    <div class="p-2 bg-black/20 rounded border border-white/5 md:col-span-2"><strong>Nguyên tắc 7:</strong> Không ứng dụng công nghệ để thực hiện hành vi gian lận học thuật dưới mọi hình thức như thi hộ, làm hộ bài thi.</div>
                                 </div>
                             </div>
 
@@ -700,7 +733,7 @@
                                         <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400" id="ac-arrow-1"></i>
                                     </div>
                                     <div id="ac-desc-1" class="hidden p-2.5 bg-black/30 text-slate-400 leading-relaxed rounded border-l-2 border-rose-500 font-light text-justify">
-                                        Thực hiện kiểm tra chéo thông tin bằng cách đối chiếu với giáo trình chính thống hoặc các tài liệu khoa học để tránh lỗi sai lệch từ AI.
+                                        Thực hiện kiểm tra lại dữ liệu, tài liệu; đối chiếu trực quan với sách giáo khoa hoặc các bài báo khoa học đã được hội đồng duyệt để đảm bảo độ tin cậy thông tin tuyệt đối.
                                     </div>
 
                                     <div onclick="toggleAccordionStep(2)" class="cursor-pointer p-2 bg-white/5 hover:bg-white/10 rounded flex justify-between items-center transition-colors">
@@ -708,7 +741,7 @@
                                         <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400" id="ac-arrow-2"></i>
                                     </div>
                                     <div id="ac-desc-2" class="hidden p-2.5 bg-black/30 text-slate-400 leading-relaxed rounded border-l-2 border-rose-500 font-light text-justify">
-                                        Khai báo rõ mức độ ứng dụng AI trong quá trình thiết lập ý tưởng sơ khai hoặc tối ưu hóa văn phong báo cáo.
+                                        Khai báo rõ ràng việc sử dụng AI theo quy định của môn học; ghi nhận cụ thể AI được dùng ở mức độ nào (lên ý tưởng, định dạng cấu trúc hay hỗ trợ rà soát văn phong).
                                     </div>
 
                                     <div onclick="toggleAccordionStep(3)" class="cursor-pointer p-2 bg-white/5 hover:bg-white/10 rounded flex justify-between items-center transition-colors">
@@ -716,7 +749,7 @@
                                         <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400" id="ac-arrow-3"></i>
                                     </div>
                                     <div id="ac-desc-3" class="hidden p-2.5 bg-black/30 text-slate-400 leading-relaxed rounded border-l-2 border-rose-500 font-light text-justify">
-                                        Tuyệt đối không sao chép nguyên trạng sản phẩm nghệ thuật hoặc từ lóng AI tạo ra, cam kết giữ gìn đạo đức học thuật của người nghiên cứu.
+                                        Tuyệt đối không lạm dụng AI để thực hiện hành vi đạo văn hoặc giả mạo dữ liệu; tôn trọng sức lao động và bản quyền chất xám của các tác giả tài liệu gốc.
                                     </div>
                                 </div>
                             </div>
