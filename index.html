@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Portfolio - Triệu Thị Ngọc Bích</title>
-    <!-- Tailwind CSS for structure & styling -->
+    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons for high fidelity controls -->
+    <!-- Lucide Icons for beautiful icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- Inter & Playfair Display Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
@@ -41,7 +41,7 @@
         }
 
         .glass-panel-dark {
-            background: rgba(33, 31, 41, 0.85);
+            background: rgba(33, 31, 41, 0.88);
             backdrop-filter: blur(28px);
             -webkit-backdrop-filter: blur(28px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -54,7 +54,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Standard custom scrollbar */
+        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
@@ -78,13 +78,13 @@
         /* Custom OS Window Styles */
         .app-window {
             position: absolute;
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
             transform: scale(0.95);
             opacity: 0;
             pointer-events: none;
-            min-width: 320px;
-            min-height: 240px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            min-width: 350px;
+            min-height: 250px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
         
         .app-window.active {
@@ -159,7 +159,7 @@
 
         <div class="text-center text-xs text-indigo-200/40 tracking-wider font-light flex items-center gap-1.5 mb-2">
             <i data-lucide="shield-check" class="w-4 h-4"></i>
-            Hệ thống Portfolio Kỹ thuật số & Trí tuệ nhân tạo
+            Hệ thống Digital Portfolio Kỹ thuật số & Trí tuệ nhân tạo
         </div>
     </div>
 
@@ -216,7 +216,7 @@
         <div class="absolute inset-0 flex items-center justify-center pointer-events-none p-4 z-40">
             
             <!-- APPLICATION 1: BIO WINDOW -->
-            <div id="win-bio" class="app-window w-full max-w-4xl h-[78vh] glass-panel-dark rounded-2xl flex flex-col overflow-hidden text-white border border-white/10" style="left: 10%; top: 10%;">
+            <div id="win-bio" class="app-window w-[480px] h-[520px] glass-panel-dark rounded-2xl flex flex-col overflow-hidden text-white border border-white/10" style="left: 4%; top: 12%;">
                 <div class="window-header flex items-center justify-between px-5 py-3 bg-black/50 border-b border-white/10 select-none">
                     <div class="flex items-center gap-2">
                         <i data-lucide="user" class="w-4 h-4 text-indigo-300"></i>
@@ -227,54 +227,39 @@
                     </div>
                 </div>
                 
-                <div class="flex-grow overflow-y-auto p-8 flex flex-col md:flex-row gap-8">
-                    <!-- Left column info card -->
-                    <div class="w-full md:w-1/3 flex flex-col items-center text-center border-r border-white/5 pr-0 md:pr-8">
-                        <div class="relative w-32 h-32 rounded-full p-1 bg-gradient-to-tr from-amber-400 to-indigo-400 border border-white/20 shadow-xl overflow-hidden mb-4">
+                <div class="flex-grow overflow-y-auto p-6 space-y-6">
+                    <div class="flex flex-col items-center text-center pb-4 border-b border-white/5">
+                        <div class="relative w-24 h-24 rounded-full p-1 bg-gradient-to-tr from-amber-400 to-indigo-400 border border-white/20 shadow-xl overflow-hidden mb-3">
                             <img src="Hình 1.jpg" alt="Triệu Thị Ngọc Bích" class="w-full h-full object-cover rounded-full">
                         </div>
                         <h3 class="text-xl font-bold tracking-wide serif-font mb-1 text-slate-100">Triệu Thị Ngọc Bích</h3>
-                        <p class="text-xs tracking-widest text-indigo-300 font-semibold mb-3 uppercase">Ngôn ngữ & Văn hóa Hàn Quốc</p>
-                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] tracking-wider text-amber-300 font-light mb-4">Lớp: 25K2 • Đại học Ngoại ngữ - ĐHQGHN</span>
-                        
-                        <div class="grid grid-cols-1 gap-2 w-full text-left bg-black/25 p-4 rounded-xl border border-white/5 text-xs text-slate-300">
-                            <p><strong>Mã sinh viên:</strong> 25042365</p>
-                            <p><strong>Học phần:</strong> Nhập môn công nghệ số và ứng dụng trí tuệ nhân tạo</p>
-                        </div>
+                        <p class="text-xs tracking-widest text-indigo-300 font-semibold mb-2 uppercase">Ngôn ngữ & Văn hóa Hàn Quốc</p>
+                        <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] tracking-wider text-amber-300 font-light">Lớp: 25K2 • Đại học Ngoại ngữ - ĐHQGHN</span>
                     </div>
-                    <!-- Right column bio and goals -->
-                    <div class="flex-grow flex flex-col justify-between space-y-6">
-                        <div class="space-y-4">
-                            <h4 class="text-lg font-semibold text-amber-300 border-b border-white/10 pb-1.5 flex items-center gap-2">
-                                <i data-lucide="target" class="w-5 h-5 text-amber-400"></i>
-                                Mục Tiêu Portfolio Kỹ Thuật Số
-                            </h4>
-                            <p class="text-xs text-slate-300 leading-relaxed font-light">
-                                Portfolio này được xây dựng như một không gian lưu trữ và thể hiện tính hệ thống hóa của toàn bộ những kiến thức, kỹ năng thực hành công nghệ số mà mình đã tích lũy suốt học kỳ [1, 2, 3, 4, 5, 6]. Mục tiêu cụ thể bao gồm:
-                            </p>
-                            <ul class="list-disc pl-5 text-xs text-slate-300 space-y-2 font-light">
-                                <li><strong>Hệ thống hóa học liệu:</strong> Biên tập, tổng hợp minh chứng của các bài thực hành từ 1 đến 6 lên giao diện số hóa trực quan [2].</li>
-                                <li><strong>Làm chủ công nghệ:</strong> Thể hiện khả năng tương tác với AI có đạo đức, tối ưu hóa câu lệnh phục vụ quá trình nghiên cứu Ngôn ngữ học Hàn Quốc [2, 4].</li>
-                                <li><strong>Công cụ phát triển:</strong> Đưa sản phẩm cá nhân lên các công cụ lưu trữ đám mây để tạo ra tài nguyên mở kết nối tri thức [3].</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="space-y-3">
-                            <h4 class="text-sm font-semibold text-indigo-300">Phương Châm Học Tập</h4>
-                            <p class="text-xs text-slate-400 italic font-light">
-                                "Sự kết hợp giữa lý thuyết Ngôn ngữ học truyền thống và sức mạnh xử lý của công nghệ thế hệ mới chính là nền tảng để mình khẳng định năng lực tự học linh hoạt trong kỷ nguyên số."
-                            </p>
-                        </div>
+
+                    <div class="space-y-4">
+                        <h4 class="text-sm font-semibold text-amber-300 flex items-center gap-2">
+                            <i data-lucide="target" class="w-4 h-4 text-amber-400"></i>
+                            Mục Tiêu Digital Portfolio
+                        </h4>
+                        <p class="text-xs text-slate-300 leading-relaxed font-light">
+                            Digital portfolio này được xây dựng như một không gian lưu trữ trực quan và hệ thống hóa toàn bộ các kiến thức, kỹ năng công nghệ số mà mình đã tích lũy trong học kỳ qua. Mục tiêu hướng tới bao gồm:
+                        </p>
+                        <ul class="list-disc pl-5 text-xs text-slate-300 space-y-1.5 font-light">
+                            <li><strong>Hệ thống hóa học liệu:</strong> Trình bày lại kết quả thực hành từ bài 1 đến bài 6 một cách khoa học nhất.</li>
+                            <li><strong>Làm chủ công nghệ:</strong> Thể hiện kỹ năng tương tác với AI, tối ưu hóa các câu lệnh để phục vụ cho việc nghiên cứu ngôn ngữ học.</li>
+                            <li><strong>Phát triển kỹ năng số:</strong> Đưa sản phẩm cá nhân lên môi trường lưu trữ đám mây, mở rộng khả năng tiếp cận và chia sẻ tri thức.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
             <!-- APPLICATION 2: PROJECTS DETAILED WINDOW -->
-            <div id="win-projects" class="app-window w-full max-w-5xl h-[84vh] glass-panel-dark rounded-2xl flex flex-col overflow-hidden text-white border border-white/10" style="left: 15%; top: 8%;">
+            <div id="win-projects" class="app-window w-[800px] h-[580px] glass-panel-dark rounded-2xl flex flex-col overflow-hidden text-white border border-white/10" style="left: 22%; top: 16%;">
                 <div class="window-header flex items-center justify-between px-5 py-3 bg-black/50 border-b border-white/10 select-none">
                     <div class="flex items-center gap-2">
                         <i data-lucide="folder-git-2" class="w-4 h-4 text-amber-300"></i>
-                        <span class="text-xs font-medium tracking-widest text-indigo-200 uppercase">Kho Học Liệu & Minh Chứng Thực Hành Học Phần</span>
+                        <span class="text-xs font-medium tracking-widest text-indigo-200 uppercase">Kho Học Liệu & Minh Chứng Thực Hành</span>
                     </div>
                     <div class="flex items-center gap-2 window-control-btn">
                         <button onclick="closeWindow('win-projects')" class="w-3 h-3 rounded-full bg-rose-500/80 hover:bg-rose-500 transition-colors focus:outline-none"></button>
@@ -283,31 +268,31 @@
                 
                 <div class="flex-grow flex overflow-hidden">
                     <!-- Left index tabs -->
-                    <div class="w-1/4 bg-black/20 border-r border-white/5 flex flex-col p-4 overflow-y-auto gap-1">
-                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest px-2 mb-2">Bài tập của tôi</p>
+                    <div class="w-1/3 bg-black/20 border-r border-white/5 flex flex-col p-4 overflow-y-auto gap-1">
+                        <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest px-2 mb-2">Nội dung học phần</p>
                         <button onclick="switchTab('tab1')" id="btn-tab1" class="tab-button w-full text-left px-3 py-2.5 rounded-lg text-xs font-medium tracking-wide flex items-center gap-2 transition-colors hover:bg-white/5 bg-indigo-500/20 text-indigo-200">
-                            <i data-lucide="search" class="w-4 h-4 text-indigo-400"></i>
-                            <span>Bài 1: Khai Thác Học Thuật</span>
+                            <i data-lucide="monitor" class="w-4 h-4 text-sky-400"></i>
+                            <span>Bài 1: Máy tính & Thiết bị ngoại vi</span>
                         </button>
                         <button onclick="switchTab('tab2')" id="btn-tab2" class="tab-button w-full text-left px-3 py-2.5 rounded-lg text-xs font-medium tracking-wide flex items-center gap-2 transition-colors hover:bg-white/5 text-slate-400">
-                            <i data-lucide="terminal" class="w-4 h-4 text-amber-400"></i>
-                            <span>Bài 2: Kỹ Thuật Prompt</span>
+                            <i data-lucide="search" class="w-4 h-4 text-indigo-400"></i>
+                            <span>Bài 2: Khai thác dữ liệu & Thông tin</span>
                         </button>
                         <button onclick="switchTab('tab3')" id="btn-tab3" class="tab-button w-full text-left px-3 py-2.5 rounded-lg text-xs font-medium tracking-wide flex items-center gap-2 transition-colors hover:bg-white/5 text-slate-400">
-                            <i data-lucide="users-2" class="w-4 h-4 text-emerald-400"></i>
-                            <span>Bài 3: Cộng Tác Nhóm</span>
+                            <i data-lucide="terminal" class="w-4 h-4 text-amber-400"></i>
+                            <span>Bài 3: Tổng quan về Trí tuệ nhân tạo</span>
                         </button>
                         <button onclick="switchTab('tab4')" id="btn-tab4" class="tab-button w-full text-left px-3 py-2.5 rounded-lg text-xs font-medium tracking-wide flex items-center gap-2 transition-colors hover:bg-white/5 text-slate-400">
-                            <i data-lucide="shield-alert" class="w-4 h-4 text-rose-400"></i>
-                            <span>Bài 4: Sử Dụng AI Đạo Đức</span>
+                            <i data-lucide="users-2" class="w-4 h-4 text-emerald-400"></i>
+                            <span>Bài 4: Giao tiếp & Hợp tác</span>
                         </button>
                         <button onclick="switchTab('tab5')" id="btn-tab5" class="tab-button w-full text-left px-3 py-2.5 rounded-lg text-xs font-medium tracking-wide flex items-center gap-2 transition-colors hover:bg-white/5 text-slate-400">
-                            <i data-lucide="monitor" class="w-4 h-4 text-sky-400"></i>
-                            <span>Bài 5: Thực Hành Windows</span>
+                            <i data-lucide="palette" class="w-4 h-4 text-purple-400"></i>
+                            <span>Bài 5: Sáng tạo nội dung số</span>
                         </button>
                         <button onclick="switchTab('tab6')" id="btn-tab6" class="tab-button w-full text-left px-3 py-2.5 rounded-lg text-xs font-medium tracking-wide flex items-center gap-2 transition-colors hover:bg-white/5 text-slate-400">
-                            <i data-lucide="palette" class="w-4 h-4 text-purple-400"></i>
-                            <span>Bài 6: Sáng Tạo Nội Dung AI</span>
+                            <i data-lucide="shield-alert" class="w-4 h-4 text-rose-400"></i>
+                            <span>Bài 6: An toàn & Liêm chính học thuật</span>
                         </button>
                     </div>
 
@@ -317,73 +302,35 @@
                         <!-- TAB 1 -->
                         <div id="tab1" class="tab-content space-y-6">
                             <div class="border-b border-white/5 pb-4">
-                                <span class="text-[10px] tracking-widest text-indigo-400 uppercase font-semibold">Bài tập cá nhân 1</span>
-                                <h3 class="text-xl font-bold serif-font">Khai Thác Dữ Liệu & Đánh Giá Nguồn Tin Ngành Ngôn Ngữ Hàn</h3>
+                                <span class="text-[10px] tracking-widest text-sky-400 uppercase font-semibold">Bài tập 1 - Bài 1</span>
+                                <h3 class="text-xl font-bold serif-font">Máy tính và thiết bị ngoại vi</h3>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
-                                    <p class="font-bold text-amber-300">Mục tiêu bài thực hành</p>
-                                    <p class="text-slate-400 font-light mt-1">Xác định, tìm kiếm và phân loại chính xác các nguồn tri thức chuẩn xác về ngôn ngữ học và phương pháp luận nghiên cứu ngành Ngôn ngữ Hàn trước biển thông tin mạng xã hội [1].</p>
+                                    <p class="font-bold text-amber-300">Mục tiêu bài học</p>
+                                    <p class="text-slate-400 font-light mt-1">Làm chủ các thao tác quản lý tệp tin, tổ chức cấu trúc thư mục khoa học trên hệ điều hành Windows để tối ưu hóa không gian lưu trữ số.</p>
                                 </div>
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
-                                    <p class="font-bold text-indigo-300">Bài học kinh nghiệm rút ra</p>
-                                    <p class="text-slate-400 font-light mt-1">Nguồn từ các tạp chí uy tín hệ thống KCI và nhà xuất bản Đại học luôn mang lại giá trị học thuật đáng tin cậy cao nhất [1].</p>
+                                    <p class="font-bold text-indigo-300">Bài học kinh nghiệm</p>
+                                    <p class="text-slate-400 font-light mt-1">Sử dụng phím tắt thông minh và tuân thủ các quy tắc đặt tên tệp thống nhất giúp rút ngắn thời gian làm việc và bảo vệ dữ liệu tốt hơn.</p>
                                 </div>
                             </div>
 
-                            <div class="space-y-3">
-                                <p class="text-xs font-semibold text-slate-200">Danh mục 10 tài liệu tham khảo được hệ thống hóa & đánh giá (Harvard Style) [1, 2]:</p>
-                                <div class="space-y-2 max-h-72 overflow-y-auto pr-2 text-[11px] font-light text-slate-300">
-                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
-                                        <p class="font-semibold text-slate-200">1. Hwang, H.S. (2022)</p>
-                                        <p class="text-slate-400">‘The Evolution of Learning Motivation among Korean Language Learners in Southeast Asia’, Journal of International Korean Language Education, 8(2), pp. 112-135 [1].</p>
-                                        <p class="text-amber-300 mt-1">Đánh giá: Phương pháp định lượng rõ ràng, mẫu khảo sát rộng lớn, tạp chí KCI cực kỳ uy tín [2]. ★★★★★</p>
-                                    </div>
-                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
-                                        <p class="font-semibold text-slate-200">2. Kim, J. và Lee, S. (2023)</p>
-                                        <p class="text-slate-400">Modern Korean Linguistics: An Introduction. 2nd edn. Seoul: Seoul National University Press [1].</p>
-                                        <p class="text-amber-300 mt-1">Đánh giá: Nhà xuất bản danh giá nhất Hàn Quốc, kiến thức có tính hệ thống tuyệt hảo [2]. ★★★★★</p>
-                                    </div>
-                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
-                                        <p class="font-semibold text-slate-200">3. Korea Foundation (2024)</p>
-                                        <p class="text-slate-400">2023 Overseas Hallyu Status Survey. Jeju: Korea Foundation [1].</p>
-                                        <p class="text-amber-300 mt-1">Đánh giá: Cơ quan chính phủ, số liệu thống kê thực tế khách quan, độ cập nhật 2024 cao [2]. ★★★★★</p>
-                                    </div>
-                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
-                                        <p class="font-semibold text-slate-200">4. Mai, N.C. (2018)</p>
-                                        <p class="text-slate-400">Tiếng Hàn và Văn hóa Hàn. Hà Nội: NXB Đại học Quốc gia Hà Nội [1].</p>
-                                        <p class="text-amber-300 mt-1">Đánh giá: Giáo trình Việt Nam chính thống, đối sánh văn hóa trực quan dễ hiểu. ★★★★☆</p>
-                                    </div>
-                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
-                                        <p class="font-semibold text-slate-200">5. National Institute of Korean Language (2021)</p>
-                                        <p class="text-slate-400">Standard Korean Language Dictionary. [Online]. Available at: https://stdict.korean.go.kr/ [1].</p>
-                                        <p class="text-amber-300 mt-1">Đánh giá: Viện Ngôn ngữ Quốc gia quy định chuẩn mực tuyệt đối về từ vựng học [2]. ★★★★★</p>
-                                    </div>
-                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
-                                        <p class="font-semibold text-slate-200">6. Nguyen, V.A. (2021)</p>
-                                        <p class="text-slate-400">‘Ảnh hưởng của phim ảnh Hàn Quốc đến việc sử dụng từ lóng của sinh viên’, Tạp chí Ngôn ngữ và Đời sống, 12(305), tr. 45-52 [1].</p>
-                                        <p class="text-amber-300 mt-1">Đánh giá: Tạp chí chuyên ngành hàng đầu trong nước, được hội đồng khoa học kiểm duyệt chặt chẽ [2]. ★★★★☆</p>
-                                    </div>
-                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
-                                        <p class="font-semibold text-slate-200">7. Park, M.Y. (2019)</p>
-                                        <p class="text-slate-400">‘Integrating Hallyu into Korean Language Classrooms’, Language, Culture and Curriculum, 32(1), pp. 67-82 [1].</p>
-                                        <p class="text-amber-300 mt-1">Đánh giá: Chỉ số trích dẫn quốc tế cao, quy trình bình duyệt kín khắt khe [2]. ★★★★★</p>
-                                    </div>
-                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
-                                        <p class="font-semibold text-slate-200">8. Phạm, T.H. (2020)</p>
-                                        <p class="text-slate-400">‘Phân tích lỗi ngữ pháp phổ biến do tác động của dịch thuật từ K-Pop’, Kỷ yếu hội thảo Khoa học Ngoại ngữ, tr. 210-225 [1].</p>
-                                        <p class="text-amber-300 mt-1">Đánh giá: Phân tích lỗi thực tiễn sâu sắc, đôi khi phạm vi nghiên cứu còn hơi hẹp [2]. ★★★★☆</p>
-                                    </div>
-                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
-                                        <p class="font-semibold text-slate-200">9. Statista (2023)</p>
-                                        <p class="text-slate-400">Number of Korean language students in Vietnam 2015-2023. Available at: https://www.statista.com [2].</p>
-                                        <p class="text-amber-300 mt-1">Đánh giá: Nguồn dữ liệu thứ cấp quy mô toàn cầu, giá trị tham khảo xu hướng tốt [3]. ★★★★☆</p>
-                                    </div>
-                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
-                                        <p class="font-semibold text-slate-200">10. Yonsei University Korean Language Institute (2015)</p>
-                                        <p class="text-slate-400">Yonsei Korean 1-1. Seoul: Yonsei University Press [2].</p>
-                                        <p class="text-amber-300 mt-1">Đánh giá: Bộ giáo trình chuẩn hóa toàn cầu, phương pháp sư phạm kiểm chứng lâu năm [2]. ★★★★★</p>
-                                    </div>
+                            <div class="space-y-3 text-xs">
+                                <p class="font-semibold text-slate-200">Báo cáo quy trình thực hành quản lý tệp tin gồm 12 bước chi tiết:</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-[11px] font-light text-slate-300 max-h-56 overflow-y-auto pr-2">
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 1:</strong> Mở File Explorer bằng tổ hợp phím Windows + E.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 2:</strong> Truy cập ổ đĩa dữ liệu (D: hoặc E:) hoặc thư mục Documents.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 3:</strong> Click chuột phải tạo thư mục mới mang tên <span class="text-sky-300">ThucHanh_Trieuthingocbich</span>.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 4:</strong> Nhấp đúp chuột để truy cập vào thư mục vừa tạo.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 5:</strong> Tạo tệp tin văn bản bằng cách chọn New -> Text Document đặt tên GhiChu.txt.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 6:</strong> Sử dụng Rename đổi tên tệp thành <span class="text-amber-300">GhiChuQuanTrong.txt</span>.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 7:</strong> Tạo thêm một thư mục con nằm bên trong mang tên <span class="text-sky-300">TaiLieu</span>.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 8:</strong> Thực hiện sao chép (Copy & Paste) tệp GhiChuQuanTrong.txt vào thư mục TaiLieu.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 9:</strong> Quay lại thư mục gốc tạo tệp DiChuyen.txt, sau đó di chuyển (Cut & Paste) vào TaiLieu.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 10:</strong> Xóa tệp GhiChuQuanTrong.txt trong thư mục TaiLieu để đưa vào Recycle Bin.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 11:</strong> Chọn DiChuyen.txt, nhấn giữ Shift + Delete để xóa vĩnh viễn không qua Thùng rác.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 12:</strong> Mở Recycle Bin ngoài màn hình, tìm GhiChuQuanTrong.txt và chọn Restore để khôi phục.</div>
                                 </div>
                             </div>
                         </div>
@@ -391,32 +338,73 @@
                         <!-- TAB 2 -->
                         <div id="tab2" class="tab-content hidden space-y-6">
                             <div class="border-b border-white/5 pb-4">
-                                <span class="text-[10px] tracking-widest text-indigo-400 uppercase font-semibold">Bài tập cá nhân 2</span>
-                                <h3 class="text-xl font-bold serif-font">Tối Ưu Hóa Kỹ Năng Prompt Engineering Trong Học Tập Kiến Tạo</h3>
+                                <span class="text-[10px] tracking-widest text-indigo-400 uppercase font-semibold">Bài tập 2 - Bài 2</span>
+                                <h3 class="text-xl font-bold serif-font">Khai thác dữ liệu và thông tin</h3>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
-                                    <p class="font-bold text-amber-300">Mục tiêu bài thực hành</p>
-                                    <p class="text-slate-400 font-light mt-1">Thử nghiệm các cấp độ câu lệnh từ sơ khai (Zero-shot) đến nâng cao sử dụng phương pháp Feynman và Chain-of-Thought nhằm tối ưu hóa chất lượng đầu ra của mô hình ngôn ngữ lớn [1].</p>
+                                    <p class="font-bold text-amber-300">Mục tiêu bài học</p>
+                                    <p class="text-slate-400 font-light mt-1">Xây dựng quy trình tìm kiếm và đánh giá bài bản các tài liệu nghiên cứu khoa học chính thống liên quan đến ngôn ngữ học và văn hóa Hàn Quốc.</p>
                                 </div>
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
-                                    <p class="font-bold text-indigo-300">Bài học kinh nghiệm rút ra</p>
-                                    <p class="text-slate-400 font-light mt-1">Việc cung cấp bối cảnh (Context), quy định vai diễn (Persona) và giới hạn tiêu cực chặt chẽ giúp hạn chế tối đa lỗi ảo giác (hallucination) của AI [1, 6].</p>
+                                    <p class="font-bold text-indigo-300">Bài học kinh nghiệm</p>
+                                    <p class="text-slate-400 font-light mt-1">Hiểu rõ cách đối chiếu nguồn tin dựa trên uy tín của nhà xuất bản và hội đồng kiểm duyệt khoa học thay vì tin cậy thông tin chưa được kiểm chứng.</p>
                                 </div>
                             </div>
 
-                            <div class="space-y-4 text-xs font-light">
-                                <div class="p-4 bg-black/35 rounded-xl border border-white/5 space-y-3">
-                                    <p class="font-bold text-slate-200">1. Tác vụ Tóm tắt đa chiều (Chủ đề: Tác động của AI trong Giáo dục) [1]</p>
-                                    <p class="text-slate-400"><strong class="text-indigo-300">Prompt Nâng cao (CoT + Persona):</strong> "Bạn là một Giáo sư chuyên ngành Công nghệ Giáo dục. Hãy đọc bài nghiên cứu sau và thực hiện phân tích theo từng bước tĩnh (Chain-of-thought) để đảm bảo không bỏ sót ý: Bước 1: Trích xuất 3 luận điểm cốt lõi... Bước 2: Lập một bảng Markdown phân tích (Cơ hội, Thách thức, Giải pháp)... Bước 3: Đánh giá khách quan..." [2]</p>
-                                </div>
-                                <div class="p-4 bg-black/35 rounded-xl border border-white/5 space-y-3">
-                                    <p class="font-bold text-slate-200">2. Tác vụ Giải thích khái niệm phức tạp bằng phép ẩn dụ (Chủ đề: Blockchain) [2]</p>
-                                    <p class="text-slate-400"><strong class="text-indigo-300">Prompt Nâng cao (Persona + Ràng buộc tiêu cực + Analogy):</strong> "Hãy đóng vai một chuyên gia truyền thông khoa học. Hãy giải thích 'Blockchain' cho một người lớn tuổi chưa từng tiếp xúc công nghệ. Ràng buộc: TUYỆT ĐỐI KHÔNG dùng từ: 'phi tập trung', 'mã hóa', 'sổ cái', 'node'. Hãy dùng phép ẩn dụ 'cả làng cùng ghi chép chung một cuốn sổ nợ ở đình làng' để minh họa..." [2]</p>
-                                </div>
-                                <div class="p-4 bg-black/35 rounded-xl border border-white/5 space-y-3">
-                                    <p class="font-bold text-slate-200">3. Tác vụ Tạo bộ câu hỏi trắc nghiệm (Chủ đề: Cách mạng Công nghiệp lần 1) [2]</p>
-                                    <p class="text-slate-400"><strong class="text-indigo-300">Prompt Nâng cao (Few-shot + Bloom's Taxonomy):</strong> "Bạn là chuyên gia thiết kế đề thi. Hãy tạo một bộ đánh giá ngắn về 'Cách mạng Công nghiệp lần 1', áp dụng Thang độ Bloom: 2 câu hỏi mức 'Hiểu', 1 câu hỏi mức 'Phân tích', 1 câu tự luận mức 'Đánh giá'. Ví dụ về câu hỏi mức 'Phân tích' (Few-shot example)..." [3]</p>
+                            <div class="space-y-3">
+                                <p class="text-xs font-semibold text-slate-200">Danh mục 10 tài liệu tham khảo được hệ thống hóa & đánh giá (Harvard Style):</p>
+                                <div class="space-y-2 max-h-56 overflow-y-auto pr-2 text-[11px] font-light text-slate-300">
+                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
+                                        <p class="font-semibold text-slate-200">1. Hwang, H.S. (2022)</p>
+                                        <p class="text-slate-400">‘The Evolution of Learning Motivation among Korean Language Learners in Southeast Asia’, Journal of International Korean Language Education, 8(2), pp. 112-135.</p>
+                                        <p class="text-amber-300 mt-1">Đánh giá: Phương pháp định lượng rõ ràng, mẫu khảo sát lớn, đăng trên tạp chí KCI uy tín. ★★★★★</p>
+                                    </div>
+                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
+                                        <p class="font-semibold text-slate-200">2. Kim, J. và Lee, S. (2023)</p>
+                                        <p class="text-slate-400">Modern Korean Linguistics: An Introduction. 2nd edn. Seoul: Seoul National University Press.</p>
+                                        <p class="text-amber-300 mt-1">Đánh giá: Nhà xuất bản đại học danh giá nhất Hàn Quốc, kiến thức có tính hệ thống cao. ★★★★★</p>
+                                    </div>
+                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
+                                        <p class="font-semibold text-slate-200">3. Korea Foundation (2024)</p>
+                                        <p class="text-slate-400">2023 Overseas Hallyu Status Survey. Jeju: Korea Foundation.</p>
+                                        <p class="text-amber-300 mt-1">Đánh giá: Cơ quan chính phủ, số liệu thống kê thực tế, tính cập nhật rất cao. ★★★★★</p>
+                                    </div>
+                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
+                                        <p class="font-semibold text-slate-200">4. Mai, N.C. (2018)</p>
+                                        <p class="text-slate-400">Tiếng Hàn và Văn hóa Hàn. Hà Nội: NXB Đại học Quốc gia Hà Nội.</p>
+                                        <p class="text-amber-300 mt-1">Đánh giá: Giáo trình giảng dạy chính thống trong nước, đối chiếu ngôn ngữ sâu sắc. ★★★★☆</p>
+                                    </div>
+                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
+                                        <p class="font-semibold text-slate-200">5. National Institute of Korean Language (2021)</p>
+                                        <p class="text-slate-400">Standard Korean Language Dictionary. [Online]. Available at: https://stdict.korean.go.kr/</p>
+                                        <p class="text-amber-300 mt-1">Đánh giá: Viện ngôn ngữ quốc gia, nguồn chuẩn quy định về mặt từ vựng học, chính xác tuyệt đối. ★★★★★</p>
+                                    </div>
+                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
+                                        <p class="font-semibold text-slate-200">6. Nguyen, V.A. (2021)</p>
+                                        <p class="text-slate-400">‘Ảnh hưởng của phim ảnh Hàn Quốc đến việc sử dụng từ lóng của sinh viên’, Tạp chí Ngôn ngữ và Đời sống, 12(305), tr. 45-52.</p>
+                                        <p class="text-amber-300 mt-1">Đánh giá: Tạp chí chuyên ngành hàng đầu trong nước, được kiểm duyệt bởi hội đồng khoa học. ★★★★☆</p>
+                                    </div>
+                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
+                                        <p class="font-semibold text-slate-200">7. Park, M.Y. (2019)</p>
+                                        <p class="text-slate-400">‘Integrating Hallyu into Korean Language Classrooms’, Language, Culture and Curriculum, 32(1), pp. 67-82.</p>
+                                        <p class="text-amber-300 mt-1">Đánh giá: Chỉ số trích dẫn quốc tế cao, quy trình phản biên kín khắt khe. ★★★★★</p>
+                                    </div>
+                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
+                                        <p class="font-semibold text-slate-200">8. Phạm, T.H. (2020)</p>
+                                        <p class="text-slate-400">‘Phân tích lỗi ngữ pháp phổ biến do tác động của dịch thuật từ K-Pop’, Kỷ yếu hội thảo Khoa học Ngoại ngữ, tr. 210-225.</p>
+                                        <p class="text-amber-300 mt-1">Đánh giá: Thông tin phân tích chuyên sâu nhưng phạm vi nghiên cứu đôi khi còn hẹp ở một cơ sở. ★★★★☆</p>
+                                    </div>
+                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
+                                        <p class="font-semibold text-slate-200">9. Statista (2023)</p>
+                                        <p class="text-slate-400">Number of Korean language students in Vietnam 2015-2023. Available at: https://www.statista.com</p>
+                                        <p class="text-amber-300 mt-1">Đánh giá: Nguồn dữ liệu thống kê thứ cấp uy tín toàn cầu, giá trị tham khảo xu hướng tốt. ★★★★☆</p>
+                                    </div>
+                                    <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
+                                        <p class="font-semibold text-slate-200">10. Yonsei University Korean Language Institute (2015)</p>
+                                        <p class="text-slate-400">Yonsei Korean 1-1. Seoul: Yonsei University Press.</p>
+                                        <p class="text-amber-300 mt-1">Đánh giá: Bộ giáo trình chuẩn hóa toàn cầu, phương pháp giảng dạy sư phạm đã được kiểm chứng. ★★★★★</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -424,59 +412,28 @@
                         <!-- TAB 3 -->
                         <div id="tab3" class="tab-content hidden space-y-6">
                             <div class="border-b border-white/5 pb-4">
-                                <span class="text-[10px] tracking-widest text-indigo-400 uppercase font-semibold">Bài tập cá nhân 3</span>
-                                <h3 class="text-xl font-bold serif-font">Ứng Dụng Công Cụ Hợp Tác Trực Tuyến Trong Quản Lý Và Thực Hiện Dự Án Nhóm</h3>
+                                <span class="text-[10px] tracking-widest text-amber-400 uppercase font-semibold">Bài tập 2 - Bài 3</span>
+                                <h3 class="text-xl font-bold serif-font">Tổng quan về trí tuệ nhân tạo</h3>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
-                                    <p class="font-bold text-amber-300">Mục tiêu bài thực hành</p>
-                                    <p class="text-slate-400 font-light mt-1">Phối hợp nhịp nhàng các công cụ Trello, Google Docs và Google Drive để quản lý tiến độ cá nhân và đồng tác giả dự án nghiên cứu nhóm "Ứng dụng trí tuệ nhân tạo trong quản trị doanh nghiệp" [1].</p>
+                                    <p class="font-bold text-amber-300">Mục tiêu bài học</p>
+                                    <p class="text-slate-400 font-light mt-1">Hiểu rõ và làm chủ các kỹ thuật Prompt Engineering như Role-prompting, Chain-of-Thought, Negative Constraints để tạo ra câu lệnh tối ưu cho AI.</p>
                                 </div>
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
-                                    <p class="font-bold text-indigo-300">Bài học kinh nghiệm rút ra</p>
-                                    <p class="text-slate-400 font-light mt-1">Làm việc nhóm trên các nền tảng đám mây cần tuân thủ triệt để nguyên tắc phân công và quy tắc đặt tên file đồng bộ để tránh xung đột dữ liệu [3, 5].</p>
+                                    <p class="font-bold text-indigo-300">Bài học kinh nghiệm</p>
+                                    <p class="text-slate-400 font-light mt-1">Áp dụng mô hình C.L.E.A.R giúp định vị chính xác thông tin, giảm bớt lỗi ảo giác và kiểm soát định dạng đầu ra của mô hình ngôn ngữ lớn.</p>
                                 </div>
                             </div>
 
-                            <div class="space-y-3 text-xs">
-                                <p class="font-semibold text-slate-200">Báo cáo nhật ký phân bổ công việc cá nhân (Thực tế trên Trello & Docs) [3]:</p>
-                                <div class="overflow-x-auto rounded-xl border border-white/10">
-                                    <table class="w-full text-left bg-black/15 text-slate-300">
-                                        <thead class="bg-white/5 text-[10px] text-slate-400 uppercase tracking-wider border-b border-white/10">
-                                            <tr>
-                                                <th class="px-4 py-3">Nhiệm Vụ Đảm Nhận</th>
-                                                <th class="px-4 py-3">Công Cụ Sử Dụng</th>
-                                                <th class="px-4 py-3">Thời Hạn</th>
-                                                <th class="px-4 py-3 text-right">Trạng Thái</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="divide-y divide-white/5 font-light">
-                                            <tr>
-                                                <td class="px-4 py-3">Thu thập tài liệu về AI trong quản trị</td>
-                                                <td class="px-4 py-3 text-amber-300">Trello, Drive</td>
-                                                <td class="px-4 py-3">17/03/2026</td>
-                                                <td class="px-4 py-3 text-right text-emerald-400">Hoàn thành [3]</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="px-4 py-3">Biên soạn phần mở đầu và lý thuyết</td>
-                                                <td class="px-4 py-3 text-amber-300">Google Docs</td>
-                                                <td class="px-4 py-3">24/03/2026</td>
-                                                <td class="px-4 py-3 text-right text-emerald-400">Hoàn thành [3]</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="px-4 py-3">Chỉnh sửa nội dung theo góp ý nhóm</td>
-                                                <td class="px-4 py-3 text-amber-300">Messenger, Docs</td>
-                                                <td class="px-4 py-3">28/03/2026</td>
-                                                <td class="px-4 py-3 text-right text-emerald-400">Hoàn thành [3]</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="px-4 py-3">Kiểm tra định dạng & tài liệu tham khảo</td>
-                                                <td class="px-4 py-3 text-amber-300">Google Drive</td>
-                                                <td class="px-4 py-3">15/04/2026</td>
-                                                <td class="px-4 py-3 text-right text-emerald-400">Hoàn thành [3]</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                            <div class="space-y-4 text-xs font-light">
+                                <div class="p-4 bg-black/35 rounded-xl border border-white/5 space-y-2">
+                                    <p class="font-bold text-slate-200">Thử nghiệm 3 tác vụ học tập thực tế:</p>
+                                    <ul class="list-disc pl-5 text-slate-400 space-y-2.5">
+                                        <li><strong>Tác vụ 1 (Tóm tắt đa chiều):</strong> So sánh prompt Zero-shot cơ bản với prompt nâng cao tích hợp phân tích Chain-of-Thought để trích xuất đầy đủ 3 luận điểm và lập bảng Markdown về cơ hội/thách thức của AI trong Giáo dục.</li>
+                                        <li><strong>Tác vụ 2 (Giải thích loại suy Feynman):</strong> Sử dụng prompt mang tính ràng buộc tiêu cực mạnh (không dùng từ node, mã hóa, phi tập trung) để giải thích "Blockchain" thông qua phép ẩn dụ về việc cả làng cùng ghi chung sổ nợ.</li>
+                                        <li><strong>Tác vụ 3 (Tạo đề thi theo Thang Bloom):</strong> Áp dụng Few-shot prompting cung cấp mẫu câu hỏi mức "Phân tích" để AI thiết kế bộ câu hỏi Cách mạng Công nghiệp gồm trắc nghiệm và tự luận.</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -484,121 +441,80 @@
                         <!-- TAB 4 -->
                         <div id="tab4" class="tab-content hidden space-y-6">
                             <div class="border-b border-white/5 pb-4">
-                                <span class="text-[10px] tracking-widest text-indigo-400 uppercase font-semibold">Bài tập cá nhân 4</span>
-                                <h3 class="text-xl font-bold serif-font">Ứng Dụng AI Có Trách Nhiệm Và Đạo Đức Trong Học Tập, Nghiên Cứu</h3>
+                                <span class="text-[10px] tracking-widest text-emerald-400 uppercase font-semibold">Bài tập 3 - Bài 4</span>
+                                <h3 class="text-xl font-bold serif-font">Giao tiếp và hợp tác trong môi trường số</h3>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
-                                    <p class="font-bold text-amber-300">Mục tiêu bài thực hành</p>
-                                    <p class="text-slate-400 font-light mt-1">Phân tích rõ ràng ranh giới giữa hỗ trợ hợp lý và gian lận học thuật, thiết lập bộ 7 nguyên tắc cá nhân khi tương tác với trí tuệ nhân tạo [1, 4].</p>
+                                    <p class="font-bold text-amber-300">Mục tiêu bài học</p>
+                                    <p class="text-slate-400 font-light mt-1">Vận dụng các công cụ cộng tác phổ biến (Trello, Google Docs, Google Drive) để lập kế hoạch, điều phối tiến độ và đồng tác giả một báo cáo nghiên cứu nhóm.</p>
                                 </div>
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
-                                    <p class="font-bold text-indigo-300">Bài học kinh nghiệm rút ra</p>
-                                    <p class="text-slate-400 font-light mt-1">AI là công cụ hỗ trợ xây dựng ý tưởng ban đầu, nội dung và chất lượng học thuật cuối cùng phải do chính người học kiểm duyệt và chịu trách nhiệm [1, 4].</p>
+                                    <p class="font-bold text-indigo-300">Bài học kinh nghiệm</p>
+                                    <p class="text-slate-400 font-light mt-1">Sử dụng Trello giúp loại bỏ sự chồng chéo công việc, trong khi quy tắc sắp xếp thư mục trên Drive giúp quản lý tài nguyên học tập không bị thất lạc.</p>
                                 </div>
                             </div>
 
-                            <div class="space-y-3 text-xs bg-black/25 p-5 border border-white/5 rounded-xl font-light">
-                                <p class="font-bold text-slate-200">Bộ 7 nguyên tắc cá nhân đã xây dựng của Triệu Thị Ngọc Bích [5]:</p>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 mt-2">
-                                    <div class="space-y-1">
-                                        <p class="text-indigo-300 font-semibold">Nguyên tắc 1</p>
-                                        <p class="text-slate-400">Chỉ sử dụng AI để hỗ trợ học tập, không thay thế quá trình tự học và tư duy độc lập [5].</p>
-                                    </div>
-                                    <div class="space-y-1">
-                                        <p class="text-indigo-300 font-semibold">Nguyên tắc 2</p>
-                                        <p class="text-slate-400">Luôn chủ động kiểm chứng chéo thông tin do AI cung cấp bằng các nguồn đáng tin cậy [5].</p>
-                                    </div>
-                                    <div class="space-y-1">
-                                        <p class="text-indigo-300 font-semibold">Nguyên tắc 3</p>
-                                        <p class="text-slate-400">Tuyệt đối không sao chép nguyên văn (copy-paste) nội dung do AI tạo ra vào bài nộp [5].</p>
-                                    </div>
-                                    <div class="space-y-1">
-                                        <p class="text-indigo-300 font-semibold">Nguyên tắc 4</p>
-                                        <p class="text-slate-400">Chủ động điều chỉnh văn phong, biên tập và bổ sung kiến thức tự có của bản thân [5].</p>
-                                    </div>
-                                    <div class="space-y-1">
-                                        <p class="text-indigo-300 font-semibold">Nguyên tắc 5</p>
-                                        <p class="text-slate-400">Minh bạch việc sử dụng công cụ AI trong quá trình làm bài tập học thuật khi được yêu cầu [5].</p>
-                                    </div>
-                                    <div class="space-y-1">
-                                        <p class="text-indigo-300 font-semibold">Nguyên tắc 6</p>
-                                        <p class="text-slate-400">Tôn trọng quyền sở hữu trí tuệ, thực hiện trích dẫn đầy đủ nguồn gốc tư liệu sử dụng [5].</p>
-                                    </div>
-                                    <div class="space-y-1 md:col-span-2">
-                                        <p class="text-indigo-300 font-semibold">Nguyên tắc 7</p>
-                                        <p class="text-slate-400">Không lạm dụng AI vào các hành vi gian lận thi cử như thi hộ, làm hộ hoặc sao chép tự động [6].</p>
-                                    </div>
-                                </div>
+                            <div class="space-y-3 text-xs font-light">
+                                <p class="font-semibold text-slate-200">Ứng dụng thực tế trong dự án nhóm "AI trong quản trị doanh nghiệp":</p>
+                                <ul class="list-disc pl-5 text-slate-400 space-y-2">
+                                    <li><strong>Trello (Quản lý tiến độ):</strong> Thiết lập bảng Kanban số hóa, chia nhiệm vụ thành các thẻ (Card) có checklist, gán deadline và cập nhật liên tục trạng thái To Do - Doing - Done.</li>
+                                    <li><strong>Google Docs (Soạn thảo đồng thời):</strong> Các thành viên cùng viết báo cáo thời gian thực, trao đổi qua tính năng bình luận trực tiếp và dùng Version History để kiểm soát nội dung đóng góp.</li>
+                                    <li><strong>Google Drive (Lưu trữ có quy hoạch):</strong> Tổ chức cây thư mục thống nhất gồm: 1. Tài liệu tham khảo, 2. Báo cáo, 3. Hình ảnh, 4. Thuyết trình, 5. Phiên bản hoàn thiện. Đặt tên file theo chuẩn: BaoCao_AI_V1.docx.</li>
+                                </ul>
                             </div>
                         </div>
 
                         <!-- TAB 5 -->
                         <div id="tab5" class="tab-content hidden space-y-6">
                             <div class="border-b border-white/5 pb-4">
-                                <span class="text-[10px] tracking-widest text-indigo-400 uppercase font-semibold">Bài tập cá nhân 5</span>
-                                <h3 class="text-xl font-bold serif-font">Thực Hành Quản Trị Tệp Tin Trên Hệ Điều Hành Windows</h3>
+                                <span class="text-[10px] tracking-widest text-purple-400 uppercase font-semibold">Bài tập 2 - Bài 5</span>
+                                <h3 class="text-xl font-bold serif-font">Sáng tạo nội dung số</h3>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
-                                    <p class="font-bold text-amber-300">Mục tiêu bài thực hành</p>
-                                    <p class="text-slate-400 font-light mt-1">Làm chủ hoàn chỉnh quy trình quản lý tệp tin, tổ chức cấu trúc thư mục logic để lưu trữ dữ liệu an toàn lâu dài [1, 5].</p>
+                                    <p class="font-bold text-amber-300">Mục tiêu bài học</p>
+                                    <p class="text-slate-400 font-light mt-1">Kết hợp linh hoạt các công cụ AI tạo sinh văn bản (ChatGPT), sinh ảnh (Stable Diffusion) và thiết kế đồ họa (Canva) để xây dựng một chiến dịch truyền thông quảng bá hoàn chỉnh.</p>
                                 </div>
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
-                                    <p class="font-bold text-indigo-300">Bài học kinh nghiệm rút ra</p>
-                                    <p class="text-slate-400 font-light mt-1">Sử dụng phím tắt thông minh và quy trình xóa vĩnh viễn (Shift + Delete) giúp tăng tốc hiệu quả quản trị không gian bộ nhớ máy tính [8].</p>
+                                    <p class="font-bold text-indigo-300">Bài học kinh nghiệm</p>
+                                    <p class="text-slate-400 font-light mt-1">AI là trợ thủ đắc lực giúp đẩy nhanh quy trình sản xuất nội dung, nhưng vai trò biên tập và đưa cảm xúc của con người vẫn là yếu tố cốt lõi quyết định tính thẩm mỹ.</p>
                                 </div>
                             </div>
 
-                            <div class="space-y-3 text-xs">
-                                <p class="font-semibold text-slate-200">Quy trình thực tế 12 bước thực hành hệ điều hành [1, 2, 3]:</p>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-[11px] font-light text-slate-300 max-h-60 overflow-y-auto pr-2">
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 1:</strong> Nhấn Win + E mở File Explorer [1].</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 2:</strong> Truy cập ổ đĩa không phải hệ thống (ổ D:, E:) [1].</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 3:</strong> Tạo thư mục mới <span class="text-indigo-300">ThucHanh_Trieuthingocbich</span> [1].</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 4:</strong> Nhấp đúp truy cập thư mục vừa tạo [2].</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 5:</strong> Click chuột phải -> New -> Text Document đặt tên GhiChu.txt [3].</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 6:</strong> Đổi tên thành <span class="text-amber-300">GhiChuQuanTrong.txt</span> bằng lệnh Rename [3].</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 7:</strong> Tạo tiếp thư mục con mang tên <span class="text-sky-300">TaiLieu</span> [3].</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 8:</strong> Copy GhiChuQuanTrong.txt dán vào thư mục TaiLieu [4].</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 9:</strong> Tạo tệp DiChuyen.txt, thực hiện di chuyển (Cut & Paste) vào TaiLieu [5].</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 10:</strong> Xóa tệp GhiChuQuanTrong.txt bằng phím Delete (vào Thùng rác) [7].</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 11:</strong> Chọn DiChuyen.txt, nhấn Shift + Delete để xóa vĩnh viễn [8].</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 12:</strong> Mở Recycle Bin thực hiện Restore tệp tin về vị trí cũ [9].</div>
-                                </div>
+                            <div class="space-y-3 text-xs font-light">
+                                <p class="font-semibold text-slate-200">Triển khai chiến dịch quảng bá du lịch Vịnh Hạ Long:</p>
+                                <ul class="list-disc pl-5 text-slate-400 space-y-2">
+                                    <li><strong>ChatGPT:</strong> Đóng vai chuyên gia du lịch viết bài giới thiệu lôi cuốn dài 500 từ và thiết kế 5 slogan ngắn gọn (Ví dụ: "Vịnh Hạ Long – Chạm đến kỳ quan thiên nhiên giữa lòng Việt Nam").</li>
+                                    <li><strong>Stable Diffusion:</strong> Tạo hình ảnh phong cảnh hoàng hôn Vịnh Hạ Long sống động với các đảo đá vôi, thuyền buồm du lịch bằng cách tinh chỉnh prompt chi tiết.</li>
+                                    <li><strong>Canva AI:</strong> Thiết kế Poster lịch trình tham quan kết hợp hài hòa thông tin giới thiệu, hình ảnh và cổng đăng ký liên hệ của khách hàng.</li>
+                                </ul>
                             </div>
                         </div>
 
                         <!-- TAB 6 -->
                         <div id="tab6" class="tab-content hidden space-y-6">
                             <div class="border-b border-white/5 pb-4">
-                                <span class="text-[10px] tracking-widest text-indigo-400 uppercase font-semibold">Bài tập cá nhân 6</span>
-                                <h3 class="text-xl font-bold serif-font">Sáng Tạo Nội Dung Số Quảng Bá Du Lịch Vịnh Hạ Long Bằng Công Cụ AI</h3>
+                                <span class="text-[10px] tracking-widest text-rose-400 uppercase font-semibold">Bài tập 4 - Bài 6</span>
+                                <h3 class="text-xl font-bold serif-font">An toàn và liêm chính học thuật trong môi trường số</h3>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
-                                    <p class="font-bold text-amber-300">Mục tiêu bài thực hành</p>
-                                    <p class="text-slate-400 font-light mt-1">Phối hợp các công cụ AI tạo sinh văn bản, sinh ảnh và thiết kế đồ họa để tạo ra bộ sản phẩm truyền thông du lịch chuyên nghiệp, hấp dẫn [1].</p>
+                                    <p class="font-bold text-amber-300">Mục tiêu bài học</p>
+                                    <p class="text-slate-400 font-light mt-1">Đánh giá các rủi ro đạo đức, bản quyền tác giả và liêm chính học thuật khi làm việc với AI; thiết lập bộ nguyên tắc ứng dụng công nghệ có trách nhiệm.</p>
                                 </div>
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
-                                    <p class="font-bold text-indigo-300">Bài học kinh nghiệm rút ra</p>
-                                    <p class="text-slate-400 font-light mt-1">Con người giữ vai trò trung tâm định hướng ý tưởng và tinh chỉnh thẩm mỹ để giữ được cảm xúc cá nhân trong nội dung số [5, 6].</p>
+                                    <p class="font-bold text-indigo-300">Bài học kinh nghiệm</p>
+                                    <p class="text-slate-400 font-light mt-1">Hiểu rõ ranh giới giữa việc sử dụng AI để gợi mở ý tưởng với việc lạm dụng sao chép, giúp nâng cao tính trung thực khoa học trong học tập.</p>
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-[11px] font-light">
-                                <div class="p-3 bg-black/25 rounded-lg">
-                                    <p class="font-bold text-indigo-300 mb-1">ChatGPT - Văn bản [2]</p>
-                                    <p class="text-slate-400">Sử dụng prompt đóng vai chuyên gia marketing du lịch để viết bài giới thiệu Vịnh Hạ Long khoảng 500 từ và thiết kế 5 slogan ngắn gọn lôi cuốn [2].</p>
-                                </div>
-                                <div class="p-3 bg-black/25 rounded-lg">
-                                    <p class="font-bold text-amber-300 mb-1">Stable Diffusion - Ảnh [3]</p>
-                                    <p class="text-slate-400">Cung cấp prompt tả cảnh hoàng hôn Vịnh Hạ Long chi tiết giúp tạo ra hình ảnh minh họa cảnh sắc chân thực, chuyên nghiệp [3].</p>
-                                </div>
-                                <div class="p-3 bg-black/25 rounded-lg">
-                                    <p class="font-bold text-emerald-300 mb-1">Canva AI - Đồ họa [4]</p>
-                                    <p class="text-slate-400">Sắp xếp bố cục, lựa chọn bảng màu và hoàn thiện Poster lịch trình tham quan Vịnh Hạ Long hoàn chỉnh cho khách du lịch [4].</p>
-                                </div>
+                            <div class="space-y-3 text-xs font-light">
+                                <p class="font-semibold text-slate-200">Các nội dung đã thực hành & xây dựng:</p>
+                                <ul class="list-disc pl-5 text-slate-400 space-y-2">
+                                    <li><strong>Bộ 7 nguyên tắc đạo đức cá nhân:</strong> Cam kết coi tự học làm cốt lõi, luôn kiểm chứng thông tin, không sao chép nguyên văn sản phẩm của AI, ghi nhận nguồn và sử dụng công nghệ một cách minh bạch.</li>
+                                    <li><strong>Thiết kế Infographic tuyên truyền 5 bước:</strong> 1. Kiểm chứng thông tin đầu vào, 2. Minh bạch khi sử dụng công nghệ, 3. Tôn trọng bản quyền tác giả, 4. Kết hợp sức mạnh AI với năng lực tự thân, 5. Giữ vững tư duy phản biện.</li>
+                                </ul>
                             </div>
                         </div>
 
@@ -607,58 +523,51 @@
             </div>
 
             <!-- APPLICATION 3: SUMMARY & REFLECTION WINDOW -->
-            <div id="win-summary" class="app-window w-full max-w-4xl h-[80vh] glass-panel-dark rounded-2xl flex flex-col overflow-hidden text-white border border-white/10" style="left: 20%; top: 12%;">
+            <div id="win-summary" class="app-window w-[480px] h-[520px] glass-panel-dark rounded-2xl flex flex-col overflow-hidden text-white border border-white/10" style="left: 48%; top: 10%;">
                 <div class="window-header flex items-center justify-between px-5 py-3 bg-black/50 border-b border-white/10 select-none">
                     <div class="flex items-center gap-2">
                         <i data-lucide="award" class="w-4 h-4 text-rose-300"></i>
-                        <span class="text-xs font-medium tracking-widest text-indigo-200 uppercase">Ứng dụng: Bảng Tổng Kết Đánh Giá Cuối Kỳ</span>
+                        <span class="text-xs font-medium tracking-widest text-indigo-200 uppercase">Ứng dụng: Tổng Kết</span>
                     </div>
                     <div class="flex items-center gap-2 window-control-btn">
                         <button onclick="closeWindow('win-summary')" class="w-3 h-3 rounded-full bg-rose-500/80 hover:bg-rose-500 transition-colors focus:outline-none"></button>
                     </div>
                 </div>
                 
-                <div class="flex-grow overflow-y-auto p-8 space-y-6">
+                <div class="flex-grow overflow-y-auto p-6 space-y-6">
                     <div class="text-center pb-4 border-b border-white/5">
-                        <span class="text-[10px] tracking-widest text-rose-300 uppercase font-semibold">Tự đánh giá & Bài học tổng quan</span>
-                        <h3 class="text-2xl font-bold serif-font text-slate-100">Nhìn Lại Hành Trình Sáng Tạo & Đổi Mới</h3>
+                        <span class="text-[10px] tracking-widest text-rose-300 uppercase font-semibold">Tự đánh giá hành trình học tập</span>
+                        <h3 class="text-xl font-bold serif-font text-slate-100">Nhìn Lại & Khẳng Định Sự Thay Đổi</h3>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-light">
-                        <div class="p-4 bg-white/5 rounded-xl border border-white/5 space-y-2">
-                            <p class="font-bold text-emerald-400 flex items-center gap-1.5">
-                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
-                                Những Thuận Lợi Gặp Phải
+                    <div class="space-y-4 text-xs font-light">
+                        <div class="space-y-1.5">
+                            <p class="font-bold text-amber-300 flex items-center gap-1.5">
+                                <i data-lucide="trending-up" class="w-4 h-4 text-amber-400"></i>
+                                Những Chuyển Biến Lớn Nhất
                             </p>
                             <p class="text-slate-400 leading-relaxed">
-                                Tài liệu tham khảo phong phú và sự hỗ trợ cực kỳ đắc lực từ các nền tảng trí tuệ nhân tạo (ChatGPT, Stable Diffusion) giúp mình dễ dàng vượt qua các rào cản về mặt kỹ thuật, tiết kiệm tối đa thời gian tìm kiếm ý tưởng ban đầu [1, 2, 6].
+                                Từ việc lo lắng khi tiếp cận các công cụ số phức tạp, mình đã có thể tự tin quản lý tệp tin một cách bài bản, ứng dụng các câu lệnh nâng cao để tương tác hiệu quả với AI tạo sinh và thiết kế các sản phẩm truyền thông hoàn chỉnh cho ngành học của mình.
                             </p>
                         </div>
-                        <div class="p-4 bg-white/5 rounded-xl border border-white/5 space-y-2">
+                        <div class="space-y-1.5">
                             <p class="font-bold text-rose-400 flex items-center gap-1.5">
-                                <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-400"></i>
-                                Những Khó Khăn Đã Vượt Qua
+                                <i data-lucide="compass" class="w-4 h-4 text-rose-400"></i>
+                                Khó Khăn & Thuận Lợi
                             </p>
                             <p class="text-slate-400 leading-relaxed">
-                                Việc thiết lập và kiểm soát các tham số câu lệnh (Prompt) đôi khi dễ bị lỗi ảo giác từ AI cung cấp thông tin chưa chính xác [1]. Việc phối hợp thời gian biểu làm việc nhóm trên Trello khi mới bắt đầu cũng có một vài sự lệch nhịp [3].
+                                Thuận lợi lớn nhất là hạ tầng AI hỗ trợ rất nhanh quá trình tìm kiếm ý tưởng. Thách thức lớn nhất là việc duy trì liêm chính học thuật, không lạm dụng copy-paste và kiểm duyệt nghiêm ngặt để tránh lỗi thông tin sai lệch từ mô hình.
                             </p>
                         </div>
-                        <div class="p-4 bg-white/5 rounded-xl border border-white/5 space-y-2">
+                        <div class="space-y-1.5">
                             <p class="font-bold text-indigo-400 flex items-center gap-1.5">
                                 <i data-lucide="book-open" class="w-4 h-4 text-indigo-400"></i>
-                                Bài Học Kinh Nghiệm Rút Ra
+                                Định Hướng Tương Lai
                             </p>
                             <p class="text-slate-400 leading-relaxed">
-                                Học phần đã giúp mình rèn luyện tư duy phản biện sâu sắc hơn. Luôn kiểm chứng chéo thông tin là chìa khóa then chốt [1]. Ngoài ra, việc lưu trữ và làm việc có quy hoạch giúp tăng đáng kể năng suất cá nhân trong kỷ nguyên số [3].
+                                Mình sẽ tiếp tục duy trì việc nghiên cứu tiếng Hàn song hành với các công cụ công tác trực tuyến và AI có đạo đức, đưa công nghệ số làm bệ phóng để tối ưu hóa hiệu quả học tập trọn đời.
                             </p>
                         </div>
-                    </div>
-
-                    <div class="p-5 bg-black/20 rounded-xl border border-white/5 text-xs space-y-2">
-                        <p class="font-bold text-amber-300">Lời kết từ tác giả:</p>
-                        <p class="text-slate-400 leading-relaxed font-light">
-                            Portfolio này là một điểm mốc quan trọng ghi nhận sự thay đổi trong tư duy của mình từ một người học ngoại ngữ truyền thống chuyển mình bước sang không gian ứng dụng công nghệ số một cách chủ động và có trách nhiệm [4]. Rất cảm ơn thầy cô và các bạn đã theo dõi!
-                        </p>
                     </div>
                 </div>
             </div>
@@ -668,7 +577,7 @@
                 <div class="window-header flex items-center justify-between px-5 py-3 bg-black/50 border-b border-white/10 select-none">
                     <div class="flex items-center gap-2">
                         <i data-lucide="trash-2" class="w-4 h-4 text-emerald-300"></i>
-                        <span class="text-xs font-medium tracking-widest text-indigo-200 uppercase">Hệ Thống Thùng Rác Trực Quan</span>
+                        <span class="text-xs font-medium tracking-widest text-indigo-200 uppercase">Thùng Rác Trực Quan</span>
                     </div>
                     <div class="flex items-center gap-2 window-control-btn">
                         <button onclick="closeWindow('win-recycle-bin')" class="w-3 h-3 rounded-full bg-rose-500/80 hover:bg-rose-500 transition-colors focus:outline-none"></button>
@@ -677,7 +586,7 @@
                 
                 <div class="flex-grow p-6 flex flex-col justify-between">
                     <div>
-                        <p class="text-xs text-slate-400 font-light mb-4">Các tệp tin được phát hiện đã bị xóa trong quá trình thực hành Bài Tập 5 (Quản lý hệ điều hành). Bạn có thể khôi phục chúng lại về màn hình nền:</p>
+                        <p class="text-xs text-slate-400 font-light mb-4">Các tệp tin được phát hiện đã bị xóa trong quá trình thực hành Bài Tập 1 (Quản lý tệp tin). Bạn có thể khôi phục chúng lại về màn hình nền:</p>
                         
                         <div class="space-y-2" id="recycle-list">
                             <!-- Item 1 -->
@@ -706,7 +615,7 @@
                         
                         <div id="recycle-empty-msg" class="hidden text-center py-12 text-slate-500 flex flex-col items-center gap-2">
                             <i data-lucide="folder-open" class="w-10 h-10 text-slate-600"></i>
-                            <span class="text-xs font-light">Thùng rác trống hoàn toàn. Bài tập 5 khôi phục thành công!</span>
+                            <span class="text-xs font-light">Thùng rác trống hoàn toàn. Bài tập 1 khôi phục thành công!</span>
                         </div>
                     </div>
                 </div>
@@ -839,16 +748,28 @@
         setInterval(updateSystemDateTime, 1000);
         updateSystemDateTime();
 
-        // 2. Lock Screen Handling
+        // 2. Lock Screen Handling (Unlocks and auto-opens main windows layout)
         document.getElementById('login-form').addEventListener('submit', function(event) {
             event.preventDefault();
             document.getElementById('lock-screen').classList.add('unlocked');
             document.getElementById('password-input').value = '';
+            
+            // Automatically launch the main windows nicely spread across the screen
+            setTimeout(() => {
+                openWindow('win-bio');
+                openWindow('win-projects');
+                openWindow('win-summary');
+            }, 600);
         });
 
         function lockScreen() {
             document.getElementById('lock-screen').classList.remove('unlocked');
             toggleStartMenu(true);
+            closeWindow('win-bio');
+            closeWindow('win-projects');
+            closeWindow('win-summary');
+            closeWindow('win-recycle-bin');
+            closeWindow('win-text-viewer');
         }
 
         // 3. Start Menu Handling
@@ -898,16 +819,15 @@
             winNode.style.zIndex = highestZIndex;
         }
 
-        // 5. Advanced Draggable & Resizable Engine
+        // 5. Draggable & Resizable Handlers
         function makeResizableAndDraggable(el) {
             const header = el.querySelector('.window-header');
             let isDragging = false;
             let isResizing = false;
             let startX, startY, startWidth, startHeight, startLeft, startTop;
 
-            // Header drag trigger
             header.addEventListener('mousedown', (e) => {
-                if (e.target.closest('button')) return; // ignore control buttons
+                if (e.target.closest('button')) return; 
                 isDragging = true;
                 startX = e.clientX;
                 startY = e.clientY;
@@ -933,7 +853,7 @@
                 document.removeEventListener('mouseup', onMouseUp);
             }
 
-            // Custom Glassy Resizer Corner Handle
+            // Custom Resizer Corner
             const resizeHandle = document.createElement('div');
             resizeHandle.className = 'absolute bottom-0 right-0 w-5 h-5 cursor-se-resize z-50';
             resizeHandle.style.background = 'linear-gradient(135deg, transparent 60%, rgba(255,255,255,0.2) 60%)';
@@ -955,8 +875,8 @@
                 if (isResizing) {
                     const dw = e.clientX - startX;
                     const dh = e.clientY - startY;
-                    el.style.width = `${Math.max(400, startWidth + dw)}px`;
-                    el.style.height = `${Math.max(300, startHeight + dh)}px`;
+                    el.style.width = `${Math.max(380, startWidth + dw)}px`;
+                    el.style.height = `${Math.max(280, startHeight + dh)}px`;
                 }
             }
 
@@ -967,7 +887,6 @@
             }
         }
 
-        // Apply features to all apps
         document.querySelectorAll('.app-window').forEach(win => {
             makeResizableAndDraggable(win);
             win.addEventListener('mousedown', () => bringWindowToFront(win.id));
@@ -992,7 +911,7 @@
             }
         }
 
-        // 7. Interactive Recycle Bin Operations
+        // 7. Recycle Bin Operations
         function restoreRecycleItem(itemId, fileName) {
             const itemNode = document.getElementById(itemId);
             if (itemNode) {
@@ -1042,15 +961,15 @@
             if (fileName === 'GhiChuQuanTrong.txt') {
                 contentNode.innerHTML = `
                     <p class="text-indigo-600 font-bold border-b border-indigo-100 pb-1 mb-2">// KHÔI PHỤC THÀNH CÔNG</p>
-                    <p class="mb-1"><strong>Dự án:</strong> Triệu Thị Ngọc Bích - Bài Tập 5 [1]</p>
-                    <p class="mb-1"><strong>Đường dẫn:</strong> C:/ThucHanh_Trieuthingocbich/TaiLieu [3]</p>
-                    <p class="text-slate-600 leading-relaxed mt-2">Nội dung ghi chú quan trọng đã khôi phục. Đây là minh chứng thao tác lưu trữ tệp tin có tính quy chuẩn cao trên môi trường Windows [1].</p>
+                    <p class="mb-1"><strong>Dự án:</strong> Triệu Thị Ngọc Bích - Bài Tập 1</p>
+                    <p class="mb-1"><strong>Đường dẫn:</strong> C:/ThucHanh_Trieuthingocbich/TaiLieu</p>
+                    <p class="text-slate-600 leading-relaxed mt-2">Nội dung ghi chú quan trọng đã khôi phục. Đây là minh chứng thao tác lưu trữ tệp tin có tính quy chuẩn cao trên môi trường Windows.</p>
                 `;
             } else {
                 contentNode.innerHTML = `
                     <p class="text-indigo-600 font-bold border-b border-indigo-100 pb-1 mb-2">// TÀI LIỆU DỊCH CHUYỂN</p>
-                    <p class="mb-1"><strong>Dự án:</strong> DiChuyen.txt [1]</p>
-                    <p class="text-slate-600 leading-relaxed mt-2">Tệp này đã được di chuyển thành công từ cấu trúc gốc của Bài Tập 5 bằng phương thức Cut & Paste [5].</p>
+                    <p class="mb-1"><strong>Dự án:</strong> DiChuyen.txt</p>
+                    <p class="text-slate-600 leading-relaxed mt-2">Tệp này đã được di chuyển thành công từ cấu trúc gốc của Bài Tập 1 bằng phương thức Cut & Paste.</p>
                 `;
             }
 
