@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phạm Ngọc Ngân Châm Portfolio</title>
+    <title>Digital Portfolio - Phạm Ngọc Ngân Châm</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -117,6 +117,103 @@
             border-radius: 50%;
             background-color: var(--color-calico-gold);
         }
+
+        /* MOBILE RESPONSIVE MEDIA QUERIES */
+        @media (max-width: 1023px) {
+            /* Home Desktop Shortcut Layout on Mobile */
+            .desktop-shortcut-container {
+                position: absolute !important;
+                top: 5rem !important;
+                left: 0 !important;
+                right: 0 !important;
+                width: 100% !important;
+                display: grid !important;
+                grid-template-cols: repeat(4, 1fr) !important;
+                justify-items: center !important;
+                padding: 0 1rem !important;
+                gap: 0.5rem !important;
+            }
+            .desktop-icon {
+                width: 100% !important;
+                max-width: 76px !important;
+                height: auto !important;
+                padding: 0.25rem !important;
+            }
+            .desktop-icon span {
+                font-size: 9px !important;
+                margin-top: 0.25rem !important;
+                display: block;
+                width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .desktop-icon .w-12 {
+                width: 2.25rem !important;
+                height: 2.25rem !important;
+            }
+            .desktop-icon i {
+                width: 1.15rem !important;
+                height: 1.15rem !important;
+            }
+
+            /* Responsive Windows on mobile screens */
+            .app-window {
+                width: calc(100vw - 1rem) !important;
+                height: calc(100vh - 9.5rem) !important;
+                left: 0.5rem !important;
+                top: 4.5rem !important;
+                border-radius: 1rem !important;
+                transform: scale(0.95) !important;
+            }
+            .app-window.active {
+                transform: scale(1) !important;
+            }
+
+            /* Hide the custom drag resize handle on touch screens */
+            .cursor-se-resize {
+                display: none !important;
+            }
+
+            /* Tabs to horizontal slider adaptation */
+            .projects-layout {
+                flex-direction: column !important;
+            }
+            .projects-sidebar {
+                width: 100% !important;
+                flex-direction: row !important;
+                overflow-x: auto !important;
+                white-space: nowrap !important;
+                padding: 0.5rem !important;
+                border-right: none !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+                gap: 0.5rem !important;
+            }
+            .projects-sidebar p {
+                display: none !important;
+            }
+            .projects-sidebar .tab-button {
+                flex-shrink: 0 !important;
+                width: auto !important;
+                padding: 0.4rem 0.8rem !important;
+                font-size: 11px !important;
+            }
+            .projects-content {
+                width: 100% !important;
+                flex-grow: 1 !important;
+                padding: 1rem !important;
+            }
+
+            /* Taskbar touch optimizations */
+            .glass-taskbar {
+                width: calc(100vw - 1.5rem) !important;
+                padding-left: 0.5rem !important;
+                padding-right: 0.5rem !important;
+                height: 3.5rem !important;
+                border-radius: 1rem !important;
+                bottom: 0.75rem !important;
+            }
+        }
     </style>
 </head>
 <body class="w-screen h-screen relative select-none overflow-hidden text-slate-100 font-sans">
@@ -178,8 +275,8 @@
             </div>
         </header>
 
-        <!-- Desktop Grid Shortcuts (Aligned Left) -->
-        <section class="absolute top-20 left-4 flex flex-col gap-4 z-30">
+        <!-- Desktop Grid Shortcuts (Linh hoạt thích ứng trên điện thoại thành thanh ngang phía dưới header) -->
+        <section class="desktop-shortcut-container absolute top-20 left-4 flex flex-col gap-4 z-30">
             <button onclick="openWindow('win-bio')" class="desktop-icon flex flex-col items-center justify-center p-3 rounded-xl w-24 h-24 text-white hover:text-amber-200 text-center focus:outline-none">
                 <div class="w-12 h-12 bg-indigo-500/35 border border-indigo-300/30 rounded-xl flex items-center justify-center shadow-lg mb-2">
                     <i data-lucide="user" class="w-6 h-6 text-indigo-100"></i>
@@ -213,15 +310,15 @@
         <!-- ==================== WINDOWS APP CONTAINERS ==================== -->
         <div class="absolute inset-0 flex items-center justify-center pointer-events-none p-4 z-40">
             
-            <!-- APPLICATION 1: BIO WINDOW (Sắp xếp lệch phải tránh đè chập biểu tượng ngoài desktop) -->
-            <div id="win-bio" class="app-window w-[480px] h-[520px] glass-panel-dark rounded-2xl flex flex-col overflow-hidden text-white border border-white/10" style="left: 220px; top: 100px;">
+            <!-- APPLICATION 1: BIO WINDOW (Lệch phải trên máy tính, full màn hình trên điện thoại) -->
+            <div id="win-bio" class="app-window w-[480px] h-[520px] glass-panel-dark rounded-2xl flex flex-col overflow-hidden text-white border border-white/10">
                 <div class="window-header flex items-center justify-between px-5 py-3 bg-black/50 border-b border-white/10 select-none">
                     <div class="flex items-center gap-2">
                         <i data-lucide="user" class="w-4 h-4 text-indigo-300"></i>
                         <span class="text-xs font-medium tracking-widest text-indigo-200 uppercase">Về Bản Thân & Mục Tiêu Portfolio</span>
                     </div>
                     <div class="flex items-center gap-2 window-control-btn">
-                        <button onclick="closeWindow('win-bio')" class="w-3 h-3 rounded-full bg-rose-500/80 hover:bg-rose-500 transition-colors focus:outline-none"></button>
+                        <button onclick="closeWindow('win-bio')" class="w-3.5 h-3.5 rounded-full bg-rose-500/80 hover:bg-rose-500 transition-colors focus:outline-none flex items-center justify-center"><i data-lucide="x" class="w-2.5 h-2.5 text-white"></i></button>
                     </div>
                 </div>
                 
@@ -231,7 +328,7 @@
                             <img src="Hình 1.jpg" alt="Phạm Ngọc Ngân Châm" class="w-full h-full object-cover rounded-full">
                         </div>
                         <h3 class="text-xl font-bold tracking-wide serif-font mb-1 text-slate-100">Phạm Ngọc Ngân Châm</h3>
-                        <p class="text-xs tracking-widest text-indigo-300 font-semibold mb-2 uppercase">Ngôn ngữ & Văn hóa Trung Quốc</p>
+                        <p class="text-xs tracking-widest text-indigo-300 font-semibold mb-2 uppercase font-sans">Ngôn ngữ & Văn hóa Trung Quốc</p>
                         <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] tracking-wider text-amber-300 font-light">Lớp: 25K2 • Đại học Ngoại ngữ - ĐHQGHN</span>
                     </div>
 
@@ -241,32 +338,32 @@
                             Mục Tiêu Digital Portfolio
                         </h4>
                         <p class="text-xs text-slate-300 leading-relaxed font-light text-justify">
-                            Chào mọi người! Góc nhỏ này là nơi mình lưu giữ hành trình chuyển mình đầy cảm hứng trong học kỳ vừa qua. Từ một sinh viên chuyên ngành ngôn ngữ vốn chỉ quen với những trang sách truyền thống, mình đã tập làm quen với tư duy công nghệ để tự thiết lập nên digital portfolio này.
+                            Chào mọi người nhé! Góc nhỏ này là nơi mình lưu giữ hành trình chuyển mình đầy cảm hứng trong học kỳ qua. Từ một cô sinh viên ngôn ngữ vốn chỉ quen với những trang sách truyền thống, mình đã tập làm quen với công nghệ số để thiết lập nên chiếc digital portfolio này.
                         </p>
                         <ul class="list-disc pl-5 text-xs text-slate-300 space-y-2 font-light text-justify">
                             <li><strong>Lưu trữ thành quả thực tế:</strong> Sắp xếp ngăn nắp toàn bộ minh chứng làm bài tập từ bài 1 đến bài 6, tạo nên một thư viện học tập thực hành của riêng mình.</li>
-                            <li><strong>Phát triển tư duy công nghệ:</strong> Tự rèn luyện cách viết câu lệnh (prompting) thông minh để "giao tiếp" hiệu quả với AI, phục vụ tốt hơn cho việc học ngôn ngữ.</li>
+                            <li><strong>Phát triển tư duy công nghệ:</strong> Tự rèn luyện cách viết câu lệnh thông minh để học ngoại ngữ hiệu quả hơn.</li>
                             <li><strong>Mở rộng kết nối tri thức:</strong> Tải toàn bộ học liệu lên đám mây lưu trữ chung để dễ dàng chia sẻ và đồng hành cùng các bạn học trong lớp.</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- APPLICATION 2: PROJECTS DETAILED WINDOW (Mở rộng kích thước cho tệp dữ liệu chi tiết) -->
-            <div id="win-projects" class="app-window w-[850px] h-[610px] glass-panel-dark rounded-2xl flex flex-col overflow-hidden text-white border border-white/10" style="left: 710px; top: 140px;">
+            <!-- APPLICATION 2: PROJECTS DETAILED WINDOW (Kích thước rộng rãi cho báo cáo chi tiết) -->
+            <div id="win-projects" class="app-window w-[850px] h-[610px] glass-panel-dark rounded-2xl flex flex-col overflow-hidden text-white border border-white/10">
                 <div class="window-header flex items-center justify-between px-5 py-3 bg-black/50 border-b border-white/10 select-none">
                     <div class="flex items-center gap-2">
                         <i data-lucide="folder-git-2" class="w-4 h-4 text-amber-300"></i>
                         <span class="text-xs font-medium tracking-widest text-indigo-200 uppercase">Kho Học Liệu & Minh Chứng Thực Hành</span>
                     </div>
                     <div class="flex items-center gap-2 window-control-btn">
-                        <button onclick="closeWindow('win-projects')" class="w-3 h-3 rounded-full bg-rose-500/80 hover:bg-rose-500 transition-colors focus:outline-none"></button>
+                        <button onclick="closeWindow('win-projects')" class="w-3.5 h-3.5 rounded-full bg-rose-500/80 hover:bg-rose-500 transition-colors focus:outline-none flex items-center justify-center"><i data-lucide="x" class="w-2.5 h-2.5 text-white"></i></button>
                     </div>
                 </div>
                 
-                <div class="flex-grow flex overflow-hidden">
-                    <!-- Left index tabs -->
-                    <div class="w-1/3 bg-black/20 border-r border-white/5 flex flex-col p-4 overflow-y-auto gap-1">
+                <div class="flex-grow flex overflow-hidden projects-layout">
+                    <!-- Left index tabs (Tự động thích ứng trượt ngang khi dùng điện thoại) -->
+                    <div class="w-1/3 bg-black/20 border-r border-white/5 flex flex-col p-4 overflow-y-auto gap-1 projects-sidebar">
                         <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest px-2 mb-2">Danh sách bài học</p>
                         <button onclick="switchTab('tab1')" id="btn-tab1" class="tab-button w-full text-left px-3 py-2.5 rounded-lg text-xs font-medium tracking-wide flex items-center gap-2 transition-colors hover:bg-white/5 bg-indigo-500/20 text-indigo-200">
                             <i data-lucide="monitor" class="w-4 h-4 text-sky-400"></i>
@@ -295,7 +392,7 @@
                     </div>
 
                     <!-- Right Tab Content -->
-                    <div class="flex-grow overflow-y-auto p-6 md:p-8 bg-black/10">
+                    <div class="flex-grow overflow-y-auto p-6 md:p-8 bg-black/10 projects-content">
                         
                         <!-- TAB 1 (File Explorer đồ họa tương tác) -->
                         <div id="tab1" class="tab-content space-y-6">
@@ -306,29 +403,29 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                                 <div class="p-3.5 bg-white/5 border border-white/5 rounded-xl">
                                     <p class="font-bold text-amber-300">Mục tiêu bài thực hành</p>
-                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Luyện tập thao tác tạo lập, đổi tên, sao chép, di chuyển và xóa tệp tin cùng thư mục thành thạo trên hệ điều hành Windows để sắp xếp thông tin ngăn nắp.</p>
+                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Rèn luyện kỹ năng tạo, đổi tên, sao chép, di chuyển và xóa tệp tin cùng thư mục một cách thành thạo trên hệ điều hành Windows.</p>
                                 </div>
                                 <div class="p-3.5 bg-white/5 border border-white/5 rounded-xl">
                                     <p class="font-bold text-indigo-300">Bài học kinh nghiệm rút ra</p>
-                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Tổ chức thư mục khoa học ngay từ đầu kết hợp các phím tắt nhanh giúp mình tiết kiệm rất nhiều thời gian tìm kiếm tệp và tránh được rủi ro vô tình làm mất tài liệu học tập.</p>
+                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Việc xây dựng hệ thống thư mục khoa học kết hợp sử dụng phím tắt thông thạo giúp bảo vệ an toàn học liệu, nâng cao đáng kể tốc độ quản lý dữ liệu cá nhân.</p>
                                 </div>
                             </div>
 
                             <div class="space-y-3 text-xs font-light text-justify">
-                                <p class="font-semibold text-slate-200">Hành trình mười hai bước mình tự mò mẫm thực hành quản trị tệp tin thực tế:</p>
+                                <p class="font-semibold text-slate-200">Hành trình mười hai bước mình tự mày mò thực hành quản trị tệp tin thực tế:</p>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-[11px] text-slate-300 max-h-48 overflow-y-auto pr-2">
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 1: Mở File Explorer:</strong> Mình nhấn tổ hợp phím Windows + E hoặc nhấp vào biểu tượng thư mục màu vàng trên thanh tác vụ của máy tính.</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 2: Di chuyển đến thư mục làm việc:</strong> Tại cột bên trái, mình nhấp vào This PC rồi chọn Documents để bắt đầu tạo lập các tệp tin lưu trữ.</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 3: Tạo thư mục gốc:</strong> Mình nhấp chuột phải vào khoảng trống bất kỳ -> chọn New -> Folder, sau đó đặt tên là <span class="text-sky-300">ThucHanh_PhamNgocNganCham</span> và nhấn phím Enter để lưu lại.</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 4: Truy cập thư mục vừa tạo:</strong> Tiến hành nhấp đúp chuột để đi sâu vào bên trong thư mục vừa tạo để tiến hành tạo tệp.</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 5: Tạo tệp tin văn bản:</strong> Mình nhấp chuột phải vào khoảng trống -> chọn New -> Text Document, đặt tên tệp mặc định là GhiChu.txt rồi nhấn Enter.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 1: Mở File Explorer:</strong> Mình nhấn tổ hợp phím Windows + E hoặc nhấp vào biểu tượng thư mục màu vàng trên thanh tác vụ.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 2: Truy cập thư mục thực hành:</strong> Nhấp vào Documents ở cột bên trái do hệ thống máy không phân mảnh phân vùng ổ đĩa dữ liệu ngoài.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 3: Tạo thư mục gốc:</strong> Mình nhấp chuột phải vào một khoảng trống -> chọn New -> Folder, đặt tên thư mục chính là <span class="text-sky-300">ThucHanh_PhamNgocNganCham</span> và nhấn Enter.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 4: Truy cập thư mục vừa tạo:</strong> Tiến hành nhấp đúp chuột vào thư mục ThucHanh_PhamNgocNganCham để bắt đầu tạo tệp bên trong.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 5: Tạo tệp tin văn bản:</strong> Mình nhấp chuột phải vào khoảng trống -> chọn New -> Text Document, đặt tên tệp là GhiChu.txt rồi nhấn Enter.</div>
                                     <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 6: Đổi tên tệp văn bản:</strong> Nhấp chuột phải vào tệp GhiChu.txt vừa tạo -> chọn tính năng Rename và đổi tên chính xác thành <span class="text-amber-300">GhiChuQuanTrong.txt</span>.</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 7: Tạo thêm thư mục con:</strong> Bên trong thư mục gốc, nhấp chuột phải -> chọn New -> Folder và đặt tên thư mục con là <span class="text-sky-300">TaiLieu</span> để phân vùng dữ liệu.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 7: Thiết lập thư mục con:</strong> Nhấp chuột phải vào khoảng trống bên trong thư mục gốc -> chọn New -> Folder và đặt tên thư mục con là <span class="text-sky-300">TaiLieu</span>.</div>
                                     <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 8: Thực hiện sao chép tệp tin:</strong> Nhấp chuột phải vào tệp GhiChuQuanTrong.txt -> chọn Copy. Nhấp đúp mở thư mục con TaiLieu, nhấp chuột phải chọn Paste để nhân bản tệp.</div>
                                     <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 9: Thực hiện di chuyển tệp tin:</strong> Quay lại thư mục gốc tạo tệp tin DiChuyen.txt. Chuột phải chọn Cut, truy cập thư mục TaiLieu và chọn Paste để di chuyển tệp tin hoàn toàn.</div>
                                     <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 10: Xóa tệp tin thông thường:</strong> Truy cập thư mục TaiLieu, nhấp chuột phải vào tệp GhiChuQuanTrong.txt -> chọn Delete để chuyển tệp vào Recycle Bin tạm thời.</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 11: Thực hiện xóa vĩnh viễn:</strong> Chọn tệp DiChuyen.txt trong thư mục TaiLieu, nhấn tổ hợp phím Shift + Delete và đồng ý xác nhận cảnh báo để xóa tệp vĩnh viễn khỏi máy.</div>
-                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 12: Khôi phục tệp từ Recycle Bin:</strong> Ra màn hình nền mở Recycle Bin, nhấp chuột phải vào tệp GhiChuQuanTrong.txt và chọn Restore để khôi phục tệp về lại vị trí cũ.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 11: Thực hiện xóa vĩnh viễn:</strong> Chọn tệp DiChuyen.txt trong thư mục TaiLieu, nhấn giữ tổ hợp phím Shift + Delete và xác nhận hộp thoại cảnh báo để xóa tệp không qua Thùng rác.</div>
+                                    <div class="p-2 bg-black/20 rounded-lg"><strong>Bước 12: Khôi phục tệp từ Recycle Bin:</strong> Ra màn hình nền nhấp đúp mở biểu tượng Recycle Bin, nhấp chuột phải vào tệp GhiChuQuanTrong.txt và chọn Restore để đưa về vị trí ban đầu.</div>
                                 </div>
                             </div>
 
@@ -368,7 +465,7 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
                                     <p class="font-bold text-amber-300">Mục tiêu bài thực hành</p>
-                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Khai thác và đối chiếu nghiêm ngặt mười tài liệu học thuật chính thống về động lực học tập tiếng Trung Quốc của sinh viên đại học nhằm xây dựng cơ sở lý luận vững chắc.</p>
+                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Khai thác và đối chiếu nghiêm ngặt mười tài liệu học thuật chính thống về động lực học tiếng Trung Quốc của sinh viên đại học nhằm xây dựng cơ sở lý luận vững chắc cho nghiên cứu của mình.</p>
                                 </div>
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
                                     <p class="font-bold text-indigo-300">Bài học kinh nghiệm rút ra</p>
@@ -381,52 +478,52 @@
                                 <div class="space-y-2 max-h-48 overflow-y-auto pr-2 text-[11px] font-light text-slate-300">
                                     <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
                                         <p class="font-semibold text-slate-200">1. Dörnyei, Z. (2001)</p>
-                                        <p class="text-slate-400">Motivational Strategies in the Language Classroom. Clevedon: Multilingual Matters.</p>
+                                        <p class="text-slate-400 font-sans">Motivational Strategies in the Language Classroom. Clevedon: Multilingual Matters.</p>
                                         <p class="text-amber-300 mt-1">Đánh giá của mình: Sách này siêu nổi tiếng trong ngành Ngôn ngữ học luôn. Đọc xong mình vỡ ra bao nhiêu thứ về cách tạo động lực học ngoại ngữ. Thẩm quyền rất cao. ★★★★★</p>
                                     </div>
                                     <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
                                         <p class="font-semibold text-slate-200">2. Gao, Y. (2018)</p>
-                                        <p class="text-slate-400">‘Motivation in Chinese Language Learning among Vietnamese Students’, Modern Chinese Language Teaching, 12(2), pp. 45–60.</p>
+                                        <p class="text-slate-400 font-sans">‘Motivation in Chinese Language Learning among Vietnamese Students’, Modern Chinese Language Teaching, 12(2), pp. 45–60.</p>
                                         <p class="text-amber-300 mt-1">Đánh giá của mình: Bài báo này cực kỳ gần gũi vì tác giả khảo sát chính sinh viên Việt Nam tụi mình. Số liệu thực tế giúp mình hiểu rõ động cơ chọn ngôn ngữ này. ★★★★★</p>
                                     </div>
                                     <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
                                         <p class="font-semibold text-slate-200">3. Li, H. and Chen, J. (2020)</p>
-                                        <p class="text-slate-400">‘Strategies to Enhance Chinese Learning Motivation’, Asian Pacific Journal of Second Language Acquisition, 8(1), pp. 15–30.</p>
+                                        <p class="text-slate-400 font-sans">‘Strategies to Enhance Chinese Learning Motivation’, Asian Pacific Journal of Second Language Acquisition, 8(1), pp. 15–30.</p>
                                         <p class="text-amber-300 mt-1">Đánh giá của mình: Các tác giả đề xuất cực kỳ nhiều giải pháp định tính thực tế để kích thích đam mê học tập. Rất đáng tham khảo. ★★★★★</p>
                                     </div>
                                     <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
                                         <p class="font-semibold text-slate-200">4. Nguyen, T. (2019)</p>
-                                        <p class="text-slate-400">‘Factors Influencing Motivation in Learning Chinese as a Second Language’, Language Learning, 69(4), pp. 1012–1030.</p>
+                                        <p class="text-slate-400 font-sans">‘Factors Influencing Motivation in Learning Chinese as a Second Language’, Language Learning, 69(4), pp. 1012–1030.</p>
                                         <p class="text-amber-300 mt-1">Đánh giá của mình: Đăng trên một tạp chí ngôn ngữ học quốc tế hàng đầu thế giới với quy trình duyệt bài khắt khe, số lượng trích dẫn cao. ★★★★★</p>
                                     </div>
                                     <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
                                         <p class="font-semibold text-slate-200">5. Zhang, Q. (2021)</p>
-                                        <p class="text-slate-400">‘The Role of Self-efficacy in Learning Chinese’, SpringerLink, pp. 1–15.</p>
+                                        <p class="text-slate-400 font-sans">‘The Role of Self-efficacy in Learning Chinese’, SpringerLink, pp. 1–15.</p>
                                         <p class="text-amber-300 mt-1">Đánh giá của mình: Bài viết của nhà xuất bản lớn, tập trung đánh giá niềm tin vào năng lực bản thân của sinh viên khi đối mặt với Hán tự phức tạp. ★★★★★</p>
                                     </div>
                                     <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
                                         <p class="font-semibold text-slate-200">6. Wang, X. (2017)</p>
-                                        <p class="text-slate-400">‘Intrinsic vs Extrinsic Motivation in Chinese Learning’, ResearchGate, pp. 1–12.</p>
+                                        <p class="text-slate-400 font-sans">‘Intrinsic vs Extrinsic Motivation in Chinese Learning’, ResearchGate, pp. 1–12.</p>
                                         <p class="text-amber-300 mt-1">Đánh giá của mình: Giúp mình hiểu sâu sắc về sự khác biệt giữa động lực bên trong (sự yêu thích) và áp lực bên ngoài (tìm kiếm việc làm). ★★★★★</p>
                                     </div>
                                     <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
                                         <p class="font-semibold text-slate-200">7. Brown, H. D. (2014)</p>
-                                        <p class="text-slate-400">Principles of Language Learning and Teaching. 6th edn. New York: Pearson.</p>
+                                        <p class="text-slate-400 font-sans">Principles of Language Learning and Teaching. 6th edn. New York: Pearson.</p>
                                         <p class="text-amber-300 mt-1">Đánh giá của mình: Cuốn sách gối đầu giường của bất cứ ai theo học sư phạm ngoại ngữ. Rất dày dặn, chi tiết và hệ thống. ★★★★★</p>
                                     </div>
                                     <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
                                         <p class="font-semibold text-slate-200">8. Chinese.cn (2022)</p>
-                                        <p class="text-slate-400">Learning Chinese Online, Beijing: Chinese.cn Press.</p>
-                                        <p class="text-amber-300 mt-1">Đánh giá của mình: Trang web chính phủ nên thông tin rất chuẩn, mỗi tội chủ yếu là cẩm nang hướng dẫn thực hành chứ không đi sâu phân tích lý thuyết học thuật. ★★★☆☆</p>
+                                        <p class="text-slate-400 font-sans">Learning Chinese Online, Beijing: Chinese.cn Press.</p>
+                                        <p class="text-amber-300 mt-1">Đánh giá của mình: Trang web chính thống từ trung tâm hợp tác giáo dục, dữ liệu thực tiễn tốt nhưng thiếu chiều sâu nghiên cứu học thuật. ★★★☆☆</p>
                                     </div>
                                     <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
                                         <p class="font-semibold text-slate-200">9. He, L. (2016)</p>
-                                        <p class="text-slate-400">‘Cultural Influence on Motivation in Learning Chinese’, Journal of Language and Cultural Education, 4(2), pp. 75–88.</p>
+                                        <p class="text-slate-400 font-sans">‘Cultural Influence on Motivation in Learning Chinese’, Journal of Language and Cultural Education, 4(2), pp. 75–88.</p>
                                         <p class="text-amber-300 mt-1">Đánh giá của mình: Nghiên cứu rất hay về tác động của yếu tố văn hóa và phim ảnh đối với lòng kiên trì luyện viết chữ Hán của học viên. ★★★★☆</p>
                                     </div>
                                     <div class="p-3 bg-black/25 border border-white/5 rounded-lg">
                                         <p class="font-semibold text-slate-200">10. Chen, Y. and Li, F. (2015)</p>
-                                        <p class="text-slate-400">‘Using Technology to Enhance Motivation in Chinese Language Classes’, Educational Technology & Society, 18(3), pp. 45–55.</p>
+                                        <p class="text-slate-400 font-sans">‘Using Technology to Enhance Motivation in Chinese Language Classes’, Educational Technology & Society, 18(3), pp. 45–55.</p>
                                         <p class="text-amber-300 mt-1">Đánh giá của mình: Chứng minh thực tế việc áp dụng công nghệ số và phần mềm giúp học viên bớt nản lòng, hào hứng học tập hơn nhiều. ★★★★★</p>
                                     </div>
                                 </div>
@@ -532,7 +629,7 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
                                     <p class="font-bold text-amber-300">Mục tiêu bài thực hành</p>
-                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Ứng dụng thuần thục các nền tảng cộng tác đám mây số trực tuyến để quản lý tiến độ, chia sẻ học liệu và soạn thảo báo cáo chung cho đề tài nhóm "Ứng dụng của AI trong lĩnh vực Ngoại ngữ".</p>
+                                    <p class="text-slate-400 font-light mt-1 text-justify font-sans">Ứng dụng thuần thục các nền tảng cộng tác trực tuyến để quản lý tiến độ, chia sẻ học liệu và soạn thảo báo cáo chung cho đề tài nhóm "Ứng dụng của AI trong lĩnh vực Ngoại ngữ".</p>
                                 </div>
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
                                     <p class="font-bold text-indigo-300">Bài học kinh nghiệm rút ra</p>
@@ -617,7 +714,7 @@
                                 </div>
                             </div>
 
-                            <div class="p-4 bg-black/25 rounded-xl border border-white/5 space-y-3 text-xs font-light text-justify font-sans">
+                            <div class="p-4 bg-black/25 rounded-xl border border-white/5 space-y-3 text-xs font-light text-justify">
                                 <p class="font-bold text-slate-200">Hành trình đồng sáng tạo bài viết "AI đã tái định hình lớp học tương lai như thế nào?" của mình:</p>
                                 <div class="space-y-3 text-[11px] leading-relaxed">
                                     <div>
@@ -629,7 +726,7 @@
                                         <p class="text-slate-400">Mình đã tỉ mỉ viết prompt mô tả một lớp học tương lai đầy tính viễn tưởng nơi một nhóm học sinh đang tương tác với trợ lý ảo và quả địa cầu ảo ảnh 3D (hologram) dưới ánh sáng ấm áp, đậm tính nghệ thuật. Việc này giúp tạo ra ảnh minh họa sắc nét độc quyền, thay vì dùng ảnh mạng trùng lặp.</p>
                                     </div>
                                     <div>
-                                        <p class="font-semibold text-purple-300">Giai đoạn 3: Hoàn thiện banner truyền thông đồ họa bằng Canva Magic Design</p>
+                                        <p class="font-semibold text-purple-300">Giai đoạn 3: Thiết kế ảnh bìa truyền thông (Canva AI - Magic Design)</p>
                                         <p class="text-slate-400">Truy cập Canva -> Magic Design -> Prompt thiết kế ảnh bìa phong cách công nghệ hiện đại tông xanh tím. Đóng góp sáng tạo cá nhân thể hiện qua việc chọn mẫu chữ bên trái, khoảng trống bên phải để chèn ảnh DALL-E 3 vào, đổi font Montserrat hiện đại và định hình lại tiêu đề chính: "AI ĐÃ TÁI ĐỊNH HÌNH LỚP HỌC TƯƠNG LAI NHƯ THẾ NÀO?".</p>
                                     </div>
                                 </div>
@@ -695,7 +792,7 @@
                         <div id="tab6" class="tab-content hidden space-y-6">
                             <div class="border-b border-white/5 pb-4">
                                 <span class="text-[10px] tracking-widest text-rose-400 uppercase font-semibold">Bài tập 4 - Bài 6</span>
-                                <h3 class="text-xl font-bold serif-font">An toàn và liêm chính học thuật</h3>
+                                <h3 class="text-xl font-bold serif-font text-slate-100">An toàn và liêm chính học thuật</h3>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                                 <div class="p-4 bg-white/5 border border-white/5 rounded-xl">
@@ -920,7 +1017,7 @@
         <footer class="w-full max-w-3xl mx-auto h-12 glass-taskbar rounded-2xl flex items-center justify-between px-6 shadow-2xl z-50">
             <div class="flex items-center gap-2 text-white/75">
                 <i data-lucide="cloud-sun" class="w-5 h-5 text-amber-300"></i>
-                <span class="text-xs font-light hidden sm:inline-block">28°C • Hà Nội</span>
+                <span class="text-xs font-light hidden sm:inline-block font-sans">28°C • Hà Nội</span>
             </div>
 
             <div class="flex items-center gap-3">
@@ -1029,15 +1126,15 @@
             'win-projects': { left: '710px', top: '140px' },
             'win-summary': { left: '460px', top: '220px' },
             'win-recycle-bin': { left: '280px', top: '280px' },
-            'win-text-viewer': { left: '360px', top: '320px' }
+            'win-text-viewer': { left: '360px', top: '260px' }
         };
 
         function openWindow(winId) {
             const winNode = document.getElementById(winId);
             if (!winNode) return;
 
-            // Apply default positions if window has no inline positions set yet
-            if (!winNode.style.left) {
+            // Apply default positions on desktop screens
+            if (!winNode.style.left && window.innerWidth >= 1024) {
                 winNode.style.left = defaultPositions[winId].left;
                 winNode.style.top = defaultPositions[winId].top;
             }
@@ -1078,6 +1175,7 @@
             let startX, startY, startWidth, startHeight, startLeft, startTop;
 
             header.addEventListener('mousedown', (e) => {
+                if (window.innerWidth < 1024) return; // Disable dragging on touch viewports
                 if (e.target.closest('button')) return; 
                 isDragging = true;
                 startX = e.clientX;
@@ -1111,6 +1209,7 @@
             el.appendChild(resizeHandle);
 
             resizeHandle.addEventListener('mousedown', (e) => {
+                if (window.innerWidth < 1024) return; // Disable resizing on touch viewports
                 e.preventDefault();
                 isResizing = true;
                 startX = e.clientX;
